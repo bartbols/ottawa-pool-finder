@@ -20,3 +20,4 @@ jobs:
 
       - name: Run diagnostic
         run: python diagnose.py
+
