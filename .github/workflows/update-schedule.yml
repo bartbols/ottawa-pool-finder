@@ -2,10 +2,8 @@ name: Update Pool Schedules
 
 on:
   schedule:
-    # Runs every day at 3:00 AM UTC (11 PM ET / 10 PM ET in summer)
     - cron: "0 3 * * *"
   workflow_dispatch:
-    # Also allows manual trigger from the GitHub Actions tab
 
 jobs:
   scrape:
@@ -28,6 +26,17 @@ jobs:
       - name: Run scraper
         run: python scrape.py
 
+      - name: Upload debug artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: debug-output
+          path: |
+            debug_*.html
+            debug_*.txt
+            schedule_data.json
+          retention-days: 7
+
       - name: Check if schedule_data.json changed
         id: diff
         run: |
@@ -42,6 +51,6 @@ jobs:
           git commit -m "chore: update pool schedules $(date -u '+%Y-%m-%d')"
           git push
 
-      - name: No changes detected
+      - name: No changes
         if: steps.diff.outputs.changed == 'false'
-        run: echo "Schedule data is already up to date — no commit needed."
+        run: echo "Schedule already up to date."
