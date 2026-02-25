@@ -19,5 +19,7 @@ jobs:
           playwright install chromium --with-deps
 
       - name: Run diagnostic
-        run: python diagnose.py
+        run:  |
+          ls -la
+          python diagnose.py
 
