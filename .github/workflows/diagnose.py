@@ -98,3 +98,4 @@ with sync_playwright() as p:
 
     browser.close()
     print("\n=== Diagnostic complete ===")
+
