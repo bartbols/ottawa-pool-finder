@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Ottawa Pool Finder</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#061a2e; --tile:#1a5f9e; --accent:#00e5ff; --warm:#ffd54f;
+  --green:#69f0ae; --text:#e8f5ff; --dim:rgba(232,245,255,0.55);
+  --card:rgba(255,255,255,0.055); --border:rgba(255,255,255,0.09); --r:14px;
+}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
+body::before{
+  content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
+  background-image:linear-gradient(rgba(0,229,255,0.025) 1px,transparent 1px),linear-gradient(90deg,rgba(0,229,255,0.025) 1px,transparent 1px);
+  background-size:48px 48px;
+}
+body::after{
+  content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:radial-gradient(ellipse 70% 50% at 15% 85%,rgba(13,59,110,0.7) 0%,transparent 55%),
+             radial-gradient(ellipse 50% 40% at 85% 15%,rgba(41,182,246,0.18) 0%,transparent 50%);
+}
+.shimmer-wrap{position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:0}
+.shimmer{position:absolute;height:1px;width:120%;background:linear-gradient(90deg,transparent,rgba(0,229,255,0.22),transparent);opacity:0;animation:shimmer-move 7s linear infinite}
+.shimmer:nth-child(1){top:22%;animation-delay:0s}
+.shimmer:nth-child(2){top:54%;animation-delay:2.8s;animation-duration:10s}
+.shimmer:nth-child(3){top:80%;animation-delay:5.2s;animation-duration:8s}
+@keyframes shimmer-move{0%{transform:translateX(-10%);opacity:0}10%{opacity:1}90%{opacity:1}100%{transform:translateX(10%);opacity:0}}
+
+main{position:relative;z-index:1;max-width:860px;margin:0 auto;padding:44px 20px 100px}
+header{text-align:center;margin-bottom:48px}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(0,229,255,0.08);border:1px solid rgba(0,229,255,0.22);border-radius:40px;padding:7px 18px;font-size:11px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:20px}
+h1{font-family:'Syne',sans-serif;font-size:clamp(2.2rem,6vw,3.8rem);font-weight:800;line-height:1.04;letter-spacing:-0.025em;margin-bottom:14px}
+.grad{background:linear-gradient(120deg,var(--accent) 0%,#82cfff 50%,var(--warm) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.subtitle{font-size:1rem;color:var(--dim);max-width:480px;margin:0 auto;line-height:1.65}
+
+.card{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:26px;backdrop-filter:blur(16px)}
+.clabel{font-family:'Syne',sans-serif;font-size:0.88rem;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;color:var(--dim);margin-bottom:16px;display:flex;align-items:center;gap:8px}
+.clabel::before{content:'';width:3px;height:14px;background:var(--accent);border-radius:2px}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:16px}
+@media(max-width:480px){.row2{grid-template-columns:1fr}}
+label{display:block;font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:0.09em;color:var(--dim);margin-bottom:7px}
+input[type=date]{width:100%;background:rgba(0,0,0,0.35);border:1px solid rgba(0,229,255,0.2);border-radius:9px;color:var(--text);font-family:'DM Sans',sans-serif;font-size:1rem;padding:12px 14px;outline:none;transition:border-color .2s;color-scheme:dark}
+input[type=date]:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(0,229,255,0.1)}
+select#st{width:100%;background:rgba(0,0,0,0.35);border:1px solid rgba(0,229,255,0.2);border-radius:9px;color:var(--text);font-family:'DM Sans',sans-serif;font-size:1rem;padding:12px 14px;outline:none;transition:border-color .2s;cursor:pointer;appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%2300e5ff' d='M1 1l5 5 5-5'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center}
+select#st:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(0,229,255,0.1)}
+select#st option{background:#0a2a48;color:var(--text)}
+.btn{width:100%;background:linear-gradient(135deg,var(--tile) 0%,var(--accent) 100%);border:none;border-radius:9px;color:#061a2e;font-family:'Syne',sans-serif;font-size:1rem;font-weight:800;padding:14px;cursor:pointer;transition:all .2s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(0,229,255,0.28)}
+.notice{margin-top:13px;padding:10px 14px;border-radius:9px;font-size:.84rem;line-height:1.5;display:none}
+.notice.info{background:rgba(0,229,255,.08);border:1px solid rgba(0,229,255,.22);color:var(--accent)}
+.notice.warn{background:rgba(255,213,79,.08);border:1px solid rgba(255,213,79,.25);color:var(--warm)}
+
+/* Data source badge */
+.data-badge{display:inline-flex;align-items:center;gap:6px;font-size:.75rem;color:var(--dim);margin-top:12px}
+.data-dot{width:7px;height:7px;border-radius:50%;background:var(--green);flex-shrink:0}
+.data-dot.stale{background:var(--warm)}
+.data-dot.fallback{background:#ef9a9a}
+
+.results{margin-top:28px;animation:fadeUp .3s ease}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.rlabel{font-family:'Syne',sans-serif;font-size:1.45rem;font-weight:800;margin-bottom:3px}
+.rsub{font-size:.87rem;color:var(--dim);margin-bottom:22px}
+
+.pblock{background:var(--card);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;margin-bottom:13px;transition:border-color .2s}
+.pblock:hover{border-color:rgba(0,229,255,.28)}
+.phead{padding:17px 21px;display:flex;align-items:flex-start;justify-content:space-between;gap:14px;cursor:pointer;user-select:none}
+.pname{font-family:'Syne',sans-serif;font-size:1.05rem;font-weight:700;margin-bottom:4px}
+.parea{font-size:.81rem;color:var(--dim)}
+.ptags{display:flex;flex-wrap:wrap;gap:5px;margin-top:8px}
+.tag{font-size:.71rem;padding:3px 8px;border-radius:20px;font-weight:500;white-space:nowrap}
+.t-open{background:rgba(105,240,174,.12);color:var(--green);border:1px solid rgba(105,240,174,.3)}
+.t-free{background:rgba(0,229,255,.1);color:var(--accent);border:1px solid rgba(0,229,255,.3)}
+.t-wave{background:rgba(41,182,246,.12);color:#82d8ff;border:1px solid rgba(41,182,246,.3)}
+.chev{flex-shrink:0;color:var(--dim);font-size:.9rem;transition:transform .25s;margin-top:3px}
+.pblock.open .chev{transform:rotate(180deg)}
+.spanel{display:none;border-top:1px solid var(--border);padding:15px 21px 18px}
+.pblock.open .spanel{display:block}
+.stitle{font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.1em;color:var(--accent);margin-bottom:11px}
+.srow{display:flex;align-items:center;justify-content:space-between;padding:9px 12px;border-radius:8px;margin-bottom:6px;background:rgba(0,0,0,.2);gap:10px}
+.srow.free{background:rgba(0,229,255,.06);border:1px solid rgba(0,229,255,.15)}
+.styp{font-size:.87rem;font-weight:500;flex:1}
+.stim{font-family:'Syne',sans-serif;font-size:.87rem;font-weight:700;color:var(--accent);white-space:nowrap}
+.fbadge{font-size:.68rem;background:var(--accent);color:#061a2e;padding:2px 7px;border-radius:10px;font-weight:700;letter-spacing:.05em;white-space:nowrap}
+.extlink{display:inline-flex;align-items:center;gap:5px;margin-top:13px;font-size:.81rem;color:#29b6f6;text-decoration:none;border-bottom:1px solid transparent;transition:border-color .2s}
+.extlink:hover{border-color:#29b6f6}
+.no-results{text-align:center;padding:44px 20px;background:var(--card);border:1px solid var(--border);border-radius:var(--r);color:var(--dim)}
+.no-results .big{font-size:2.4rem;margin-bottom:10px}
+.no-results p{font-size:.93rem;line-height:1.65}
+.later-sec{margin-top:28px}
+.llabel{font-family:'Syne',sans-serif;font-size:.82rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--dim);margin-bottom:13px;display:flex;align-items:center;gap:8px}
+.llabel::before{content:'';width:3px;height:13px;background:rgba(0,229,255,.35);border-radius:2px}
+.disc{margin-top:30px;padding:13px 17px;background:rgba(255,255,255,.03);border-radius:10px;font-size:.79rem;color:var(--dim);line-height:1.65;text-align:center}
+.disc a{color:var(--accent)}
+</style>
+</head>
+<body>
+<div class="shimmer-wrap">
+  <div class="shimmer"></div><div class="shimmer"></div><div class="shimmer"></div>
+</div>
+<main>
+  <header>
+    <div class="eyebrow">🏊 Ottawa Pool Finder</div>
+    <h1>Find your <span class="grad">swim</span></h1>
+    <p class="subtitle">Pick a date and time to see which Ottawa pools have public swimming open right now.</p>
+  </header>
+
+  <div class="card">
+    <div class="clabel">When do you want to swim?</div>
+    <div class="row2">
+      <div><label for="sd">Date</label><input type="date" id="sd"/></div>
+      <div><label for="st">Time</label><select id="st"></select></div>
+    </div>
+    <button class="btn" onclick="doSearch()">Find open pools →</button>
+    <div id="notice" class="notice"></div>
+    <div id="data-badge" class="data-badge" style="display:none">
+      <div id="data-dot" class="data-dot"></div>
+      <span id="data-label"></span>
+    </div>
+  </div>
+
+  <div id="results"></div>
+
+  <div class="disc">
+    Schedule data is fetched nightly from Ottawa.ca.
+    Always <a href="https://ottawa.ca/en/recreation-and-parks/swimming" target="_blank">verify on Ottawa.ca</a> before heading out.
+    <strong>Play Free</strong> = free admission ages 17 &amp; under + accompanying adult, Saturdays only.
+  </div>
+</main>
+
+<script>
+// ── HELPERS ────────────────────────────────────────────────────────────────
+function fmt(n){
+  const h=Math.floor(n/60),m=n%60,ap=h<12?'am':'pm',h12=h===0?12:h>12?h-12:h;
+  return m?`${h12}:${String(m).padStart(2,'0')} ${ap}`:`${h12} ${ap}`;
+}
+function t(h,m){return h*60+(m||0)}
+
+// ── FALLBACK HARDCODED DATA (used if schedule_data.json can't be loaded) ───
+const FALLBACK_POOLS = [
+  {
+    id:'splash', name:'Splash Wave Pool',
+    area:'East · Gloucester', address:'2720 Queensview Dr',
+    url:'https://ottawa.ca/en/recreation-and-parks/facilities/place-listing/splash-wave-pool',
+    wave:true,
+    sessions:[
+      {day:1,label:'Public Swim – wave tank & warm pool',start:t(11,0),end:t(13,0),playFree:false},
+      {day:1,label:'Public Swim – warm pool only',start:t(9,30),end:t(11,0),playFree:false},
+      {day:2,label:'Public Swim – wave tank & warm pool',start:t(12,0),end:t(13,0),playFree:false},
+      {day:2,label:'Public Swim – wave tank & warm pool',start:t(16,30),end:t(21,0),playFree:false},
+      {day:2,label:'Public Swim – warm pool only',start:t(10,0),end:t(12,0),playFree:false},
+      {day:3,label:'Public Swim – wave tank & warm pool',start:t(9,30),end:t(13,0),playFree:false},
+      {day:4,label:'Public Swim – wave tank & warm pool',start:t(12,0),end:t(13,0),playFree:false},
+      {day:4,label:'Public Swim – wave tank & warm pool',start:t(16,30),end:t(21,0),playFree:false},
+      {day:4,label:'Public Swim – warm pool only',start:t(10,0),end:t(12,0),playFree:false},
+      {day:5,label:'Public Swim – wave tank & warm pool',start:t(9,30),end:t(13,0),playFree:false},
+      {day:6,label:'Public Swim – warm pool only',start:t(12,0),end:t(13,0),playFree:true},
+      {day:0,label:'Public Swim – warm pool only',start:t(12,0),end:t(13,0),playFree:false},
+    ]
+  },
+  {
+    id:'rayfriel', name:'Ray Friel Recreation Complex',
+    area:'East · Orléans', address:'1585 Tenth Line Rd',
+    url:'https://ottawa.ca/en/recreation-and-parks/facilities/place-listing/ray-friel-recreation-complex',
+    wave:true,
+    sessions:[
+      {day:4,label:'Public Swim',start:t(17,0),end:t(19,30),playFree:false},
+      {day:6,label:'Public Swim',start:t(12,0),end:t(13,0),playFree:true},
+      {day:0,label:'Public Swim',start:t(12,0),end:t(13,0),playFree:false},
+    ]
+  },
+  {
+    id:'dupuis', name:'François Dupuis Recreation Centre',
+    area:'East · Orléans', address:'2263 St-Laurent Blvd',
+    url:'https://ottawa.ca/en/recreation-and-parks/facilities/place-listing/francois-dupuis-recreation-centre',
+    wave:false,
+    sessions:[
+      {day:1,label:'Public Swim – therapeutic pool',start:t(11,30),end:t(14,30),playFree:false},
+      {day:1,label:'Public Swim – 25m pool',start:t(13,0),end:t(14,30),playFree:false},
+      {day:2,label:'Public Swim – therapeutic pool',start:t(11,30),end:t(14,30),playFree:false},
+      {day:2,label:'Public Swim – therapeutic pool',start:t(20,0),end:t(21,0),playFree:false},
+      {day:2,label:'Public Swim – 25m pool',start:t(13,0),end:t(14,30),playFree:false},
+      {day:3,label:'Public Swim – therapeutic pool',start:t(12,30),end:t(14,0),playFree:false},
+      {day:3,label:'Public Swim – 25m pool',start:t(12,30),end:t(14,0),playFree:false},
+      {day:4,label:'Public Swim – therapeutic pool',start:t(10,30),end:t(13,0),playFree:false},
+      {day:4,label:'Public Swim – therapeutic pool',start:t(20,0),end:t(21,0),playFree:false},
+      {day:4,label:'Public Swim – 25m pool',start:t(13,0),end:t(14,30),playFree:false},
+      {day:5,label:'Public Swim – therapeutic pool',start:t(11,30),end:t(15,30),playFree:false},
+      {day:5,label:'Public Swim – therapeutic pool',start:t(19,0),end:t(21,0),playFree:false},
+      {day:5,label:'Public Swim – 25m pool',start:t(13,0),end:t(14,30),playFree:false},
+      {day:5,label:'Public Swim – 25m pool',start:t(19,0),end:t(21,0),playFree:false},
+      {day:6,label:'Public Swim – therapeutic pool',start:t(12,0),end:t(15,0),playFree:true},
+      {day:6,label:'Public Swim – 25m pool',start:t(13,0),end:t(15,0),playFree:true},
+      {day:0,label:'Public Swim – therapeutic pool',start:t(12,0),end:t(15,0),playFree:false},
+      {day:0,label:'Public Swim – 25m pool',start:t(13,0),end:t(15,0),playFree:false},
+    ]
+  }
+];
+
+// ── STATE ──────────────────────────────────────────────────────────────────
+let POOLS = [];
+let dataSource = 'loading'; // 'live' | 'stale' | 'fallback'
+let scrapedAt = null;
+
+// ── LOAD DATA ──────────────────────────────────────────────────────────────
+async function loadScheduleData() {
+  try {
+    const res = await fetch('schedule_data.json?_=' + Date.now());
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const data = await res.json();
+
+    // Convert sessions array format to match app expectations
+    POOLS = data.pools.map(p => ({
+      ...p,
+      wave: p.wave || false,
+    }));
+
+    scrapedAt = data.scraped_at ? new Date(data.scraped_at) : null;
+    const ageHours = scrapedAt ? (Date.now() - scrapedAt) / 3600000 : 999;
+    dataSource = ageHours < 48 ? 'live' : 'stale';
+
+    showDataBadge();
+  } catch (e) {
+    console.warn('Could not load schedule_data.json, using fallback data.', e);
+    POOLS = FALLBACK_POOLS;
+    dataSource = 'fallback';
+    showDataBadge();
+  }
+}
+
+function showDataBadge() {
+  const badge = document.getElementById('data-badge');
+  const dot   = document.getElementById('data-dot');
+  const lbl   = document.getElementById('data-label');
+  badge.style.display = 'inline-flex';
+
+  if (dataSource === 'live') {
+    dot.className = 'data-dot';
+    const d = scrapedAt.toLocaleDateString('en-CA', {month:'short', day:'numeric', year:'numeric'});
+    lbl.textContent = `Schedule data last updated ${d}`;
+  } else if (dataSource === 'stale') {
+    dot.className = 'data-dot stale';
+    lbl.textContent = 'Schedule data may be outdated — verify on Ottawa.ca';
+  } else {
+    dot.className = 'data-dot fallback';
+    lbl.textContent = 'Using offline schedule (Feb 2026) — verify on Ottawa.ca';
+  }
+}
+
+// ── INIT ───────────────────────────────────────────────────────────────────
+(async function init(){
+  // Populate time dropdown
+  const sel = document.getElementById('st');
+  for(let h=0;h<24;h++){
+    for(let m=0;m<60;m+=30){
+      const val=`${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}`;
+      const ap=h<12?'am':'pm',h12=h===0?12:h>12?h-12:h;
+      const label=m===0?`${h12}:00 ${ap}`:`${h12}:30 ${ap}`;
+      const opt=document.createElement('option');
+      opt.value=val;opt.textContent=label;
+      sel.appendChild(opt);
+    }
+  }
+  // Set date to today, time to nearest 30-min slot
+  const now=new Date();
+  document.getElementById('sd').value=now.toISOString().split('T')[0];
+  const roundedMins=Math.floor((now.getHours()*60+now.getMinutes())/30)*30;
+  const rh=Math.floor(roundedMins/60),rm=roundedMins%60;
+  sel.value=`${String(rh).padStart(2,'0')}:${String(rm).padStart(2,'0')}`;
+
+  updateNotice();
+  await loadScheduleData();
+})();
+
+// ── HELPERS ────────────────────────────────────────────────────────────────
+function getDay(){
+  const v=document.getElementById('sd').value;
+  return v?new Date(v+'T12:00:00').getDay():null;
+}
+function getMins(){
+  const v=document.getElementById('st').value;
+  if(!v)return 0;
+  const[h,m]=v.split(':').map(Number);return h*60+m;
+}
+
+document.getElementById('sd').addEventListener('change',updateNotice);
+
+function updateNotice(){
+  const n=document.getElementById('notice'),day=getDay();
+  if(day===null){n.style.display='none';return}
+  if(day===6){
+    n.className='notice info';
+    n.innerHTML='🎉 <strong>Saturday!</strong> Play Free is active — kids 17 &amp; under swim free at marked sessions.';
+  } else {
+    n.className='notice warn';
+    n.innerHTML='💡 <strong>Play Free is Saturdays only.</strong> Regular fees apply today.';
+  }
+  n.style.display='block';
+}
+
+// ── SEARCH ─────────────────────────────────────────────────────────────────
+function doSearch(){
+  const dateVal=document.getElementById('sd').value;
+  const timeVal=document.getElementById('st').value;
+  if(!dateVal||!timeVal){alert('Please pick both a date and time.');return}
+  if(!POOLS.length){alert('Schedule data is still loading, please try again in a moment.');return}
+
+  const day=getDay(), mins=getMins();
+  const dateObj=new Date(dateVal+'T12:00:00');
+  const dateStr=dateObj.toLocaleDateString('en-CA',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
+
+  const active=POOLS.map(pool=>{
+    const hits=(pool.sessions||[]).filter(s=>s.day===day&&mins>=s.start&&mins<s.end);
+    return {pool,hits};
+  }).filter(r=>r.hits.length);
+
+  const later=[];
+  POOLS.forEach(pool=>{
+    (pool.sessions||[]).filter(s=>s.day===day&&s.start>mins).forEach(s=>later.push({pool,s}));
+  });
+  later.sort((a,b)=>a.s.start-b.s.start);
+
+  render(active,later,dateStr,mins);
+}
+
+function toggle(el){el.classList.toggle('open')}
+
+// ── RENDER ─────────────────────────────────────────────────────────────────
+function render(active,later,dateStr,mins){
+  let h=`<div class="results">
+    <div class="rlabel">${active.length} pool${active.length!==1?'s':''} open at ${fmt(mins)}</div>
+    <div class="rsub">${dateStr}</div>`;
+
+  if(!active.length){
+    h+=`<div class="no-results">
+      <div class="big">🌊</div>
+      <p>No public swim sessions found at <strong>${fmt(mins)}</strong>.<br>
+      Check the sessions listed below, or try a different time.</p>
+    </div>`;
+  } else {
+    active.forEach(({pool,hits})=>{
+      const hasFree=hits.some(s=>s.playFree);
+      h+=`<div class="pblock open" onclick="toggle(this)">
+        <div class="phead">
+          <div>
+            <div class="pname">${pool.name}</div>
+            <div class="parea">📍 ${pool.area} · ${pool.address}</div>
+            <div class="ptags">
+              <span class="tag t-open">● Open now</span>
+              ${hasFree?'<span class="tag t-free">✨ Play Free</span>':''}
+              ${pool.wave?'<span class="tag t-wave">🌊 Wave pool</span>':''}
+            </div>
+          </div>
+          <div class="chev">▾</div>
+        </div>
+        <div class="spanel">
+          <div class="stitle">Active sessions at ${fmt(mins)}</div>
+          ${hits.map(s=>`
+            <div class="srow${s.playFree?' free':''}">
+              <div class="styp">${s.label}</div>
+              <div style="display:flex;align-items:center;gap:8px">
+                ${s.playFree?'<span class="fbadge">PLAY FREE</span>':''}
+                <div class="stim">${fmt(s.start)} – ${fmt(s.end)}</div>
+              </div>
+            </div>`).join('')}
+          <a class="extlink" href="${pool.url}" target="_blank">Full schedule on Ottawa.ca ↗</a>
+        </div>
+      </div>`;
+    });
+  }
+
+  if(later.length){
+    h+=`<div class="later-sec">
+      <div class="llabel">Other public swims later today</div>
+      ${later.map(({pool,s})=>`
+        <div class="srow${s.playFree?' free':''}" style="margin-bottom:8px">
+          <div>
+            <div style="font-size:.79rem;color:var(--dim);margin-bottom:2px">${pool.name}</div>
+            <div class="styp">${s.label}</div>
+          </div>
+          <div style="display:flex;align-items:center;gap:8px;flex-shrink:0">
+            ${s.playFree?'<span class="fbadge">PLAY FREE</span>':''}
+            <div class="stim">${fmt(s.start)} – ${fmt(s.end)}</div>
+          </div>
+        </div>`).join('')}
+    </div>`;
+  }
+
+  h+=`</div>`;
+  const area=document.getElementById('results');
+  area.innerHTML=h;
+  area.scrollIntoView({behavior:'smooth',block:'start'});
+}
+</script>
+</body>
+</html>
