@@ -1,7 +1,8 @@
 """
 Ottawa Pool Schedule Scraper
-Handles both table-based and div-based schedule layouts on Ottawa.ca.
-Saves debug HTML files as GitHub Actions artifacts for diagnosis.
+Uses Playwright to load pages and BeautifulSoup to parse the schedule tables.
+Ottawa.ca tables use <th> for both header row AND row label column,
+so we handle that explicitly.
 """
 
 import json
@@ -9,6 +10,7 @@ import re
 import sys
 from datetime import datetime, timezone
 from playwright.sync_api import sync_playwright, TimeoutError as PWTimeout
+from bs4 import BeautifulSoup
 
 POOLS = [
     {
@@ -43,6 +45,7 @@ PUBLIC_SWIM_KEYWORDS = ["public swim", "wave swim"]
 
 
 def parse_time_str(s):
+    """'9:30 am' or '9 am' → minutes since midnight, or None."""
     s = s.strip().lower().replace("\u2013", "-").replace("\u00a0", " ")
     m = re.match(r"(\d{1,2})(?::(\d{2}))?\s*(am|pm)", s)
     if not m:
@@ -56,215 +59,158 @@ def parse_time_str(s):
 
 
 def parse_time_range(cell_text):
+    """
+    Parse a table cell that may contain multiple time ranges.
+    e.g. 'Noon - 1 pm, 4:30 - 9 pm' → [{start:720,end:780},{start:990,end:1260}]
+    """
     text = cell_text.strip()
     if not text or text.lower() in ("n/a", "—", "-", ""):
         return []
+
+    # Normalise special words
     text = re.sub(r"\bnoon\b", "12:00 pm", text, flags=re.I)
     text = re.sub(r"\bmidnight\b", "12:00 am", text, flags=re.I)
+    # Remove Play Free links/annotations
+    text = re.sub(r"\(play free\)", "", text, flags=re.I)
+    text = re.sub(r"__.*?__", "", text)
+
     results = []
     for part in re.split(r"[,\n]+", text):
         part = part.strip()
         if not part:
             continue
+        # Match "X - Y am/pm" — end token must have am/pm
         range_m = re.match(
             r"(\d{1,2}(?::\d{2})?(?:\s*[ap]m)?)\s*[-\u2013]\s*(\d{1,2}(?::\d{2})?\s*[ap]m)",
             part, re.I,
         )
         if not range_m:
             continue
-        start_str, end_str = range_m.group(1), range_m.group(2)
+        start_str, end_str = range_m.group(1).strip(), range_m.group(2).strip()
+        # If start has no am/pm, inherit from end
         if not re.search(r"[ap]m", start_str, re.I):
-            ap_match = re.search(r"([ap]m)", end_str, re.I)
-            if ap_match:
-                start_str += " " + ap_match.group(1)
-        start = parse_time_str(start_str)
-        end = parse_time_str(end_str)
-        if start is not None and end is not None:
-            results.append({"start": start, "end": end})
+            ap_m = re.search(r"([ap]m)", end_str, re.I)
+            if ap_m:
+                start_str += " " + ap_m.group(1)
+        s = parse_time_str(start_str)
+        e = parse_time_str(end_str)
+        if s is not None and e is not None:
+            results.append({"start": s, "end": e})
     return results
 
 
-def parse_from_table(table):
+def parse_schedule_tables(html):
+    """
+    Parse all swim schedule tables from the page HTML.
+    Ottawa.ca table structure:
+      - First <tr> in <thead> (or first <tr>) = header with day names in <th>
+      - Each data row has a <th> for the activity label + <td> for each day
+    Returns list of session dicts.
+    """
+    soup = BeautifulSoup(html, "html.parser")
     sessions = []
-    header_cells = table.query_selector_all(
-        "thead th, thead td, tr:first-child th, tr:first-child td"
-    )
-    if not header_cells:
-        return sessions
-    header_texts = [c.inner_text().strip() for c in header_cells]
-    col_to_day = {}
-    for i, h in enumerate(header_texts):
-        for day_name, day_idx in DAY_INDEX.items():
-            if day_name.lower() in h.lower():
-                col_to_day[i] = day_idx
-                break
-    if not col_to_day:
-        return sessions
-    for row in table.query_selector_all("tbody tr, tr:not(:first-child)"):
-        cells = row.query_selector_all("td, th")
-        if not cells:
+
+    for table in soup.find_all("table"):
+        # Only process swim/aquafit tables
+        table_text = table.get_text()
+        if not any(k in table_text.lower() for k in ["swim", "aquafit", "lane"]):
             continue
-        row_label = cells[0].inner_text().strip()
-        if not any(k in row_label.lower() for k in PUBLIC_SWIM_KEYWORDS):
+
+        caption = table.find("caption")
+        print(f"    Table: {caption.get_text(strip=True)[:80] if caption else 'no caption'}")
+
+        # Build column → day mapping from header row
+        rows = table.find_all("tr")
+        if not rows:
             continue
-        for col_idx, day_idx in col_to_day.items():
-            if col_idx >= len(cells):
+
+        header_row = rows[0]
+        header_cells = header_row.find_all(["th", "td"])
+        col_to_day = {}
+        for i, cell in enumerate(header_cells):
+            text = cell.get_text(strip=True)
+            for day_name, day_idx in DAY_INDEX.items():
+                if day_name.lower() in text.lower():
+                    col_to_day[i] = day_idx
+                    break
+
+        if not col_to_day:
+            print(f"      No day columns found in header, skipping")
+            continue
+
+        print(f"      Days mapped: { {DAYS[v]: k for k, v in col_to_day.items()} }")
+
+        # Process data rows (skip header row)
+        for row in rows[1:]:
+            cells = row.find_all(["th", "td"])
+            if not cells:
                 continue
-            cell_text = cells[col_idx].inner_text().strip()
-            play_free = "play free" in cell_text.lower()
-            cell_clean = re.sub(r"__.*?__|\(play free\)", "", cell_text, flags=re.I).strip()
-            for tr in parse_time_range(cell_clean):
-                sessions.append({
-                    "day": day_idx, "label": row_label,
-                    "start": tr["start"], "end": tr["end"], "playFree": play_free,
-                })
-    return sessions
 
+            row_label = cells[0].get_text(separator=" ", strip=True)
 
-def parse_from_text(raw_text):
-    """
-    Parse schedule from plain text extracted from div-based layouts.
-    Handles Ottawa.ca's whitespace-separated column format.
-    """
-    sessions = []
-    lines = [l.strip() for l in raw_text.split("\n") if l.strip()]
+            # Only include Public Swim and Wave Swim rows
+            if not any(k in row_label.lower() for k in PUBLIC_SWIM_KEYWORDS):
+                continue
 
-    # Find the header row containing day names
-    header_idx = None
-    col_days = []  # ordered list of (day_name, day_index)
-    for i, line in enumerate(lines):
-        found = []
-        for day in DAYS:
-            if day.lower() in line.lower():
-                found.append((day, DAY_INDEX[day]))
-        if len(found) >= 3:
-            header_idx = i
-            col_days = found
-            print(f"      Header row [{i}]: {line[:100]}")
-            break
+            print(f"      Row: {row_label}")
 
-    if header_idx is None:
-        print("      Could not locate day-header row in text.")
-        return sessions
+            for col_idx, day_idx in col_to_day.items():
+                if col_idx >= len(cells):
+                    continue
 
-    # Each subsequent line is a schedule row; columns separated by 2+ spaces or tabs
-    for line in lines[header_idx + 1:]:
-        if not any(k in line.lower() for k in PUBLIC_SWIM_KEYWORDS):
-            continue
-        print(f"      Public Swim row: {line[:120]}")
-        parts = re.split(r"\t+|\s{2,}", line)
-        if len(parts) < 2:
-            continue
-        row_label = parts[0].strip()
-        play_free = "play free" in line.lower()
-        for j, (day_name, day_idx) in enumerate(col_days):
-            if j + 1 < len(parts):
-                cell = re.sub(r"__.*?__|\(play free\)", "", parts[j + 1], flags=re.I).strip()
-                for tr in parse_time_range(cell):
+                cell = cells[col_idx]
+                cell_text = cell.get_text(separator=" ", strip=True)
+
+                # Check for Play Free (may be a link inside the cell)
+                play_free = "play free" in cell_text.lower()
+
+                for tr in parse_time_range(cell_text):
                     sessions.append({
-                        "day": day_idx, "label": row_label,
-                        "start": tr["start"], "end": tr["end"], "playFree": play_free,
+                        "day": day_idx,
+                        "label": row_label,
+                        "start": tr["start"],
+                        "end": tr["end"],
+                        "playFree": play_free,
                     })
+
     return sessions
 
 
 def scrape_pool(page, pool):
-    print(f"\n  [{pool['id']}] Scraping: {pool['name']}", flush=True)
-    sessions = []
+    print(f"\n  [{pool['id']}] {pool['name']}", flush=True)
 
-    # ── Load page ────────────────────────────────────────────────────────────
+    # Load page
     loaded = False
     for wait_mode in ("networkidle", "domcontentloaded"):
         try:
             resp = page.goto(pool["url"], wait_until=wait_mode, timeout=30000)
-            print(f"    HTTP {resp.status} via {wait_mode}")
+            print(f"    HTTP {resp.status} ({wait_mode})")
             loaded = True
             break
         except PWTimeout:
-            print(f"    Timeout ({wait_mode}), retrying...")
+            print(f"    Timeout with {wait_mode}")
         except Exception as e:
-            print(f"    Load error: {e}")
+            print(f"    Error: {e}")
             break
 
     if not loaded:
-        print("    ✗ Could not load page.")
-        return sessions
+        return []
 
-    # Extra wait for JS rendering
-    page.wait_for_timeout(4000)
+    # Brief wait for any late JS rendering
+    page.wait_for_timeout(3000)
 
-    # ── Save debug HTML as artifact ──────────────────────────────────────────
     html = page.content()
-    debug_path = f"debug_{pool['id']}.html"
-    with open(debug_path, "w", encoding="utf-8") as f:
+
+    # Save debug HTML as artifact
+    with open(f"debug_{pool['id']}.html", "w", encoding="utf-8") as f:
         f.write(html)
-    print(f"    Saved {debug_path} ({len(html):,} bytes)")
 
-    # Quick sanity check
-    if "Public Swim" in html:
-        idx = html.find("Public Swim")
-        print(f"    ✓ 'Public Swim' found in HTML at pos {idx}")
-        print(f"      Context: {html[max(0,idx-80):idx+160].strip()!r}")
-    else:
-        print("    ✗ 'Public Swim' NOT in HTML — Ottawa.ca may be blocking or structure changed")
-        print(f"    Page title: {page.title()!r}")
-        return sessions
+    if "Public Swim" not in html and "public swim" not in html.lower():
+        print(f"    ✗ 'Public Swim' not found in page HTML")
+        return []
 
-    # ── Strategy 1: standard <table> ─────────────────────────────────────────
-    for table in page.query_selector_all("table"):
-        txt = table.inner_text()
-        if any(k in txt.lower() for k in ["swim", "lane", "aquafit"]):
-            s = parse_from_table(table)
-            if s:
-                print(f"    ✓ {len(s)} sessions from <table>")
-                sessions.extend(s)
-
-    if sessions:
-        return sessions
-
-    # ── Strategy 2: Ottawa.ca field/view divs ───────────────────────────────
-    print("    No table sessions — trying div containers...")
-    candidates = []
-    for sel in [
-        "[class*='schedule']", "[class*='field--name']",
-        "[class*='view-content']", "[class*='activity']",
-        "article", "main", ".field--type-text-long",
-    ]:
-        try:
-            for el in page.query_selector_all(sel):
-                txt = el.inner_text()
-                if any(k in txt.lower() for k in PUBLIC_SWIM_KEYWORDS):
-                    candidates.append((sel, el, len(txt)))
-        except Exception:
-            pass
-
-    # Sort by text length — prefer smallest container that still has the content
-    candidates.sort(key=lambda x: x[2])
-    for sel, el, length in candidates[:3]:
-        print(f"      Candidate: {sel} ({length} chars)")
-        text = el.inner_text()
-        s = parse_from_text(text)
-        if s:
-            print(f"    ✓ {len(s)} sessions from div ({sel})")
-            sessions.extend(s)
-            break
-
-    if not sessions:
-        # ── Strategy 3: dump full page text for manual inspection ────────────
-        print("    Dumping full page innerText for inspection...")
-        full_text = page.evaluate("() => document.body.innerText")
-        text_path = f"debug_{pool['id']}.txt"
-        with open(text_path, "w", encoding="utf-8") as f:
-            f.write(full_text)
-        print(f"    Saved {text_path} — check artifact for page structure")
-
-        # Still try parsing the full text
-        s = parse_from_text(full_text)
-        if s:
-            print(f"    ✓ {len(s)} sessions from full-page text")
-            sessions.extend(s)
-
-    print(f"    → {len(sessions)} total sessions")
+    sessions = parse_schedule_tables(html)
+    print(f"    → {len(sessions)} public swim sessions found")
     return sessions
 
 
@@ -306,11 +252,10 @@ def main():
         print(f"  • {p['name']}: {len(p['sessions'])} sessions")
 
     if total == 0:
-        print("\n⚠ WARNING: No sessions scraped.")
-        print("  Upload the debug_*.html / debug_*.txt artifacts to diagnose the page structure.")
+        print("\n⚠ WARNING: No sessions scraped. Check debug_*.html artifacts.")
         sys.exit(1)
     else:
-        print(f"\n✓ Done — {total} total sessions scraped.")
+        print(f"\n✓ Done — {total} total session slots scraped.")
 
 
 if __name__ == "__main__":
