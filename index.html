@@ -133,231 +133,192 @@ select#st option{background:#0a2a48;color:var(--text)}
   </div>
 </main>
 <script>
-// ── HELPERS ────────────────────────────────────────────────────────────────
+
 function fmt(n){
   const h=Math.floor(n/60),m=n%60,ap=h<12?'am':'pm',h12=h===0?12:h>12?h-12:h;
   return m?`${h12}:${String(m).padStart(2,'0')} ${ap}`:`${h12} ${ap}`;
 }
 function t(h,m){return h*60+(m||0)}
 
-// ── FALLBACK HARDCODED DATA ────────────────────────────────────────────────
-const FALLBACK_POOLS = [
-  {
-    id:'splash-wave-pool', name:'Splash Wave Pool',
-    address:'2720 Queensview Dr',
-    url:'https://ottawa.ca/en/recreation-and-parks/facilities/place-listing/splash-wave-pool',
-    wave:true,
-    sessions:[
-      {day:1,label:'Public Swim – wave tank and warm pool',start:t(11,0),end:t(13,0),playFree:false},
-      {day:2,label:'Public Swim – wave tank and warm pool',start:t(12,0),end:t(13,0),playFree:false},
-      {day:2,label:'Public Swim – wave tank and warm pool',start:t(16,30),end:t(21,0),playFree:false},
-      {day:3,label:'Public Swim – wave tank and warm pool',start:t(9,30),end:t(13,0),playFree:false},
-      {day:4,label:'Public Swim – wave tank and warm pool',start:t(12,0),end:t(13,0),playFree:false},
-      {day:4,label:'Public Swim – wave tank and warm pool',start:t(16,30),end:t(21,0),playFree:false},
-      {day:5,label:'Public Swim – wave tank and warm pool',start:t(9,30),end:t(13,0),playFree:false},
-      {day:1,label:'Public Swim – warm pool only',start:t(9,30),end:t(11,0),playFree:false},
-      {day:2,label:'Public Swim – warm pool only',start:t(10,0),end:t(12,0),playFree:false},
-      {day:4,label:'Public Swim – warm pool only',start:t(10,0),end:t(12,0),playFree:false},
-      {day:6,label:'Public Swim – warm pool only',start:t(12,0),end:t(13,0),playFree:true},
-      {day:0,label:'Public Swim – warm pool only',start:t(12,0),end:t(13,0),playFree:false},
-    ]
-  },
-  {
-    id:'ray-friel-recreation-complex', name:'Ray Friel Recreation Complex',
-    address:'1585 Tenth Line Rd',
-    url:'https://ottawa.ca/en/recreation-and-parks/facilities/place-listing/ray-friel-recreation-complex',
-    wave:true,
-    sessions:[
-      {day:4,label:'Public swim',start:t(17,0),end:t(19,30),playFree:false},
-      {day:6,label:'Public swim',start:t(12,0),end:t(13,0),playFree:true},
-      {day:0,label:'Public swim',start:t(12,0),end:t(13,0),playFree:false},
-      {day:6,label:'Wave swim',start:t(13,0),end:t(16,0),playFree:false},
-      {day:0,label:'Wave swim',start:t(13,0),end:t(16,0),playFree:false},
-    ]
-  },
-  {
-    id:'francois-dupuis-recreation-centre', name:'François Dupuis Recreation Centre',
-    address:'2263 St-Laurent Blvd',
-    url:'https://ottawa.ca/en/recreation-and-parks/facilities/place-listing/francois-dupuis-recreation-centre',
-    wave:false,
-    sessions:[
-      {day:1,label:'Public swim – therapeutic pool',start:t(11,30),end:t(14,30),playFree:false},
-      {day:2,label:'Public swim – therapeutic pool',start:t(11,30),end:t(14,30),playFree:false},
-      {day:2,label:'Public swim – therapeutic pool',start:t(20,0),end:t(21,0),playFree:false},
-      {day:3,label:'Public swim – therapeutic pool',start:t(12,30),end:t(14,0),playFree:false},
-      {day:4,label:'Public swim – therapeutic pool',start:t(10,30),end:t(13,0),playFree:false},
-      {day:4,label:'Public swim – therapeutic pool',start:t(20,0),end:t(21,0),playFree:false},
-      {day:5,label:'Public swim – therapeutic pool',start:t(11,30),end:t(15,30),playFree:false},
-      {day:5,label:'Public swim – therapeutic pool',start:t(19,0),end:t(21,0),playFree:false},
-      {day:6,label:'Public swim – therapeutic pool',start:t(12,0),end:t(15,0),playFree:true},
-      {day:0,label:'Public swim – therapeutic pool',start:t(12,0),end:t(15,0),playFree:false},
-      {day:1,label:'Public swim – 25m pool',start:t(13,0),end:t(14,30),playFree:false},
-      {day:2,label:'Public swim – 25m pool',start:t(13,0),end:t(14,30),playFree:false},
-      {day:3,label:'Public swim – 25m pool',start:t(12,30),end:t(14,0),playFree:false},
-      {day:4,label:'Public swim – 25m pool',start:t(13,0),end:t(14,30),playFree:false},
-      {day:5,label:'Public swim – 25m pool',start:t(13,0),end:t(14,30),playFree:false},
-      {day:5,label:'Public swim – 25m pool',start:t(19,0),end:t(21,0),playFree:false},
-      {day:6,label:'Public swim – 25m pool',start:t(13,0),end:t(15,0),playFree:true},
-      {day:0,label:'Public swim – 25m pool',start:t(13,0),end:t(15,0),playFree:false},
-    ]
-  }
+const FALLBACK_POOLS=[
+  {id:'splash-wave-pool',name:'Splash Wave Pool',address:'2720 Queensview Dr',url:'https://ottawa.ca/en/recreation-and-parks/facilities/place-listing/splash-wave-pool',wave:true,sessions:[
+    {day:1,label:'Public Swim - wave tank and warm pool',start:t(11,0),end:t(13,0),playFree:false},
+    {day:2,label:'Public Swim - wave tank and warm pool',start:t(12,0),end:t(13,0),playFree:false},
+    {day:2,label:'Public Swim - wave tank and warm pool',start:t(16,30),end:t(21,0),playFree:false},
+    {day:3,label:'Public Swim - wave tank and warm pool',start:t(9,30),end:t(13,0),playFree:false},
+    {day:4,label:'Public Swim - wave tank and warm pool',start:t(12,0),end:t(13,0),playFree:false},
+    {day:4,label:'Public Swim - wave tank and warm pool',start:t(16,30),end:t(21,0),playFree:false},
+    {day:5,label:'Public Swim - wave tank and warm pool',start:t(9,30),end:t(13,0),playFree:false},
+    {day:1,label:'Public Swim - warm pool only',start:t(9,30),end:t(11,0),playFree:false},
+    {day:2,label:'Public Swim - warm pool only',start:t(10,0),end:t(12,0),playFree:false},
+    {day:4,label:'Public Swim - warm pool only',start:t(10,0),end:t(12,0),playFree:false},
+    {day:6,label:'Public Swim - warm pool only',start:t(12,0),end:t(13,0),playFree:true},
+    {day:0,label:'Public Swim - warm pool only',start:t(12,0),end:t(13,0),playFree:false},
+  ]},
+  {id:'ray-friel-recreation-complex',name:'Ray Friel Recreation Complex',address:'1585 Tenth Line Rd',url:'https://ottawa.ca/en/recreation-and-parks/facilities/place-listing/ray-friel-recreation-complex',wave:true,sessions:[
+    {day:4,label:'Public swim',start:t(17,0),end:t(19,30),playFree:false},
+    {day:6,label:'Public swim',start:t(12,0),end:t(13,0),playFree:true},
+    {day:0,label:'Public swim',start:t(12,0),end:t(13,0),playFree:false},
+    {day:6,label:'Wave swim',start:t(13,0),end:t(16,0),playFree:false},
+    {day:0,label:'Wave swim',start:t(13,0),end:t(16,0),playFree:false},
+  ]},
+  {id:'francois-dupuis-recreation-centre',name:'Francois Dupuis Recreation Centre',address:'2263 St-Laurent Blvd',url:'https://ottawa.ca/en/recreation-and-parks/facilities/place-listing/francois-dupuis-recreation-centre',wave:false,sessions:[
+    {day:1,label:'Public swim - therapeutic pool',start:t(11,30),end:t(14,30),playFree:false},
+    {day:2,label:'Public swim - therapeutic pool',start:t(11,30),end:t(14,30),playFree:false},
+    {day:3,label:'Public swim - therapeutic pool',start:t(12,30),end:t(14,0),playFree:false},
+    {day:4,label:'Public swim - therapeutic pool',start:t(10,30),end:t(13,0),playFree:false},
+    {day:5,label:'Public swim - therapeutic pool',start:t(11,30),end:t(15,30),playFree:false},
+    {day:6,label:'Public swim - therapeutic pool',start:t(12,0),end:t(15,0),playFree:true},
+    {day:0,label:'Public swim - therapeutic pool',start:t(12,0),end:t(15,0),playFree:false},
+    {day:1,label:'Public swim - 25m pool',start:t(13,0),end:t(14,30),playFree:false},
+    {day:2,label:'Public swim - 25m pool',start:t(13,0),end:t(14,30),playFree:false},
+    {day:3,label:'Public swim - 25m pool',start:t(12,30),end:t(14,0),playFree:false},
+    {day:4,label:'Public swim - 25m pool',start:t(13,0),end:t(14,30),playFree:false},
+    {day:5,label:'Public swim - 25m pool',start:t(13,0),end:t(14,30),playFree:false},
+    {day:6,label:'Public swim - 25m pool',start:t(13,0),end:t(15,0),playFree:true},
+    {day:0,label:'Public swim - 25m pool',start:t(13,0),end:t(15,0),playFree:false},
+  ]}
 ];
 
-// ── STATE ──────────────────────────────────────────────────────────────────
-let POOLS = [];
-let dataSource = 'loading';
-let scrapedAt = null;
-let userCoords = null; // {lat, lng} once geolocation resolves
+let POOLS=[];
+let dataSource='loading';
+let scrapedAt=null;
+let userCoords=null;
 
-// ── GEOLOCATION ────────────────────────────────────────────────────────────
+// Geolocation
 function getUserLocation(){
-  return new Promise(resolve => {
-    if (!navigator.geolocation) return resolve(null);
+  return new Promise(resolve=>{
+    if(!navigator.geolocation) return resolve(null);
     navigator.geolocation.getCurrentPosition(
-      pos => resolve({lat: pos.coords.latitude, lng: pos.coords.longitude}),
-      ()  => resolve(null),
-      {timeout: 6000, maximumAge: 300000}
+      pos=>resolve({lat:pos.coords.latitude,lng:pos.coords.longitude}),
+      ()=>resolve(null),
+      {timeout:6000,maximumAge:60000}
     );
   });
 }
 
-// Haversine distance in km
+// Haversine distance in km — uses lng2-lng1 (not lat2-lng1!)
 function haversine(lat1,lng1,lat2,lng2){
-  const R=6371,dLat=(lat2-lat1)*Math.PI/180,dLng=(lng2-lng1)*Math.PI/180;
+  const R=6371;
+  const dLat=(lat2-lat1)*Math.PI/180;
+  const dLng=(lng2-lng1)*Math.PI/180;
   const a=Math.sin(dLat/2)**2+Math.cos(lat1*Math.PI/180)*Math.cos(lat2*Math.PI/180)*Math.sin(dLng/2)**2;
-  const c=2*Math.atan2(Math.sqrt(a),Math.sqrt(1-a));
-  const d=R*c;
+  const d=R*2*Math.atan2(Math.sqrt(a),Math.sqrt(1-a));
   return isNaN(d)?null:d;
 }
 
-// Pool name fragment → coordinates (matched case-insensitively against pool.name)
-const POOL_COORDS_BY_NAME = [
-  {k:'splash wave',           lat:45.4375, lng:-75.6004},
-  {k:'ray friel',             lat:45.4720, lng:-75.4929},
-  {k:'dupuis',                lat:45.4544, lng:-75.4636},
-  {k:'nepean sportsplex',     lat:45.3271, lng:-75.7447},
-  {k:'sensplex',              lat:45.2972, lng:-75.9093},
-  {k:'macquarrie',            lat:45.4663, lng:-75.5451},
-  {k:'brewer',                lat:45.3894, lng:-75.6919},
-  {k:'kirwan',                lat:45.3674, lng:-75.6573},
-  {k:'jack purcell',          lat:45.4158, lng:-75.6894},
-  {k:'mcnabb',                lat:45.4088, lng:-75.7022},
-  {k:'plant',                 lat:45.4078, lng:-75.7146},
-  {k:'pinecrest',             lat:45.3478, lng:-75.7738},
-  {k:'walter baker',          lat:45.2804, lng:-75.7625},
-  {k:'goulbourn',             lat:45.2630, lng:-75.9078},
-  {k:'cardelrec',             lat:45.2630, lng:-75.9078},
-  {k:'richmond',              lat:45.1956, lng:-75.8378},
-  {k:'lowertown',             lat:45.4297, lng:-75.6671},
-  {k:'sawmill',               lat:45.3807, lng:-75.6384},
-  {k:'minto',                 lat:45.2803, lng:-75.7374},
-  {k:'richcraft',             lat:45.3439, lng:-75.9075},
+// Match pool by name keyword (case-insensitive)
+const POOL_COORDS_BY_NAME=[
+  {k:'splash wave',         lat:45.4375,lng:-75.6004},
+  {k:'ray friel',           lat:45.4720,lng:-75.4929},
+  {k:'dupuis',              lat:45.4544,lng:-75.4636},
+  {k:'nepean sportsplex',   lat:45.3271,lng:-75.7447},
+  {k:'sensplex',            lat:45.2972,lng:-75.9093},
+  {k:'macquarrie',          lat:45.4663,lng:-75.5451},
+  {k:'brewer',              lat:45.3894,lng:-75.6919},
+  {k:'kirwan',              lat:45.3674,lng:-75.6573},
+  {k:'jack purcell',        lat:45.4158,lng:-75.6894},
+  {k:'mcnabb',              lat:45.4088,lng:-75.7022},
+  {k:'plant',               lat:45.4078,lng:-75.7146},
+  {k:'pinecrest',           lat:45.3478,lng:-75.7738},
+  {k:'walter baker',        lat:45.2804,lng:-75.7625},
+  {k:'goulbourn',           lat:45.2630,lng:-75.9078},
+  {k:'cardelrec',           lat:45.2630,lng:-75.9078},
+  {k:'richmond',            lat:45.1956,lng:-75.8378},
+  {k:'lowertown',           lat:45.4297,lng:-75.6671},
+  {k:'sawmill',             lat:45.3807,lng:-75.6384},
+  {k:'minto',               lat:45.2803,lng:-75.7374},
+  {k:'richcraft',           lat:45.3439,lng:-75.9075},
 ];
 
 function distanceForPool(pool){
-  if (!userCoords) return null;
-  const nameLower = pool.name.toLowerCase();
-  const entry = POOL_COORDS_BY_NAME.find(e => nameLower.includes(e.k));
-  if (!entry) {
-    console.log(\`No coords matched for pool: "\${pool.name}"\`);
-    return null;
-  }
-  const d = haversine(userCoords.lat, userCoords.lng, entry.lat, entry.lng);
-  console.log(\`\${pool.name}: \${d.toFixed(2)} km\`);
-  return d;
+  if(!userCoords) return null;
+  const name=pool.name.toLowerCase();
+  const entry=POOL_COORDS_BY_NAME.find(e=>name.includes(e.k));
+  if(!entry) return null;
+  return haversine(userCoords.lat,userCoords.lng,entry.lat,entry.lng);
 }
 
-// ── LOAD DATA ──────────────────────────────────────────────────────────────
-async function loadScheduleData() {
-  try {
-    const res = await fetch('schedule_data.json?_=' + Date.now());
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    const data = await res.json();
-    POOLS = data.pools.map(p => ({...p, wave: p.wave || false}));
-    scrapedAt = data.scraped_at ? new Date(data.scraped_at) : null;
-    const ageHours = scrapedAt ? (Date.now() - scrapedAt) / 3600000 : 999;
-    dataSource = ageHours < 48 ? 'live' : 'stale';
+// Load scraped data
+async function loadScheduleData(){
+  try{
+    const res=await fetch('schedule_data.json?_='+Date.now());
+    if(!res.ok) throw new Error('HTTP '+res.status);
+    const data=await res.json();
+    POOLS=data.pools.map(p=>({...p,wave:p.wave||false}));
+    scrapedAt=data.scraped_at?new Date(data.scraped_at):null;
+    const ageHours=scrapedAt?(Date.now()-scrapedAt)/3600000:999;
+    dataSource=ageHours<48?'live':'stale';
     showDataBadge();
-  } catch (e) {
-    console.warn('Could not load schedule_data.json, using fallback data.', e);
-    POOLS = FALLBACK_POOLS;
-    dataSource = 'fallback';
+  }catch(e){
+    console.warn('Could not load schedule_data.json, using fallback.',e);
+    POOLS=FALLBACK_POOLS;
+    dataSource='fallback';
     showDataBadge();
   }
 }
 
-function showDataBadge() {
-  const badge = document.getElementById('data-badge');
-  const dot   = document.getElementById('data-dot');
-  const lbl   = document.getElementById('data-label');
-  badge.style.display = 'inline-flex';
-  if (dataSource === 'live') {
-    dot.className = 'data-dot';
-    const d = scrapedAt.toLocaleDateString('en-CA', {month:'short', day:'numeric', year:'numeric'});
-    lbl.textContent = `Schedule data last updated ${d}`;
-  } else if (dataSource === 'stale') {
-    dot.className = 'data-dot stale';
-    lbl.textContent = 'Schedule data may be outdated — verify on Ottawa.ca';
-  } else {
-    dot.className = 'data-dot fallback';
-    lbl.textContent = 'Using offline schedule (Feb 2026) — verify on Ottawa.ca';
+function showDataBadge(){
+  const badge=document.getElementById('data-badge');
+  const dot=document.getElementById('data-dot');
+  const lbl=document.getElementById('data-label');
+  badge.style.display='inline-flex';
+  if(dataSource==='live'){
+    dot.className='data-dot';
+    const d=scrapedAt.toLocaleDateString('en-CA',{month:'short',day:'numeric',year:'numeric'});
+    lbl.textContent='Schedule data last updated '+d;
+  }else if(dataSource==='stale'){
+    dot.className='data-dot stale';
+    lbl.textContent='Schedule data may be outdated - verify on Ottawa.ca';
+  }else{
+    dot.className='data-dot fallback';
+    lbl.textContent='Using offline schedule (Feb 2026) - verify on Ottawa.ca';
   }
 }
 
-// ── INIT ───────────────────────────────────────────────────────────────────
+// Init
 (async function init(){
-  // Populate time dropdown
-  const sel = document.getElementById('st');
+  const sel=document.getElementById('st');
   for(let h=0;h<24;h++){
     for(let m=0;m<60;m+=30){
-      const val=`${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}`;
+      const val=String(h).padStart(2,'0')+':'+String(m).padStart(2,'0');
       const ap=h<12?'am':'pm',h12=h===0?12:h>12?h-12:h;
-      const label=m===0?`${h12}:00 ${ap}`:`${h12}:30 ${ap}`;
+      const label=m===0?(h12+':00 '+ap):(h12+':30 '+ap);
       const opt=document.createElement('option');
       opt.value=val; opt.textContent=label;
       sel.appendChild(opt);
     }
   }
-  // Set date to today, time to nearest 30-min slot
   const now=new Date();
   document.getElementById('sd').value=now.toISOString().split('T')[0];
   const roundedMins=Math.floor((now.getHours()*60+now.getMinutes())/30)*30;
   const rh=Math.floor(roundedMins/60),rm=roundedMins%60;
-  sel.value=`${String(rh).padStart(2,'0')}:${String(rm).padStart(2,'0')}`;
+  sel.value=String(rh).padStart(2,'0')+':'+String(rm).padStart(2,'0');
 
   updateNotice();
 
-  // Request location and load data in parallel
-  [userCoords] = await Promise.all([
-    getUserLocation(),
-    loadScheduleData()
-  ]);
+  [userCoords]=await Promise.all([getUserLocation(),loadScheduleData()]);
 
-  // Test haversine immediately with known values
-  const testDist = haversine(45.45316, -75.62833, 45.4375, -75.6004);
-  console.log(`Haversine self-test (should be ~2.8 km): ${testDist}`);
-
-  // Show location debug info
-  const dbg = document.getElementById('loc-debug');
-  if (userCoords) {
-    dbg.textContent = `📍 Your location: ${userCoords.lat.toFixed(5)}, ${userCoords.lng.toFixed(5)}`;
-    dbg.style.color = 'var(--green)';
-  } else {
-    dbg.textContent = '📍 Location unavailable — sorting alphabetically';
-    dbg.style.color = 'var(--warm)';
+  const dbg=document.getElementById('loc-debug');
+  if(userCoords){
+    dbg.textContent='Location: '+userCoords.lat.toFixed(5)+', '+userCoords.lng.toFixed(5)+' - results sorted by distance';
+    dbg.style.color='var(--green)';
+  }else{
+    dbg.textContent='Location unavailable - results sorted alphabetically';
+    dbg.style.color='var(--warm)';
   }
-  dbg.style.display = 'block';
+  dbg.style.display='block';
 })();
 
-// ── HELPERS ────────────────────────────────────────────────────────────────
 function getDay(){
   const v=document.getElementById('sd').value;
   return v?new Date(v+'T12:00:00').getDay():null;
 }
 function getMins(){
   const v=document.getElementById('st').value;
-  if(!v)return 0;
-  const[h,m]=v.split(':').map(Number);return h*60+m;
+  if(!v) return 0;
+  const parts=v.split(':').map(Number);
+  return parts[0]*60+parts[1];
 }
 
 document.getElementById('sd').addEventListener('change',updateNotice);
@@ -367,39 +328,40 @@ function updateNotice(){
   if(day===null){n.style.display='none';return}
   if(day===6){
     n.className='notice info';
-    n.innerHTML='🎉 <strong>Saturday!</strong> Play Free is active — kids 17 &amp; under swim free at marked sessions.';
-  } else {
+    n.innerHTML='Saturday! Play Free is active - kids 17 & under swim free at marked sessions.';
+  }else{
     n.className='notice warn';
-    n.innerHTML='💡 <strong>Play Free is Saturdays only.</strong> Regular fees apply today.';
+    n.innerHTML='Play Free is Saturdays only. Regular fees apply today.';
   }
   n.style.display='block';
 }
 
-// ── SEARCH ─────────────────────────────────────────────────────────────────
 function doSearch(){
   const dateVal=document.getElementById('sd').value;
   const timeVal=document.getElementById('st').value;
   if(!dateVal||!timeVal){alert('Please pick both a date and time.');return}
-  if(!POOLS.length){alert('Schedule data is still loading, please try again in a moment.');return}
+  if(!POOLS.length){alert('Schedule data is still loading, please try again.');return}
 
-  const day=getDay(), mins=getMins();
+  const day=getDay(),mins=getMins();
   const dateObj=new Date(dateVal+'T12:00:00');
   const dateStr=dateObj.toLocaleDateString('en-CA',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
 
   let active=POOLS.map(pool=>{
     const hits=(pool.sessions||[]).filter(s=>s.day===day&&mins>=s.start&&mins<s.end);
-    return {pool, hits, dist: distanceForPool(pool)};
+    const dist=distanceForPool(pool);
+    return {pool,hits,dist};
   }).filter(r=>r.hits.length);
 
-  // Sort by distance if available, otherwise alphabetically
-  if (userCoords && active.some(r=>r.dist!==null)) {
+  // Sort by distance if available, else alphabetically
+  const hasDistances=userCoords&&active.some(r=>r.dist!==null);
+  if(hasDistances){
     active.sort((a,b)=>{
-      if (a.dist===null && b.dist===null) return a.pool.name.localeCompare(b.pool.name);
-      if (a.dist===null) return 1;
-      if (b.dist===null) return -1;
-      return a.dist - b.dist;
+      if(a.dist===null&&b.dist===null) return a.pool.name.localeCompare(b.pool.name);
+      if(a.dist===null) return 1;
+      if(b.dist===null) return -1;
+      return a.dist-b.dist;
     });
-  } else {
+  }else{
     active.sort((a,b)=>a.pool.name.localeCompare(b.pool.name));
   }
 
@@ -409,83 +371,70 @@ function doSearch(){
   });
   later.sort((a,b)=>a.s.start-b.s.start);
 
-  const sortedByDist = userCoords && active.some(r=>r.dist!==null);
-  render(active, later, dateStr, mins, sortedByDist);
+  render(active,later,dateStr,mins,hasDistances);
 }
 
 function toggle(el){el.classList.toggle('open')}
 
-// ── RENDER ─────────────────────────────────────────────────────────────────
-function render(active, later, dateStr, mins, sortedByDist){
-  const sortNote = sortedByDist
-    ? '<span style="font-size:.78rem;color:var(--dim);font-weight:400;margin-left:8px">· sorted by distance</span>'
+function render(active,later,dateStr,mins,sortedByDist){
+  const sortNote=sortedByDist
+    ? ' <span style="font-size:.78rem;color:var(--dim);font-weight:400">- sorted by distance</span>'
     : '';
 
-  let h=`<div class="results">
-    <div class="rlabel">${active.length} pool${active.length!==1?'s':''} open at ${fmt(mins)}${sortNote}</div>
-    <div class="rsub">${dateStr}</div>`;
+  let h='<div class="results"><div class="rlabel">'+active.length+' pool'+(active.length!==1?'s':'')+' open at '+fmt(mins)+sortNote+'</div>'
+      +'<div class="rsub">'+dateStr+'</div>';
 
   if(!active.length){
-    h+=`<div class="no-results">
-      <div class="big">🌊</div>
-      <p>No public swim sessions found at <strong>${fmt(mins)}</strong>.<br>
-      Check the sessions listed below, or try a different time.</p>
-    </div>`;
-  } else {
-    active.forEach(({pool, hits, dist})=>{
-      const hasFree=hits.some(s=>s.playFree);
-      // address line: skip if empty/undefined
-      const addrParts = [pool.area, pool.address].filter(x=>x&&x!=='undefined');
-      const addrLine = addrParts.length ? `📍 ${addrParts.join(' · ')}` : '';
-      const distLabel = (dist!==null && !isNaN(dist)) ? `<span style="font-size:.78rem;color:var(--accent);margin-left:6px">${dist<1?(dist*1000).toFixed(0)+' m':dist.toFixed(1)+' km'} away</span>` : '';
+    h+='<div class="no-results"><div class="big">🌊</div>'
+      +'<p>No public swim sessions found at <strong>'+fmt(mins)+'</strong>.<br>Check sessions below or try a different time.</p></div>';
+  }else{
+    active.forEach(function(r){
+      const pool=r.pool,hits=r.hits,dist=r.dist;
+      const hasFree=hits.some(function(s){return s.playFree;});
+      const addrParts=[pool.area,pool.address].filter(function(x){return x&&x!=='undefined';});
+      const addrLine=addrParts.length?'📍 '+addrParts.join(' - '):'';
+      const distLabel=(dist!==null&&!isNaN(dist))
+        ?' <span style="color:var(--accent)">'+(dist<1?(dist*1000).toFixed(0)+' m':dist.toFixed(1)+' km')+' away</span>'
+        :'';
 
-      h+=`<div class="pblock open" onclick="toggle(this)">
-        <div class="phead">
-          <div>
-            <div class="pname">${pool.name}</div>
-            ${addrLine?`<div class="parea">${addrLine}${distLabel}</div>`:''}
-            <div class="ptags">
-              <span class="tag t-open">● Open now</span>
-              ${hasFree?'<span class="tag t-free">✨ Play Free</span>':''}
-              ${pool.wave?'<span class="tag t-wave">🌊 Wave pool</span>':''}
-            </div>
-          </div>
-          <div class="chev">▾</div>
-        </div>
-        <div class="spanel">
-          <div class="stitle">Active sessions at ${fmt(mins)}</div>
-          ${hits.map(s=>`
-            <div class="srow${s.playFree?' free':''}">
-              <div class="styp">${s.label}</div>
-              <div style="display:flex;align-items:center;gap:8px">
-                ${s.playFree?'<span class="fbadge">PLAY FREE</span>':''}
-                <div class="stim">${fmt(s.start)} – ${fmt(s.end)}</div>
-              </div>
-            </div>`).join('')}
-          <a class="extlink" href="${pool.url}" target="_blank">Full schedule on Ottawa.ca ↗</a>
-        </div>
-      </div>`;
+      h+='<div class="pblock open" onclick="toggle(this)">'
+        +'<div class="phead"><div>'
+        +'<div class="pname">'+pool.name+'</div>'
+        +(addrLine?'<div class="parea">'+addrLine+distLabel+'</div>':'')
+        +'<div class="ptags">'
+        +'<span class="tag t-open">Open now</span>'
+        +(hasFree?'<span class="tag t-free">Play Free</span>':'')
+        +(pool.wave?'<span class="tag t-wave">Wave pool</span>':'')
+        +'</div></div><div class="chev">▾</div></div>'
+        +'<div class="spanel"><div class="stitle">Active sessions at '+fmt(mins)+'</div>';
+
+      hits.forEach(function(s){
+        h+='<div class="srow'+(s.playFree?' free':'')+'"><div class="styp">'+s.label+'</div>'
+          +'<div style="display:flex;align-items:center;gap:8px">'
+          +(s.playFree?'<span class="fbadge">PLAY FREE</span>':'')
+          +'<div class="stim">'+fmt(s.start)+' - '+fmt(s.end)+'</div></div></div>';
+      });
+
+      h+='<a class="extlink" href="'+pool.url+'" target="_blank">Full schedule on Ottawa.ca</a>'
+        +'</div></div>';
     });
   }
 
   if(later.length){
-    h+=`<div class="later-sec">
-      <div class="llabel">Other public swims later today</div>
-      ${later.map(({pool,s})=>`
-        <div class="srow${s.playFree?' free':''}" style="margin-bottom:8px">
-          <div>
-            <div style="font-size:.79rem;color:var(--dim);margin-bottom:2px">${pool.name}</div>
-            <div class="styp">${s.label}</div>
-          </div>
-          <div style="display:flex;align-items:center;gap:8px;flex-shrink:0">
-            ${s.playFree?'<span class="fbadge">PLAY FREE</span>':''}
-            <div class="stim">${fmt(s.start)} – ${fmt(s.end)}</div>
-          </div>
-        </div>`).join('')}
-    </div>`;
+    h+='<div class="later-sec"><div class="llabel">Other public swims later today</div>';
+    later.forEach(function(item){
+      const pool=item.pool,s=item.s;
+      h+='<div class="srow'+(s.playFree?' free':'')+'" style="margin-bottom:8px">'
+        +'<div><div style="font-size:.79rem;color:var(--dim);margin-bottom:2px">'+pool.name+'</div>'
+        +'<div class="styp">'+s.label+'</div></div>'
+        +'<div style="display:flex;align-items:center;gap:8px;flex-shrink:0">'
+        +(s.playFree?'<span class="fbadge">PLAY FREE</span>':'')
+        +'<div class="stim">'+fmt(s.start)+' - '+fmt(s.end)+'</div></div></div>';
+    });
+    h+='</div>';
   }
 
-  h+=`</div>`;
+  h+='</div>';
   const area=document.getElementById('results');
   area.innerHTML=h;
   area.scrollIntoView({behavior:'smooth',block:'start'});
