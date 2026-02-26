@@ -33,6 +33,7 @@ jobs:
           name: debug-output
           path: |
             debug_*.html
+            debug_index.html
             debug_*.txt
             schedule_data.json
           retention-days: 7
