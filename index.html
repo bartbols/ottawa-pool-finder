@@ -237,7 +237,8 @@ function distanceForPool(pool){
   const entry=POOL_COORDS_BY_NAME.find(e=>name.includes(e.k));
   const addr=entry?entry.addr:(pool.address||'');
   if(!entry) return {dist:null,addr:addr};
-  return {dist:haversine(userCoords.lat,userCoords.lng,entry.lat,entry.lng),addr:addr};
+  const mapsUrl='https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(pool.name+' Ottawa');
+  return {dist:haversine(userCoords.lat,userCoords.lng,entry.lat,entry.lng),addr:addr,mapsUrl:mapsUrl};
 }
 
 // Load scraped data
@@ -349,8 +350,8 @@ function doSearch(){
 
   let active=POOLS.map(pool=>{
     const hits=(pool.sessions||[]).filter(s=>s.day===day&&mins>=s.start&&mins<s.end);
-    const {dist,addr}=distanceForPool(pool);
-    return {pool,hits,dist};
+    const {dist,addr,mapsUrl}=distanceForPool(pool);
+    return {pool,hits,dist,mapsUrl};
   }).filter(r=>r.hits.length);
 
   // Sort by distance if available, else alphabetically
@@ -390,7 +391,7 @@ function render(active,later,dateStr,mins,sortedByDist){
       +'<p>No public swim sessions found at <strong>'+fmt(mins)+'</strong>.<br>Check sessions below or try a different time.</p></div>';
   }else{
     active.forEach(function(r){
-      const pool=r.pool,hits=r.hits,dist=r.dist;
+      const pool=r.pool,hits=r.hits,dist=r.dist,mapsUrl=r.mapsUrl;
       const hasFree=hits.some(function(s){return s.playFree;});
       const addrText=addr?'📍 '+addr:'';
       const distText=(dist!==null&&!isNaN(dist))
@@ -400,7 +401,9 @@ function render(active,later,dateStr,mins,sortedByDist){
 
       h+='<div class="pblock open" onclick="toggle(this)">'
         +'<div class="phead"><div>'
-        +'<div class="pname">'+pool.name+'</div>'
+        +'<div class="pname">'+pool.name
+        +(mapsUrl?' <a href="'+mapsUrl+'" target="_blank" onclick="event.stopPropagation()" style="font-size:.72rem;font-weight:500;color:#29b6f6;text-decoration:none;vertical-align:middle;margin-left:6px" title="Open in Google Maps">&#x1F4CD; Maps</a>':'')
+        +'</div>'
         +(addrLine?'<div class="parea">'+addrLine+'</div>':'')
         +'<div class="ptags">'
         +'<span class="tag t-open">Open now</span>'
