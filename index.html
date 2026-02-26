@@ -373,12 +373,12 @@ function doSearch(){
   });
   later.sort((a,b)=>a.s.start-b.s.start);
 
-  render(active,later,dateStr,mins,hasDistances,addr);
+  render(active,later,dateStr,mins,hasDistances);
 }
 
 function toggle(el){el.classList.toggle('open')}
 
-function render(active,later,dateStr,mins,sortedByDist,addr){
+function render(active,later,dateStr,mins,sortedByDist){
   const sortNote=sortedByDist
     ? ' <span style="font-size:.78rem;color:var(--dim);font-weight:400">- sorted by distance</span>'
     : '';
