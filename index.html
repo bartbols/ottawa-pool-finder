@@ -230,44 +230,40 @@ function haversine(lat1,lng1,lat2,lng2){
   return isNaN(d)?null:d;
 }
 
-// Pool slug → approximate coordinates (Ottawa, ON)
-const POOL_COORDS = {
-  // Verified coordinates from Google Maps
-  'splash-wave-pool':                          {lat:45.4375, lng:-75.6004},
-  'ray-friel-recreation-complex':              {lat:45.4720, lng:-75.4929},
-  'francois-dupuis-recreation-centre':         {lat:45.4544, lng:-75.4636},
-  'nepean-sportsplex':                         {lat:45.3271, lng:-75.7447},
-  'bell-sensplex':                             {lat:45.2972, lng:-75.9093},
-  'bob-macquarrie-recreation-complex':         {lat:45.4663, lng:-75.5451},
-  'bob-macquarrie-recreation-complex-orleans': {lat:45.4663, lng:-75.5451},
-  'brewer-pool':                               {lat:45.3894, lng:-75.6919},
-  'deborah-anne-kirwan-pool':                  {lat:45.3674, lng:-75.6573},
-  'jack-purcell-community-centre':             {lat:45.4158, lng:-75.6894},
-  'jack-purcell-community-centre-and-pool':    {lat:45.4158, lng:-75.6894},
-  'mcnabb-community-centre':                   {lat:45.4088, lng:-75.7022},
-  'mcnabb-recreation-centre':                  {lat:45.4088, lng:-75.7022},
-  'plant-recreation-centre':                   {lat:45.4078, lng:-75.7146},
-  'pinecrest-recreation-complex':              {lat:45.3478, lng:-75.7738},
-  'walter-baker-sports-centre':                {lat:45.2804, lng:-75.7625},
-  'cardelrec-recreation-complex-goulbourn':    {lat:45.2630, lng:-75.9078},
-  'goulbourn-recreation-complex':              {lat:45.2630, lng:-75.9078},
-  'richmond-recreation-complex':               {lat:45.1956, lng:-75.8378},
-  'richmond-memorial-community-centre':        {lat:45.1956, lng:-75.8378},
-  'lowertown-community-centre-and-pool':       {lat:45.4297, lng:-75.6671},
-  'sawmill-creek-community-centre-and-pool':   {lat:45.3807, lng:-75.6384},
-  'minto-recreation-complex-barrhaven':        {lat:45.2803, lng:-75.7374},
-  'richcraft-recreation-complex-kanata':       {lat:45.3439, lng:-75.9075},
-};
+// Pool name fragment → coordinates (matched case-insensitively against pool.name)
+const POOL_COORDS_BY_NAME = [
+  {k:'splash wave',           lat:45.4375, lng:-75.6004},
+  {k:'ray friel',             lat:45.4720, lng:-75.4929},
+  {k:'dupuis',                lat:45.4544, lng:-75.4636},
+  {k:'nepean sportsplex',     lat:45.3271, lng:-75.7447},
+  {k:'sensplex',              lat:45.2972, lng:-75.9093},
+  {k:'macquarrie',            lat:45.4663, lng:-75.5451},
+  {k:'brewer',                lat:45.3894, lng:-75.6919},
+  {k:'kirwan',                lat:45.3674, lng:-75.6573},
+  {k:'jack purcell',          lat:45.4158, lng:-75.6894},
+  {k:'mcnabb',                lat:45.4088, lng:-75.7022},
+  {k:'plant',                 lat:45.4078, lng:-75.7146},
+  {k:'pinecrest',             lat:45.3478, lng:-75.7738},
+  {k:'walter baker',          lat:45.2804, lng:-75.7625},
+  {k:'goulbourn',             lat:45.2630, lng:-75.9078},
+  {k:'cardelrec',             lat:45.2630, lng:-75.9078},
+  {k:'richmond',              lat:45.1956, lng:-75.8378},
+  {k:'lowertown',             lat:45.4297, lng:-75.6671},
+  {k:'sawmill',               lat:45.3807, lng:-75.6384},
+  {k:'minto',                 lat:45.2803, lng:-75.7374},
+  {k:'richcraft',             lat:45.3439, lng:-75.9075},
+];
 
 function distanceForPool(pool){
   if (!userCoords) return null;
-  const coords = POOL_COORDS[pool.id];
-  if (!coords) {
-    console.log(`No coords for pool id: "${pool.id}"`);
+  const nameLower = pool.name.toLowerCase();
+  const entry = POOL_COORDS_BY_NAME.find(e => nameLower.includes(e.k));
+  if (!entry) {
+    console.log(\`No coords matched for pool: "\${pool.name}"\`);
     return null;
   }
-  const d = haversine(userCoords.lat, userCoords.lng, coords.lat, coords.lng);
-  console.log(`${pool.name}: ${d.toFixed(2)} km (user: ${userCoords.lat},${userCoords.lng} → pool: ${coords.lat},${coords.lng})`);
+  const d = haversine(userCoords.lat, userCoords.lng, entry.lat, entry.lng);
+  console.log(\`\${pool.name}: \${d.toFixed(2)} km\`);
   return d;
 }
 
