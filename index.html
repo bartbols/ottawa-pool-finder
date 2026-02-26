@@ -392,15 +392,16 @@ function render(active,later,dateStr,mins,sortedByDist){
       const pool=r.pool,hits=r.hits,dist=r.dist;
       const hasFree=hits.some(function(s){return s.playFree;});
       const addrParts=[pool.area,pool.address].filter(function(x){return x&&x!=='undefined';});
-      const addrLine=addrParts.length?'📍 '+addrParts.join(' - '):'';
-      const distLabel=(dist!==null&&!isNaN(dist))
-        ?' <span style="color:var(--accent)">'+(dist<1?(dist*1000).toFixed(0)+' m':dist.toFixed(1)+' km')+' away</span>'
+      const addrText=addrParts.length?'📍 '+addrParts.join(' - '):'';
+      const distText=(dist!==null&&!isNaN(dist))
+        ?(dist<1?(dist*1000).toFixed(0)+' m':dist.toFixed(1)+' km')+' away'
         :'';
+      const addrLine=addrText&&distText?addrText+' · '+distText:addrText||distText;
 
       h+='<div class="pblock open" onclick="toggle(this)">'
         +'<div class="phead"><div>'
         +'<div class="pname">'+pool.name+'</div>'
-        +(addrLine?'<div class="parea">'+addrLine+distLabel+'</div>':'')
+        +(addrLine?'<div class="parea">'+addrLine+'</div>':'')
         +'<div class="ptags">'
         +'<span class="tag t-open">Open now</span>'
         +(hasFree?'<span class="tag t-free">Play Free</span>':'')
