@@ -1,0 +1,301 @@
+{
+  "scraped_at": "2026-02-26T02:09:00.656475+00:00",
+  "pools": [
+    {
+      "id": "splash",
+      "name": "Splash Wave Pool",
+      "area": "East · Gloucester",
+      "address": "2720 Queensview Dr",
+      "wave": true,
+      "url": "https://ottawa.ca/en/recreation-and-parks/facilities/place-listing/splash-wave-pool",
+      "sessions": [
+        {
+          "day": 5,
+          "label": "Wave Swim",
+          "start": 1145,
+          "end": 1260,
+          "playFree": false
+        },
+        {
+          "day": 6,
+          "label": "Wave Swim",
+          "start": 780,
+          "end": 1020,
+          "playFree": false
+        },
+        {
+          "day": 0,
+          "label": "Wave Swim",
+          "start": 780,
+          "end": 1020,
+          "playFree": false
+        },
+        {
+          "day": 1,
+          "label": "Public Swim - wave tank and warm pool",
+          "start": 660,
+          "end": 780,
+          "playFree": false
+        },
+        {
+          "day": 2,
+          "label": "Public Swim - wave tank and warm pool",
+          "start": 720,
+          "end": 780,
+          "playFree": false
+        },
+        {
+          "day": 2,
+          "label": "Public Swim - wave tank and warm pool",
+          "start": 990,
+          "end": 1260,
+          "playFree": false
+        },
+        {
+          "day": 3,
+          "label": "Public Swim - wave tank and warm pool",
+          "start": 570,
+          "end": 780,
+          "playFree": false
+        },
+        {
+          "day": 4,
+          "label": "Public Swim - wave tank and warm pool",
+          "start": 720,
+          "end": 780,
+          "playFree": false
+        },
+        {
+          "day": 4,
+          "label": "Public Swim - wave tank and warm pool",
+          "start": 990,
+          "end": 1260,
+          "playFree": false
+        },
+        {
+          "day": 5,
+          "label": "Public Swim - wave tank and warm pool",
+          "start": 570,
+          "end": 780,
+          "playFree": false
+        },
+        {
+          "day": 1,
+          "label": "Public Swim – warm pool only",
+          "start": 570,
+          "end": 660,
+          "playFree": false
+        },
+        {
+          "day": 2,
+          "label": "Public Swim – warm pool only",
+          "start": 600,
+          "end": 720,
+          "playFree": false
+        },
+        {
+          "day": 4,
+          "label": "Public Swim – warm pool only",
+          "start": 600,
+          "end": 720,
+          "playFree": false
+        },
+        {
+          "day": 6,
+          "label": "Public Swim – warm pool only",
+          "start": 720,
+          "end": 780,
+          "playFree": true
+        },
+        {
+          "day": 0,
+          "label": "Public Swim – warm pool only",
+          "start": 720,
+          "end": 780,
+          "playFree": false
+        }
+      ]
+    },
+    {
+      "id": "rayfriel",
+      "name": "Ray Friel Recreation Complex",
+      "area": "East · Orléans",
+      "address": "1585 Tenth Line Rd",
+      "wave": true,
+      "url": "https://ottawa.ca/en/recreation-and-parks/facilities/place-listing/ray-friel-recreation-complex",
+      "sessions": [
+        {
+          "day": 4,
+          "label": "Public swim",
+          "start": 1020,
+          "end": 1170,
+          "playFree": false
+        },
+        {
+          "day": 6,
+          "label": "Public swim",
+          "start": 720,
+          "end": 780,
+          "playFree": true
+        },
+        {
+          "day": 0,
+          "label": "Public swim",
+          "start": 720,
+          "end": 780,
+          "playFree": false
+        },
+        {
+          "day": 6,
+          "label": "Wave swim",
+          "start": 780,
+          "end": 960,
+          "playFree": false
+        },
+        {
+          "day": 0,
+          "label": "Wave swim",
+          "start": 780,
+          "end": 960,
+          "playFree": false
+        }
+      ]
+    },
+    {
+      "id": "dupuis",
+      "name": "François Dupuis Recreation Centre",
+      "area": "East · Orléans",
+      "address": "2263 St-Laurent Blvd",
+      "wave": false,
+      "url": "https://ottawa.ca/en/recreation-and-parks/facilities/place-listing/francois-dupuis-recreation-centre",
+      "sessions": [
+        {
+          "day": 1,
+          "label": "Public swim - therapeutic pool",
+          "start": 690,
+          "end": 870,
+          "playFree": false
+        },
+        {
+          "day": 2,
+          "label": "Public swim - therapeutic pool",
+          "start": 690,
+          "end": 870,
+          "playFree": false
+        },
+        {
+          "day": 2,
+          "label": "Public swim - therapeutic pool",
+          "start": 1200,
+          "end": 1260,
+          "playFree": false
+        },
+        {
+          "day": 3,
+          "label": "Public swim - therapeutic pool",
+          "start": 750,
+          "end": 840,
+          "playFree": false
+        },
+        {
+          "day": 4,
+          "label": "Public swim - therapeutic pool",
+          "start": 630,
+          "end": 780,
+          "playFree": false
+        },
+        {
+          "day": 4,
+          "label": "Public swim - therapeutic pool",
+          "start": 1200,
+          "end": 1260,
+          "playFree": false
+        },
+        {
+          "day": 5,
+          "label": "Public swim - therapeutic pool",
+          "start": 690,
+          "end": 930,
+          "playFree": false
+        },
+        {
+          "day": 5,
+          "label": "Public swim - therapeutic pool",
+          "start": 1140,
+          "end": 1260,
+          "playFree": false
+        },
+        {
+          "day": 6,
+          "label": "Public swim - therapeutic pool",
+          "start": 720,
+          "end": 900,
+          "playFree": true
+        },
+        {
+          "day": 0,
+          "label": "Public swim - therapeutic pool",
+          "start": 720,
+          "end": 900,
+          "playFree": false
+        },
+        {
+          "day": 1,
+          "label": "Public swim - 25m pool",
+          "start": 780,
+          "end": 870,
+          "playFree": false
+        },
+        {
+          "day": 2,
+          "label": "Public swim - 25m pool",
+          "start": 780,
+          "end": 870,
+          "playFree": false
+        },
+        {
+          "day": 3,
+          "label": "Public swim - 25m pool",
+          "start": 750,
+          "end": 840,
+          "playFree": false
+        },
+        {
+          "day": 4,
+          "label": "Public swim - 25m pool",
+          "start": 780,
+          "end": 870,
+          "playFree": false
+        },
+        {
+          "day": 5,
+          "label": "Public swim - 25m pool",
+          "start": 780,
+          "end": 870,
+          "playFree": false
+        },
+        {
+          "day": 5,
+          "label": "Public swim - 25m pool",
+          "start": 1140,
+          "end": 1260,
+          "playFree": false
+        },
+        {
+          "day": 6,
+          "label": "Public swim - 25m pool",
+          "start": 780,
+          "end": 900,
+          "playFree": true
+        },
+        {
+          "day": 0,
+          "label": "Public swim - 25m pool",
+          "start": 780,
+          "end": 900,
+          "playFree": false
+        }
+      ]
+    }
+  ]
+}
