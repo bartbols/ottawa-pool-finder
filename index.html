@@ -223,7 +223,7 @@ function getUserLocation(){
 
 // Haversine distance in km
 function haversine(lat1,lng1,lat2,lng2){
-  const R=6371,dLat=(lat2-lat1)*Math.PI/180,dLng=(lat2-lng1)*Math.PI/180;
+  const R=6371,dLat=(lat2-lat1)*Math.PI/180,dLng=(lng2-lng1)*Math.PI/180;
   const a=Math.sin(dLat/2)**2+Math.cos(lat1*Math.PI/180)*Math.cos(lat2*Math.PI/180)*Math.sin(dLng/2)**2;
   const c=2*Math.atan2(Math.sqrt(a),Math.sqrt(1-a));
   const d=R*c;
@@ -253,6 +253,10 @@ const POOL_COORDS = {
   'goulbourn-recreation-complex':              {lat:45.2630, lng:-75.9078},
   'richmond-recreation-complex':               {lat:45.1956, lng:-75.8378},
   'richmond-memorial-community-centre':        {lat:45.1956, lng:-75.8378},
+  'lowertown-community-centre-and-pool':       {lat:45.4297, lng:-75.6671},
+  'sawmill-creek-community-centre-and-pool':   {lat:45.3807, lng:-75.6384},
+  'minto-recreation-complex-barrhaven':        {lat:45.2803, lng:-75.7374},
+  'richcraft-recreation-complex-kanata':       {lat:45.3439, lng:-75.9075},
 };
 
 function distanceForPool(pool){
