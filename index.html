@@ -351,7 +351,7 @@ function doSearch(){
   let active=POOLS.map(pool=>{
     const hits=(pool.sessions||[]).filter(s=>s.day===day&&mins>=s.start&&mins<s.end);
     const {dist,addr,mapsUrl}=distanceForPool(pool);
-    return {pool,hits,dist,mapsUrl};
+    return {pool,hits,dist,addr,mapsUrl};
   }).filter(r=>r.hits.length);
 
   // Sort by distance if available, else alphabetically
@@ -391,7 +391,7 @@ function render(active,later,dateStr,mins,sortedByDist){
       +'<p>No public swim sessions found at <strong>'+fmt(mins)+'</strong>.<br>Check sessions below or try a different time.</p></div>';
   }else{
     active.forEach(function(r){
-      const pool=r.pool,hits=r.hits,dist=r.dist,mapsUrl=r.mapsUrl;
+      const pool=r.pool,hits=r.hits,dist=r.dist,addr=r.addr,mapsUrl=r.mapsUrl;
       const hasFree=hits.some(function(s){return s.playFree;});
       const addrText=addr?'📍 '+addr:'';
       const distText=(dist!==null&&!isNaN(dist))
