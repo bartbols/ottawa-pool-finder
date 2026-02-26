@@ -1,8 +1,7 @@
 """
-Ottawa Pool Schedule Scraper
-Step 1: Auto-discovers all indoor pool locations from Ottawa.ca's index page.
-Step 2: Scrapes the Public Swim / Wave Swim schedule from each pool's page.
-Uses Playwright (headless browser) + BeautifulSoup (HTML parsing).
+Ottawa Pool & Skating Schedule Scraper
+Discovers and scrapes public swim and public skating sessions from Ottawa.ca.
+Outputs schedule_data.json with separate pools[] and rinks[] arrays.
 """
 
 import json
@@ -12,27 +11,25 @@ from datetime import datetime, timezone
 from playwright.sync_api import sync_playwright, TimeoutError as PWTimeout
 from bs4 import BeautifulSoup
 
-# Index page listing all indoor pool drop-in locations
 POOL_INDEX_URL = (
     "https://ottawa.ca/en/recreation-and-parks/swimming/"
     "drop-swimming-and-aquafitness/drop-ins-indoor-pool-locations"
 )
-
-# Base for resolving relative URLs
+RINK_INDEX_URL = (
+    "https://ottawa.ca/en/recreation-and-parks/skating/"
+    "drop-skating/drop-skating-locations"
+)
 BASE_URL = "https://ottawa.ca"
 
 DAYS = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
 DAY_INDEX = {d: i for i, d in enumerate(DAYS)}
-PUBLIC_SWIM_KEYWORDS = ["public swim", "wave swim"]
 
-# Pools known to have wave tanks (used to set the wave flag)
+PUBLIC_SWIM_KEYWORDS = ["public swim", "wave swim"]
+PUBLIC_SKATE_KEYWORDS = ["public skate", "public skating", "family skate", "family skating", "50+ skate"]
 WAVE_POOL_KEYWORDS = ["wave pool", "wave tank", "splash wave", "wave swim"]
 
 
-# ── Time parsing ──────────────────────────────────────────────────────────────
-
 def parse_time_str(s):
-    """'9:30 am' or '9 am' → minutes since midnight, or None."""
     s = s.strip().lower().replace("\u2013", "-").replace("\u00a0", " ")
     m = re.match(r"(\d{1,2})(?::(\d{2}))?\s*(am|pm)", s)
     if not m:
@@ -46,12 +43,8 @@ def parse_time_str(s):
 
 
 def parse_time_range(cell_text):
-    """
-    Parse a cell like 'Noon - 1 pm, 4:30 - 9 pm'
-    → [{"start": 720, "end": 780}, {"start": 990, "end": 1260}]
-    """
     text = cell_text.strip()
-    if not text or text.lower() in ("n/a", "—", "-", ""):
+    if not text or text.lower() in ("n/a", "\u2014", "-", ""):
         return []
     text = re.sub(r"\bnoon\b", "12:00 pm", text, flags=re.I)
     text = re.sub(r"\bmidnight\b", "12:00 am", text, flags=re.I)
@@ -81,30 +74,22 @@ def parse_time_range(cell_text):
     return results
 
 
-# ── Schedule table parser ─────────────────────────────────────────────────────
-
-def parse_schedule_tables(html):
-    """
-    Parse all swim schedule tables from a pool page's HTML.
-    Ottawa.ca uses <th> for both the header row AND the row-label column.
-    Returns list of session dicts.
-    """
+def parse_schedule_tables(html, row_keywords):
     soup = BeautifulSoup(html, "html.parser")
     sessions = []
 
     for table in soup.find_all("table"):
-        table_text = table.get_text()
-        if not any(k in table_text.lower() for k in ["swim", "aquafit", "lane"]):
+        table_text = table.get_text().lower()
+        if not any(k in table_text for k in row_keywords):
             continue
 
         caption = table.find("caption")
-        print(f"      Table: {caption.get_text(strip=True)[:70] if caption else '(no caption)'}")
+        print("      Table: " + (caption.get_text(strip=True)[:70] if caption else "(no caption)"))
 
         rows = table.find_all("tr")
         if not rows:
             continue
 
-        # Build col→day map from first row
         header_cells = rows[0].find_all(["th", "td"])
         col_to_day = {}
         for i, cell in enumerate(header_cells):
@@ -122,10 +107,10 @@ def parse_schedule_tables(html):
             if not cells:
                 continue
             row_label = cells[0].get_text(separator=" ", strip=True)
-            if not any(k in row_label.lower() for k in PUBLIC_SWIM_KEYWORDS):
+            if not any(k in row_label.lower() for k in row_keywords):
                 continue
 
-            print(f"        ✓ {row_label}")
+            print("        tick " + row_label)
             for col_idx, day_idx in col_to_day.items():
                 if col_idx >= len(cells):
                     continue
@@ -143,36 +128,28 @@ def parse_schedule_tables(html):
     return sessions
 
 
-# ── Pool discovery ────────────────────────────────────────────────────────────
-
-def discover_pools(page):
-    """
-    Visit the Ottawa.ca pool index page and extract all pool name + URL pairs.
-    Returns list of dicts: {id, name, url}
-    """
-    print(f"Discovering pools from index page...")
-    pools = []
+def discover_venues(page, index_url, label):
+    print("\nDiscovering " + label + " from index page...")
+    venues = []
 
     try:
-        resp = page.goto(POOL_INDEX_URL, wait_until="networkidle", timeout=30000)
-        print(f"  Index page HTTP {resp.status}")
+        resp = page.goto(index_url, wait_until="networkidle", timeout=30000)
+        print("  Index page HTTP " + str(resp.status))
     except PWTimeout:
-        page.goto(POOL_INDEX_URL, wait_until="domcontentloaded", timeout=30000)
+        page.goto(index_url, wait_until="domcontentloaded", timeout=30000)
 
     page.wait_for_timeout(2000)
     html = page.content()
 
-    # Save index page for debugging
-    with open("debug_index.html", "w", encoding="utf-8") as f:
+    safe_label = label.replace(" ", "_")
+    with open("debug_index_" + safe_label + ".html", "w", encoding="utf-8") as f:
         f.write(html)
 
     soup = BeautifulSoup(html, "html.parser")
 
-    # Pool links on Ottawa.ca are in the /facilities/place-listing/ path
     seen_urls = set()
     for a in soup.find_all("a", href=True):
         href = a["href"]
-        # Resolve relative URLs
         if href.startswith("/"):
             href = BASE_URL + href
         if "place-listing" not in href:
@@ -185,38 +162,30 @@ def discover_pools(page):
         if not name or len(name) < 4:
             continue
 
-        # Generate a simple slug ID from the URL path
         slug = href.rstrip("/").split("/")[-1]
+        venues.append({"id": slug, "name": name, "url": href})
 
-        pools.append({
-            "id": slug,
-            "name": name,
-            "url": href,
-        })
+    print("  Found " + str(len(venues)) + " " + label + " links")
+    for v in venues:
+        print("    * " + v["name"] + "  ->  " + v["url"])
 
-    print(f"  Found {len(pools)} pool links")
-    for p in pools:
-        print(f"    • {p['name']}  →  {p['url']}")
-
-    return pools
+    return venues
 
 
-# ── Per-pool scraper ──────────────────────────────────────────────────────────
-
-def scrape_pool(page, pool):
-    print(f"\n  [{pool['id']}] {pool['name']}", flush=True)
+def scrape_venue(page, venue, row_keywords, check_keywords, wave_check=False):
+    print("\n  [" + venue["id"] + "] " + venue["name"])
 
     loaded = False
     for wait_mode in ("networkidle", "domcontentloaded"):
         try:
-            resp = page.goto(pool["url"], wait_until=wait_mode, timeout=30000)
-            print(f"    HTTP {resp.status} ({wait_mode})")
+            resp = page.goto(venue["url"], wait_until=wait_mode, timeout=30000)
+            print("    HTTP " + str(resp.status) + " (" + wait_mode + ")")
             loaded = True
             break
         except PWTimeout:
-            print(f"    Timeout ({wait_mode}), retrying...")
+            print("    Timeout (" + wait_mode + "), retrying...")
         except Exception as e:
-            print(f"    Error: {e}")
+            print("    Error: " + str(e))
             break
 
     if not loaded:
@@ -225,33 +194,29 @@ def scrape_pool(page, pool):
     page.wait_for_timeout(3000)
     html = page.content()
 
-    # Save debug HTML
-    safe_id = re.sub(r"[^a-z0-9_-]", "_", pool["id"])
-    with open(f"debug_{safe_id}.html", "w", encoding="utf-8") as f:
+    safe_id = re.sub(r"[^a-z0-9_-]", "_", venue["id"])
+    with open("debug_" + safe_id + ".html", "w", encoding="utf-8") as f:
         f.write(html)
 
     html_lower = html.lower()
 
-    # Detect wave pool
-    wave = any(k in html_lower for k in WAVE_POOL_KEYWORDS)
+    wave = False
+    if wave_check:
+        wave = any(k in html_lower for k in WAVE_POOL_KEYWORDS)
 
-    if "public swim" not in html_lower and "wave swim" not in html_lower:
-        print(f"    — No public swim schedule found, skipping")
+    if not any(k in html_lower for k in check_keywords):
+        print("    - No relevant sessions found, skipping")
         return [], wave
 
-    sessions = parse_schedule_tables(html)
-    print(f"    → {len(sessions)} sessions")
+    sessions = parse_schedule_tables(html, row_keywords)
+    print("    -> " + str(len(sessions)) + " sessions")
     return sessions, wave
 
 
-# ── Address extraction ────────────────────────────────────────────────────────
-
 def extract_address(page):
-    """Try to pull the street address from an already-loaded pool page."""
     try:
         html = page.content()
         soup = BeautifulSoup(html, "html.parser")
-        # Ottawa.ca typically has address in a .address or .field--name-field-address element
         for sel in [
             "[class*='field--name-field-address']",
             "[class*='address']",
@@ -260,9 +225,10 @@ def extract_address(page):
             el = soup.select_one(sel)
             if el:
                 text = el.get_text(separator=" ", strip=True)
-                # Look for something that looks like a street address
-                m = re.search(r"\d+\s+\w[\w\s]+(?:St|Ave|Rd|Dr|Blvd|Way|Cres|Pl|Pkwy|Lane|Ln)\b",
-                              text, re.I)
+                m = re.search(
+                    r"\d+\s+\w[\w\s]+(?:St|Ave|Rd|Dr|Blvd|Way|Cres|Pl|Pkwy|Lane|Ln)\b",
+                    text, re.I,
+                )
                 if m:
                     return m.group(0).strip()
     except Exception:
@@ -270,15 +236,14 @@ def extract_address(page):
     return ""
 
 
-# ── Main ──────────────────────────────────────────────────────────────────────
-
 def main():
-    print("=== Ottawa Pool Schedule Scraper ===")
-    print(f"Started: {datetime.now(timezone.utc).isoformat()}\n")
+    print("=== Ottawa Pool & Skating Schedule Scraper ===")
+    print("Started: " + datetime.now(timezone.utc).isoformat())
 
     output = {
         "scraped_at": datetime.now(timezone.utc).isoformat(),
         "pools": [],
+        "rinks": [],
     }
 
     with sync_playwright() as p:
@@ -295,17 +260,20 @@ def main():
         page = context.new_page()
         page.on("console", lambda _: None)
 
-        # Step 1: discover all pools from the index page
-        pools = discover_pools(page)
-
+        # Pools
+        pools = discover_venues(page, POOL_INDEX_URL, "pools")
         if not pools:
-            print("\n⚠ Could not discover any pools from index page.")
-            print("  Check debug_index.html artifact.")
+            print("WARNING: Could not discover any pools.")
             sys.exit(1)
 
-        # Step 2: scrape each pool
+        print("\n=== Scraping " + str(len(pools)) + " pool pages ===")
         for pool in pools:
-            sessions, wave = scrape_pool(page, pool)
+            sessions, wave = scrape_venue(
+                page, pool,
+                row_keywords=PUBLIC_SWIM_KEYWORDS,
+                check_keywords=["public swim", "wave swim"],
+                wave_check=True,
+            )
             if sessions:
                 address = extract_address(page)
                 output["pools"].append({
@@ -317,22 +285,47 @@ def main():
                     "sessions": sessions,
                 })
 
+        # Rinks
+        rinks = discover_venues(page, RINK_INDEX_URL, "rinks")
+        if rinks:
+            print("\n=== Scraping " + str(len(rinks)) + " rink pages ===")
+            for rink in rinks:
+                sessions, _ = scrape_venue(
+                    page, rink,
+                    row_keywords=PUBLIC_SKATE_KEYWORDS,
+                    check_keywords=["public skate", "public skating", "family skate", "family skating"],
+                    wave_check=False,
+                )
+                if sessions:
+                    address = extract_address(page)
+                    output["rinks"].append({
+                        "id": rink["id"],
+                        "name": rink["name"],
+                        "address": address,
+                        "url": rink["url"],
+                        "sessions": sessions,
+                    })
+        else:
+            print("WARNING: Could not discover any rinks (non-fatal).")
+
         browser.close()
 
     with open("schedule_data.json", "w", encoding="utf-8") as f:
         json.dump(output, f, indent=2, ensure_ascii=False)
-    print(f"\n✓ Wrote schedule_data.json")
 
-    total = sum(len(p["sessions"]) for p in output["pools"])
-    print(f"  Pools with sessions: {len(output['pools'])}")
+    pool_sessions = sum(len(p["sessions"]) for p in output["pools"])
+    rink_sessions = sum(len(r["sessions"]) for r in output["rinks"])
+    print("\nDone. Wrote schedule_data.json")
+    print("  Pools: " + str(len(output["pools"])) + " venues, " + str(pool_sessions) + " session slots")
     for p in output["pools"]:
-        print(f"  • {p['name']}: {len(p['sessions'])} sessions")
+        print("    * " + p["name"] + ": " + str(len(p["sessions"])) + " sessions")
+    print("  Rinks: " + str(len(output["rinks"])) + " venues, " + str(rink_sessions) + " session slots")
+    for r in output["rinks"]:
+        print("    * " + r["name"] + ": " + str(len(r["sessions"])) + " sessions")
 
-    if total == 0:
-        print("\n⚠ WARNING: No sessions scraped. Check debug_*.html artifacts.")
+    if pool_sessions == 0 and rink_sessions == 0:
+        print("WARNING: No sessions scraped at all.")
         sys.exit(1)
-    else:
-        print(f"\n✓ Done — {total} total session slots across {len(output['pools'])} pools.")
 
 
 if __name__ == "__main__":
