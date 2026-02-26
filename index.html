@@ -117,6 +117,7 @@ select#st option{background:#0a2a48;color:var(--text)}
     </div>
     <button class="btn" onclick="doSearch()">Find open pools →</button>
     <div id="notice" class="notice"></div>
+    <div id="loc-debug" style="display:none;margin-top:8px;font-size:.75rem;"></div>
     <div id="data-badge" class="data-badge" style="display:none">
       <div id="data-dot" class="data-dot"></div>
       <span id="data-label"></span>
@@ -254,10 +255,14 @@ const POOL_COORDS = {
 
 function distanceForPool(pool){
   if (!userCoords) return null;
-  // Match by pool id slug
   const coords = POOL_COORDS[pool.id];
-  if (!coords) return null;
-  return haversine(userCoords.lat, userCoords.lng, coords.lat, coords.lng);
+  if (!coords) {
+    console.log(`No coords for pool id: "${pool.id}"`);
+    return null;
+  }
+  const d = haversine(userCoords.lat, userCoords.lng, coords.lat, coords.lng);
+  console.log(`${pool.name}: ${d.toFixed(2)} km (user: ${userCoords.lat},${userCoords.lng} → pool: ${coords.lat},${coords.lng})`);
+  return d;
 }
 
 // ── LOAD DATA ──────────────────────────────────────────────────────────────
@@ -325,6 +330,17 @@ function showDataBadge() {
     getUserLocation(),
     loadScheduleData()
   ]);
+
+  // Show location debug info
+  const dbg = document.getElementById('loc-debug');
+  if (userCoords) {
+    dbg.textContent = `📍 Your location: ${userCoords.lat.toFixed(5)}, ${userCoords.lng.toFixed(5)}`;
+    dbg.style.color = 'var(--green)';
+  } else {
+    dbg.textContent = '📍 Location unavailable — sorting alphabetically';
+    dbg.style.color = 'var(--warm)';
+  }
+  dbg.style.display = 'block';
 })();
 
 // ── HELPERS ────────────────────────────────────────────────────────────────
