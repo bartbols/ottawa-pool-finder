@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Ottawa Pool Finder</title>
+<title>Ottawa Swim & Skate Finder</title>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet"/>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -11,6 +11,7 @@
   --bg:#061a2e; --tile:#1a5f9e; --accent:#00e5ff; --warm:#ffd54f;
   --green:#69f0ae; --text:#e8f5ff; --dim:rgba(232,245,255,0.55);
   --card:rgba(255,255,255,0.055); --border:rgba(255,255,255,0.09); --r:14px;
+  --ice:#a8d8ff;
 }
 html{scroll-behavior:smooth}
 body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
@@ -36,11 +37,20 @@ header{text-align:center;margin-bottom:48px}
 .eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(0,229,255,0.08);border:1px solid rgba(0,229,255,0.22);border-radius:40px;padding:7px 18px;font-size:11px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:20px}
 h1{font-family:'Syne',sans-serif;font-size:clamp(2.2rem,6vw,3.8rem);font-weight:800;line-height:1.04;letter-spacing:-0.025em;margin-bottom:14px}
 .grad{background:linear-gradient(120deg,var(--accent) 0%,#82cfff 50%,var(--warm) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.subtitle{font-size:1rem;color:var(--dim);max-width:480px;margin:0 auto;line-height:1.65}
+.subtitle{font-size:1rem;color:var(--dim);max-width:500px;margin:0 auto;line-height:1.65}
 
 .card{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:26px;backdrop-filter:blur(16px)}
 .clabel{font-family:'Syne',sans-serif;font-size:0.88rem;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;color:var(--dim);margin-bottom:16px;display:flex;align-items:center;gap:8px}
 .clabel::before{content:'';width:3px;height:14px;background:var(--accent);border-radius:2px}
+
+/* Activity toggle */
+.activity-toggle{display:flex;gap:8px;margin-bottom:18px}
+.act-btn{flex:1;padding:10px 8px;border-radius:9px;border:1px solid var(--border);background:rgba(0,0,0,0.25);color:var(--dim);font-family:'DM Sans',sans-serif;font-size:.88rem;font-weight:500;cursor:pointer;transition:all .18s;text-align:center}
+.act-btn:hover{border-color:rgba(0,229,255,.3);color:var(--text)}
+.act-btn.active-swim{border-color:var(--accent);background:rgba(0,229,255,.1);color:var(--accent)}
+.act-btn.active-skate{border-color:var(--ice);background:rgba(168,216,255,.1);color:var(--ice)}
+.act-btn.active-both{border-color:var(--warm);background:rgba(255,213,79,.08);color:var(--warm)}
+
 .row2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:16px}
 @media(max-width:480px){.row2{grid-template-columns:1fr}}
 label{display:block;font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:0.09em;color:var(--dim);margin-bottom:7px}
@@ -55,7 +65,6 @@ select#st option{background:#0a2a48;color:var(--text)}
 .notice.info{background:rgba(0,229,255,.08);border:1px solid rgba(0,229,255,.22);color:var(--accent)}
 .notice.warn{background:rgba(255,213,79,.08);border:1px solid rgba(255,213,79,.25);color:var(--warm)}
 
-/* Data source badge */
 .data-badge{display:inline-flex;align-items:center;gap:6px;font-size:.75rem;color:var(--dim);margin-top:12px}
 .data-dot{width:7px;height:7px;border-radius:50%;background:var(--green);flex-shrink:0}
 .data-dot.stale{background:var(--warm)}
@@ -66,14 +75,24 @@ select#st option{background:#0a2a48;color:var(--text)}
 .rlabel{font-family:'Syne',sans-serif;font-size:1.45rem;font-weight:800;margin-bottom:3px}
 .rsub{font-size:.87rem;color:var(--dim);margin-bottom:22px}
 
+/* Section headers for swim vs skate */
+.section-header{font-family:'Syne',sans-serif;font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin:20px 0 10px;display:flex;align-items:center;gap:8px}
+.section-header::before{content:'';width:3px;height:13px;border-radius:2px}
+.section-header.swim-hdr{color:var(--accent)}
+.section-header.swim-hdr::before{background:var(--accent)}
+.section-header.skate-hdr{color:var(--ice)}
+.section-header.skate-hdr::before{background:var(--ice)}
+
 .pblock{background:var(--card);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;margin-bottom:13px;transition:border-color .2s}
 .pblock:hover{border-color:rgba(0,229,255,.28)}
+.pblock.skate-block:hover{border-color:rgba(168,216,255,.28)}
 .phead{padding:17px 21px;display:flex;align-items:flex-start;justify-content:space-between;gap:14px;cursor:pointer;user-select:none}
 .pname{font-family:'Syne',sans-serif;font-size:1.05rem;font-weight:700;margin-bottom:4px}
 .parea{font-size:.81rem;color:var(--dim)}
 .ptags{display:flex;flex-wrap:wrap;gap:5px;margin-top:8px}
 .tag{font-size:.71rem;padding:3px 8px;border-radius:20px;font-weight:500;white-space:nowrap}
 .t-open{background:rgba(105,240,174,.12);color:var(--green);border:1px solid rgba(105,240,174,.3)}
+.t-skate{background:rgba(168,216,255,.12);color:var(--ice);border:1px solid rgba(168,216,255,.3)}
 .t-free{background:rgba(0,229,255,.1);color:var(--accent);border:1px solid rgba(0,229,255,.3)}
 .t-wave{background:rgba(41,182,246,.12);color:#82d8ff;border:1px solid rgba(41,182,246,.3)}
 .chev{flex-shrink:0;color:var(--dim);font-size:.9rem;transition:transform .25s;margin-top:3px}
@@ -81,10 +100,12 @@ select#st option{background:#0a2a48;color:var(--text)}
 .spanel{display:none;border-top:1px solid var(--border);padding:15px 21px 18px}
 .pblock.open .spanel{display:block}
 .stitle{font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.1em;color:var(--accent);margin-bottom:11px}
+.skate-block .stitle{color:var(--ice)}
 .srow{display:flex;align-items:center;justify-content:space-between;padding:9px 12px;border-radius:8px;margin-bottom:6px;background:rgba(0,0,0,.2);gap:10px}
 .srow.free{background:rgba(0,229,255,.06);border:1px solid rgba(0,229,255,.15)}
 .styp{font-size:.87rem;font-weight:500;flex:1}
 .stim{font-family:'Syne',sans-serif;font-size:.87rem;font-weight:700;color:var(--accent);white-space:nowrap}
+.skate-block .stim{color:var(--ice)}
 .fbadge{font-size:.68rem;background:var(--accent);color:#061a2e;padding:2px 7px;border-radius:10px;font-weight:700;letter-spacing:.05em;white-space:nowrap}
 .extlink{display:inline-flex;align-items:center;gap:5px;margin-top:13px;font-size:.81rem;color:#29b6f6;text-decoration:none;border-bottom:1px solid transparent;transition:border-color .2s}
 .extlink:hover{border-color:#29b6f6}
@@ -104,18 +125,24 @@ select#st option{background:#0a2a48;color:var(--text)}
 </div>
 <main>
   <header>
-    <div class="eyebrow">🏊 Ottawa Pool Finder</div>
-    <h1>Find your <span class="grad">swim</span></h1>
-    <p class="subtitle">Pick a date and time to see which Ottawa pools have public swimming open right now.</p>
+    <div class="eyebrow">🏊⛸️ Ottawa Finder</div>
+    <h1>Find your <span class="grad">swim or skate</span></h1>
+    <p class="subtitle">Pick a date and time to see which Ottawa facilities have public swimming or skating open right now.</p>
   </header>
 
   <div class="card">
-    <div class="clabel">When do you want to swim?</div>
+    <div class="clabel">What are you looking for?</div>
+    <div class="activity-toggle">
+      <button class="act-btn active-swim" id="btn-swim" onclick="setActivity('swim')">🏊 Swim</button>
+      <button class="act-btn" id="btn-skate" onclick="setActivity('skate')">⛸️ Skate</button>
+      <button class="act-btn" id="btn-both" onclick="setActivity('both')">🏊 + ⛸️ Both</button>
+    </div>
+    <div class="clabel">When?</div>
     <div class="row2">
       <div><label for="sd">Date</label><input type="date" id="sd"/></div>
       <div><label for="st">Time</label><select id="st"></select></div>
     </div>
-    <button class="btn" onclick="doSearch()">Find open pools →</button>
+    <button class="btn" onclick="doSearch()">Find open venues →</button>
     <div id="notice" class="notice"></div>
     <div id="loc-debug" style="display:none;margin-top:8px;font-size:.75rem;"></div>
     <div id="data-badge" class="data-badge" style="display:none">
@@ -128,7 +155,7 @@ select#st option{background:#0a2a48;color:var(--text)}
 
   <div class="disc">
     Schedule data is fetched nightly from Ottawa.ca.
-    Always <a href="https://ottawa.ca/en/recreation-and-parks/swimming" target="_blank">verify on Ottawa.ca</a> before heading out.
+    Always <a href="https://ottawa.ca/en/recreation-and-parks" target="_blank">verify on Ottawa.ca</a> before heading out.
     <strong>Play Free</strong> = free admission ages 17 &amp; under + accompanying adult, Saturdays only.
   </div>
 </main>
@@ -140,8 +167,9 @@ function fmt(n){
 }
 function t(h,m){return h*60+(m||0)}
 
+// ── Fallback data (swim only) ─────────────────────────────────────────────────
 const FALLBACK_POOLS=[
-  {id:'splash-wave-pool',name:'Splash Wave Pool',address:'2720 Queensview Dr',url:'https://ottawa.ca/en/recreation-and-parks/facilities/place-listing/splash-wave-pool',wave:true,sessions:[
+  {id:'splash-wave-pool',name:'Splash Wave Pool',url:'https://ottawa.ca/en/recreation-and-parks/facilities/place-listing/splash-wave-pool',wave:true,sessions:[
     {day:1,label:'Public Swim - wave tank and warm pool',start:t(11,0),end:t(13,0),playFree:false},
     {day:2,label:'Public Swim - wave tank and warm pool',start:t(12,0),end:t(13,0),playFree:false},
     {day:2,label:'Public Swim - wave tank and warm pool',start:t(16,30),end:t(21,0),playFree:false},
@@ -149,43 +177,33 @@ const FALLBACK_POOLS=[
     {day:4,label:'Public Swim - wave tank and warm pool',start:t(12,0),end:t(13,0),playFree:false},
     {day:4,label:'Public Swim - wave tank and warm pool',start:t(16,30),end:t(21,0),playFree:false},
     {day:5,label:'Public Swim - wave tank and warm pool',start:t(9,30),end:t(13,0),playFree:false},
-    {day:1,label:'Public Swim - warm pool only',start:t(9,30),end:t(11,0),playFree:false},
-    {day:2,label:'Public Swim - warm pool only',start:t(10,0),end:t(12,0),playFree:false},
-    {day:4,label:'Public Swim - warm pool only',start:t(10,0),end:t(12,0),playFree:false},
     {day:6,label:'Public Swim - warm pool only',start:t(12,0),end:t(13,0),playFree:true},
     {day:0,label:'Public Swim - warm pool only',start:t(12,0),end:t(13,0),playFree:false},
   ]},
-  {id:'ray-friel-recreation-complex',name:'Ray Friel Recreation Complex',address:'1585 Tenth Line Rd',url:'https://ottawa.ca/en/recreation-and-parks/facilities/place-listing/ray-friel-recreation-complex',wave:true,sessions:[
+  {id:'ray-friel-recreation-complex',name:'Ray Friel Recreation Complex',url:'https://ottawa.ca/en/recreation-and-parks/facilities/place-listing/ray-friel-recreation-complex',wave:true,sessions:[
     {day:4,label:'Public swim',start:t(17,0),end:t(19,30),playFree:false},
     {day:6,label:'Public swim',start:t(12,0),end:t(13,0),playFree:true},
     {day:0,label:'Public swim',start:t(12,0),end:t(13,0),playFree:false},
-    {day:6,label:'Wave swim',start:t(13,0),end:t(16,0),playFree:false},
-    {day:0,label:'Wave swim',start:t(13,0),end:t(16,0),playFree:false},
   ]},
-  {id:'francois-dupuis-recreation-centre',name:'Francois Dupuis Recreation Centre',address:'2263 St-Laurent Blvd',url:'https://ottawa.ca/en/recreation-and-parks/facilities/place-listing/francois-dupuis-recreation-centre',wave:false,sessions:[
-    {day:1,label:'Public swim - therapeutic pool',start:t(11,30),end:t(14,30),playFree:false},
-    {day:2,label:'Public swim - therapeutic pool',start:t(11,30),end:t(14,30),playFree:false},
-    {day:3,label:'Public swim - therapeutic pool',start:t(12,30),end:t(14,0),playFree:false},
-    {day:4,label:'Public swim - therapeutic pool',start:t(10,30),end:t(13,0),playFree:false},
-    {day:5,label:'Public swim - therapeutic pool',start:t(11,30),end:t(15,30),playFree:false},
-    {day:6,label:'Public swim - therapeutic pool',start:t(12,0),end:t(15,0),playFree:true},
-    {day:0,label:'Public swim - therapeutic pool',start:t(12,0),end:t(15,0),playFree:false},
-    {day:1,label:'Public swim - 25m pool',start:t(13,0),end:t(14,30),playFree:false},
-    {day:2,label:'Public swim - 25m pool',start:t(13,0),end:t(14,30),playFree:false},
-    {day:3,label:'Public swim - 25m pool',start:t(12,30),end:t(14,0),playFree:false},
-    {day:4,label:'Public swim - 25m pool',start:t(13,0),end:t(14,30),playFree:false},
-    {day:5,label:'Public swim - 25m pool',start:t(13,0),end:t(14,30),playFree:false},
-    {day:6,label:'Public swim - 25m pool',start:t(13,0),end:t(15,0),playFree:true},
-    {day:0,label:'Public swim - 25m pool',start:t(13,0),end:t(15,0),playFree:false},
-  ]}
 ];
+const FALLBACK_RINKS=[];
 
 let POOLS=[];
+let RINKS=[];
 let dataSource='loading';
 let scrapedAt=null;
 let userCoords=null;
+let activity='swim'; // 'swim' | 'skate' | 'both'
 
-// Geolocation
+// ── Activity toggle ───────────────────────────────────────────────────────────
+function setActivity(a){
+  activity=a;
+  document.getElementById('btn-swim').className='act-btn'+(a==='swim'?' active-swim':'');
+  document.getElementById('btn-skate').className='act-btn'+(a==='skate'?' active-skate':'');
+  document.getElementById('btn-both').className='act-btn'+(a==='both'?' active-both':'');
+}
+
+// ── Geolocation ───────────────────────────────────────────────────────────────
 function getUserLocation(){
   return new Promise(resolve=>{
     if(!navigator.geolocation) return resolve(null);
@@ -197,7 +215,7 @@ function getUserLocation(){
   });
 }
 
-// Haversine distance in km — uses lng2-lng1 (not lat2-lng1!)
+// ── Haversine ─────────────────────────────────────────────────────────────────
 function haversine(lat1,lng1,lat2,lng2){
   const R=6371;
   const dLat=(lat2-lat1)*Math.PI/180;
@@ -207,8 +225,9 @@ function haversine(lat1,lng1,lat2,lng2){
   return isNaN(d)?null:d;
 }
 
-// Match pool by name keyword (case-insensitive)
-const POOL_COORDS_BY_NAME=[
+// ── Venue coords + addresses ──────────────────────────────────────────────────
+const VENUE_COORDS=[
+  // Pools
   {k:'splash wave',         lat:45.4375,lng:-75.6004, addr:'2040 Ogilvie Rd'},
   {k:'ray friel',           lat:45.4720,lng:-75.4929, addr:'1585 Tenth Line Rd'},
   {k:'dupuis',              lat:45.4544,lng:-75.4636, addr:'2263 Portobello Blvd'},
@@ -229,25 +248,38 @@ const POOL_COORDS_BY_NAME=[
   {k:'sawmill',             lat:45.3498,lng:-75.6364, addr:"3380 D'Aoust Ave"},
   {k:'minto',               lat:45.2529,lng:-75.7341, addr:'3500 Cambrian Rd'},
   {k:'richcraft',           lat:45.3405,lng:-75.9304, addr:'4101 Innovation Dr'},
+  // Rinks (many shared with pools above; unique ones below)
+  {k:'earl armstrong',      lat:45.4378,lng:-75.6016, addr:'2020 Ogilvie Rd'},
+  {k:'lois kemp',           lat:45.4607,lng:-75.5352, addr:'500 Blackburn Hamlet'},
+  {k:'r.j. kennedy',        lat:45.4435,lng:-75.5110, addr:'1200 Marenger St'},
+  {k:'st. laurent',         lat:45.4304,lng:-75.6222, addr:'525 Côte-de-Sable St'},
+  {k:'bernard grandmaitre', lat:45.4658,lng:-75.4791, addr:'650 Côte St'},
+  {k:'bernard grandmaître', lat:45.4658,lng:-75.4791, addr:'650 Côte St'},
+  {k:'j.a. dulude',         lat:45.3882,lng:-75.7532, addr:'950 Woodroffe Ave'},
+  {k:'jim durrell',         lat:45.3660,lng:-75.6368, addr:'1265 Walkley Rd'},
+  {k:'osgoode',             lat:45.1451,lng:-75.5995, addr:'5526 Main St'},
+  {k:'tony graham',         lat:45.2589,lng:-75.9014, addr:'3500 Cambrian Rd'},
+  {k:'w. erskine',          lat:45.3439,lng:-75.9075, addr:'4101 Innovation Dr'},
+  {k:'erskine johnston',    lat:45.3439,lng:-75.9075, addr:'4101 Innovation Dr'},
 ];
 
-function distanceForPool(pool){
-  if(!userCoords) return {dist:null,addr:pool.address||''};
-  const name=pool.name.toLowerCase();
-  const entry=POOL_COORDS_BY_NAME.find(e=>name.includes(e.k));
-  const addr=entry?entry.addr:(pool.address||'');
-  if(!entry) return {dist:null,addr:addr};
-  const mapsUrl='https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(pool.name+' Ottawa');
+function infoForVenue(venue){
+  const name=venue.name.toLowerCase();
+  const entry=VENUE_COORDS.find(e=>name.includes(e.k));
+  const addr=entry?entry.addr:(venue.address||'');
+  const mapsUrl='https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(venue.name+' Ottawa');
+  if(!entry||!userCoords) return {dist:null,addr:addr,mapsUrl:mapsUrl};
   return {dist:haversine(userCoords.lat,userCoords.lng,entry.lat,entry.lng),addr:addr,mapsUrl:mapsUrl};
 }
 
-// Load scraped data
+// ── Load scraped data ─────────────────────────────────────────────────────────
 async function loadScheduleData(){
   try{
     const res=await fetch('schedule_data.json?_='+Date.now());
     if(!res.ok) throw new Error('HTTP '+res.status);
     const data=await res.json();
-    POOLS=data.pools.map(p=>({...p,wave:p.wave||false}));
+    POOLS=(data.pools||[]).map(p=>({...p,wave:p.wave||false}));
+    RINKS=(data.rinks||[]);
     scrapedAt=data.scraped_at?new Date(data.scraped_at):null;
     const ageHours=scrapedAt?(Date.now()-scrapedAt)/3600000:999;
     dataSource=ageHours<48?'live':'stale';
@@ -255,6 +287,7 @@ async function loadScheduleData(){
   }catch(e){
     console.warn('Could not load schedule_data.json, using fallback.',e);
     POOLS=FALLBACK_POOLS;
+    RINKS=FALLBACK_RINKS;
     dataSource='fallback';
     showDataBadge();
   }
@@ -278,7 +311,7 @@ function showDataBadge(){
   }
 }
 
-// Init
+// ── Init ──────────────────────────────────────────────────────────────────────
 (async function init(){
   const sel=document.getElementById('st');
   for(let h=0;h<24;h++){
@@ -338,98 +371,139 @@ function updateNotice(){
   n.style.display='block';
 }
 
-function doSearch(){
-  const dateVal=document.getElementById('sd').value;
-  const timeVal=document.getElementById('st').value;
-  if(!dateVal||!timeVal){alert('Please pick both a date and time.');return}
-  if(!POOLS.length){alert('Schedule data is still loading, please try again.');return}
+// ── Search ────────────────────────────────────────────────────────────────────
+function buildActive(venues,day,mins){
+  return venues.map(function(venue){
+    const hits=(venue.sessions||[]).filter(function(s){return s.day===day&&mins>=s.start&&mins<s.end;});
+    const info=infoForVenue(venue);
+    return {venue:venue,hits:hits,dist:info.dist,addr:info.addr,mapsUrl:info.mapsUrl};
+  }).filter(function(r){return r.hits.length;});
+}
 
-  const day=getDay(),mins=getMins();
-  const dateObj=new Date(dateVal+'T12:00:00');
-  const dateStr=dateObj.toLocaleDateString('en-CA',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
-
-  let active=POOLS.map(pool=>{
-    const hits=(pool.sessions||[]).filter(s=>s.day===day&&mins>=s.start&&mins<s.end);
-    const {dist,addr,mapsUrl}=distanceForPool(pool);
-    return {pool,hits,dist,addr,mapsUrl};
-  }).filter(r=>r.hits.length);
-
-  // Sort by distance if available, else alphabetically
-  const hasDistances=userCoords&&active.some(r=>r.dist!==null);
+function sortResults(active){
+  const hasDistances=userCoords&&active.some(function(r){return r.dist!==null;});
   if(hasDistances){
-    active.sort((a,b)=>{
-      if(a.dist===null&&b.dist===null) return a.pool.name.localeCompare(b.pool.name);
+    active.sort(function(a,b){
+      if(a.dist===null&&b.dist===null) return a.venue.name.localeCompare(b.venue.name);
       if(a.dist===null) return 1;
       if(b.dist===null) return -1;
       return a.dist-b.dist;
     });
   }else{
-    active.sort((a,b)=>a.pool.name.localeCompare(b.pool.name));
+    active.sort(function(a,b){return a.venue.name.localeCompare(b.venue.name);});
   }
+  return hasDistances;
+}
 
-  const later=[];
-  POOLS.forEach(pool=>{
-    (pool.sessions||[]).filter(s=>s.day===day&&s.start>mins).forEach(s=>later.push({pool,s}));
+function doSearch(){
+  const dateVal=document.getElementById('sd').value;
+  const timeVal=document.getElementById('st').value;
+  if(!dateVal||!timeVal){alert('Please pick both a date and time.');return}
+
+  const day=getDay(),mins=getMins();
+  const dateObj=new Date(dateVal+'T12:00:00');
+  const dateStr=dateObj.toLocaleDateString('en-CA',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
+
+  const showSwim=(activity==='swim'||activity==='both');
+  const showSkate=(activity==='skate'||activity==='both');
+
+  const activePools=showSwim?buildActive(POOLS,day,mins):[];
+  const activeRinks=showSkate?buildActive(RINKS,day,mins):[];
+
+  const allActive=[...activePools,...activeRinks];
+  const hasDistances=sortResults(allActive);
+
+  // Also sort pools and rinks separately for display
+  sortResults(activePools);
+  sortResults(activeRinks);
+
+  // Later sessions
+  const laterPools=[];
+  const laterRinks=[];
+  if(showSwim) POOLS.forEach(function(p){
+    (p.sessions||[]).filter(function(s){return s.day===day&&s.start>mins;}).forEach(function(s){laterPools.push({venue:p,s:s});});
   });
-  later.sort((a,b)=>a.s.start-b.s.start);
+  if(showSkate) RINKS.forEach(function(r){
+    (r.sessions||[]).filter(function(s){return s.day===day&&s.start>mins;}).forEach(function(s){laterRinks.push({venue:r,s:s});});
+  });
+  laterPools.sort(function(a,b){return a.s.start-b.s.start;});
+  laterRinks.sort(function(a,b){return a.s.start-b.s.start;});
 
-  render(active,later,dateStr,mins,hasDistances);
+  render(activePools,activeRinks,laterPools,laterRinks,dateStr,mins,hasDistances,showSwim,showSkate);
 }
 
 function toggle(el){el.classList.toggle('open')}
 
-function render(active,later,dateStr,mins,sortedByDist){
-  const sortNote=sortedByDist
-    ? ' <span style="font-size:.78rem;color:var(--dim);font-weight:400">- sorted by distance</span>'
-    : '';
+// ── Render ────────────────────────────────────────────────────────────────────
+function venueCard(r,isSkate){
+  const venue=r.venue,hits=r.hits,dist=r.dist,addr=r.addr,mapsUrl=r.mapsUrl;
+  const hasFree=hits.some(function(s){return s.playFree;});
+  const addrText=addr?'📍 '+addr:'';
+  const distText=(dist!==null&&!isNaN(dist))?(dist<1?(dist*1000).toFixed(0)+' m':dist.toFixed(1)+' km')+' away':'';
+  const addrLine=addrText&&distText?addrText+' · '+distText:addrText||distText;
+  const blockClass='pblock open'+(isSkate?' skate-block':'');
 
-  let h='<div class="results"><div class="rlabel">'+active.length+' pool'+(active.length!==1?'s':'')+' open at '+fmt(mins)+sortNote+'</div>'
-      +'<div class="rsub">'+dateStr+'</div>';
+  let h='<div class="'+blockClass+'" onclick="toggle(this)">'
+    +'<div class="phead"><div>'
+    +'<div class="pname">'+venue.name
+    +(mapsUrl?' <a href="'+mapsUrl+'" target="_blank" onclick="event.stopPropagation()" style="font-size:.72rem;font-weight:500;color:#29b6f6;text-decoration:none;vertical-align:middle;margin-left:6px" title="Open in Google Maps">📍 Maps</a>':'')
+    +'</div>'
+    +(addrLine?'<div class="parea">'+addrLine+'</div>':'')
+    +'<div class="ptags">'
+    +(isSkate?'<span class="tag t-skate">⛸️ Open now</span>':'<span class="tag t-open">🏊 Open now</span>')
+    +(hasFree?'<span class="tag t-free">Play Free</span>':'')
+    +(venue.wave?'<span class="tag t-wave">🌊 Wave pool</span>':'')
+    +'</div></div><div class="chev">▾</div></div>'
+    +'<div class="spanel"><div class="stitle">Active sessions at this time</div>';
 
-  if(!active.length){
-    h+='<div class="no-results"><div class="big">🌊</div>'
-      +'<p>No public swim sessions found at <strong>'+fmt(mins)+'</strong>.<br>Check sessions below or try a different time.</p></div>';
+  hits.forEach(function(s){
+    h+='<div class="srow'+(s.playFree?' free':'')+'"><div class="styp">'+s.label+'</div>'
+      +'<div style="display:flex;align-items:center;gap:8px">'
+      +(s.playFree?'<span class="fbadge">PLAY FREE</span>':'')
+      +'<div class="stim">'+fmt(s.start)+' - '+fmt(s.end)+'</div></div></div>';
+  });
+
+  h+='<a class="extlink" href="'+venue.url+'" target="_blank">Full schedule on Ottawa.ca</a>'
+    +'</div></div>';
+  return h;
+}
+
+function render(activePools,activeRinks,laterPools,laterRinks,dateStr,mins,hasDistances,showSwim,showSkate){
+  const total=activePools.length+activeRinks.length;
+  const sortNote=hasDistances?' <span style="font-size:.78rem;color:var(--dim);font-weight:400">- sorted by distance</span>':'';
+  const typeLabel=showSwim&&showSkate?'venues':showSwim?'pools':'rinks';
+
+  let h='<div class="results">'
+    +'<div class="rlabel">'+total+' '+typeLabel+(total!==1?'':'')+(total!==1?' open':' open')+' at '+fmt(mins)+sortNote+'</div>'
+    +'<div class="rsub">'+dateStr+'</div>';
+
+  if(!total){
+    const icon=showSwim&&showSkate?'🏊⛸️':showSwim?'🌊':'⛸️';
+    h+='<div class="no-results"><div class="big">'+icon+'</div>'
+      +'<p>No open sessions found at <strong>'+fmt(mins)+'</strong>.<br>Check sessions below or try a different time.</p></div>';
   }else{
-    active.forEach(function(r){
-      const pool=r.pool,hits=r.hits,dist=r.dist,addr=r.addr,mapsUrl=r.mapsUrl;
-      const hasFree=hits.some(function(s){return s.playFree;});
-      const addrText=addr?'📍 '+addr:'';
-      const distText=(dist!==null&&!isNaN(dist))
-        ?(dist<1?(dist*1000).toFixed(0)+' m':dist.toFixed(1)+' km')+' away'
-        :'';
-      const addrLine=addrText&&distText?addrText+' · '+distText:addrText||distText;
+    if(showSwim&&showSkate&&activePools.length){
+      h+='<div class="section-header swim-hdr">🏊 Swimming ('+activePools.length+')</div>';
+    }
+    activePools.forEach(function(r){h+=venueCard(r,false);});
 
-      h+='<div class="pblock open" onclick="toggle(this)">'
-        +'<div class="phead"><div>'
-        +'<div class="pname">'+pool.name
-        +(mapsUrl?' <a href="'+mapsUrl+'" target="_blank" onclick="event.stopPropagation()" style="font-size:.72rem;font-weight:500;color:#29b6f6;text-decoration:none;vertical-align:middle;margin-left:6px" title="Open in Google Maps">&#x1F4CD; Maps</a>':'')
-        +'</div>'
-        +(addrLine?'<div class="parea">'+addrLine+'</div>':'')
-        +'<div class="ptags">'
-        +'<span class="tag t-open">Open now</span>'
-        +(hasFree?'<span class="tag t-free">Play Free</span>':'')
-        +(pool.wave?'<span class="tag t-wave">Wave pool</span>':'')
-        +'</div></div><div class="chev">▾</div></div>'
-        +'<div class="spanel"><div class="stitle">Active sessions at '+fmt(mins)+'</div>';
-
-      hits.forEach(function(s){
-        h+='<div class="srow'+(s.playFree?' free':'')+'"><div class="styp">'+s.label+'</div>'
-          +'<div style="display:flex;align-items:center;gap:8px">'
-          +(s.playFree?'<span class="fbadge">PLAY FREE</span>':'')
-          +'<div class="stim">'+fmt(s.start)+' - '+fmt(s.end)+'</div></div></div>';
-      });
-
-      h+='<a class="extlink" href="'+pool.url+'" target="_blank">Full schedule on Ottawa.ca</a>'
-        +'</div></div>';
-    });
+    if(showSwim&&showSkate&&activeRinks.length){
+      h+='<div class="section-header skate-hdr">⛸️ Skating ('+activeRinks.length+')</div>';
+    }
+    activeRinks.forEach(function(r){h+=venueCard(r,true);});
   }
 
-  if(later.length){
-    h+='<div class="later-sec"><div class="llabel">Other public swims later today</div>';
-    later.forEach(function(item){
-      const pool=item.pool,s=item.s;
-      h+='<div class="srow'+(s.playFree?' free':'')+'" style="margin-bottom:8px">'
-        +'<div><div style="font-size:.79rem;color:var(--dim);margin-bottom:2px">'+pool.name+'</div>'
+  const laterAll=[...laterPools.map(function(x){return {...x,isSkate:false};}),
+                  ...laterRinks.map(function(x){return {...x,isSkate:true};})];
+  laterAll.sort(function(a,b){return a.s.start-b.s.start;});
+
+  if(laterAll.length){
+    h+='<div class="later-sec"><div class="llabel">More sessions later today</div>';
+    laterAll.forEach(function(item){
+      const venue=item.venue,s=item.s;
+      const icon=item.isSkate?'⛸️':'🏊';
+      h+='<div class="srow'+(s.playFree?' free':'').toString()+'" style="margin-bottom:8px">'
+        +'<div><div style="font-size:.79rem;color:var(--dim);margin-bottom:2px">'+icon+' '+venue.name+'</div>'
         +'<div class="styp">'+s.label+'</div></div>'
         +'<div style="display:flex;align-items:center;gap:8px;flex-shrink:0">'
         +(s.playFree?'<span class="fbadge">PLAY FREE</span>':'')
@@ -443,6 +517,7 @@ function render(active,later,dateStr,mins,sortedByDist){
   area.innerHTML=h;
   area.scrollIntoView({behavior:'smooth',block:'start'});
 }
+
 </script>
 </body>
 </html>
