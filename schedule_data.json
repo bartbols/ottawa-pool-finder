@@ -1,6 +1,29 @@
 {
-  "scraped_at": "2026-02-26T04:53:37.644088+00:00",
+  "scraped_at": "2026-02-26T23:07:46.739044+00:00",
   "pools": [
+    {
+      "id": "brewer-pool-and-arena",
+      "name": "Brewer Pool and Arena",
+      "address": "100 Brewer Way",
+      "wave": false,
+      "url": "https://ottawa.ca/en/recreation-and-parks/facilities/place-listing/brewer-pool-and-arena",
+      "sessions": [
+        {
+          "day": 6,
+          "label": "Public swim",
+          "start": 780,
+          "end": 840,
+          "playFree": true
+        },
+        {
+          "day": 0,
+          "label": "Public swim",
+          "start": 780,
+          "end": 840,
+          "playFree": false
+        }
+      ]
+    },
     {
       "id": "jack-purcell-community-centre",
       "name": "Jack Purcell Community Centre",
@@ -1036,6 +1059,843 @@
           "start": 810,
           "end": 960,
           "playFree": false
+        }
+      ]
+    }
+  ],
+  "rinks": [
+    {
+      "id": "earl-armstrong-arena",
+      "name": "Earl Armstrong Arena",
+      "address": "",
+      "url": "https://ottawa.ca/en/recreation-and-parks/facilities/place-listing/earl-armstrong-arena",
+      "sessions": [
+        {
+          "day": 4,
+          "label": "Public skating",
+          "start": 900,
+          "end": 950,
+          "playFree": false
+        }
+      ]
+    },
+    {
+      "id": "lois-kemp-arena-blackburn",
+      "name": "Lois Kemp Arena (Blackburn)",
+      "address": "",
+      "url": "https://ottawa.ca/en/recreation-and-parks/facilities/place-listing/lois-kemp-arena-blackburn",
+      "sessions": [
+        {
+          "day": 3,
+          "label": "Public skating",
+          "start": 900,
+          "end": 950,
+          "playFree": false
+        },
+        {
+          "day": 5,
+          "label": "Public skating",
+          "start": 1140,
+          "end": 1190,
+          "playFree": false
+        },
+        {
+          "day": 0,
+          "label": "Public skating",
+          "start": 960,
+          "end": 1010,
+          "playFree": true
+        },
+        {
+          "day": 5,
+          "label": "Family skating",
+          "start": 1080,
+          "end": 1130,
+          "playFree": false
+        },
+        {
+          "day": 0,
+          "label": "Family skating",
+          "start": 900,
+          "end": 950,
+          "playFree": true
+        }
+      ]
+    },
+    {
+      "id": "rj-kennedy-community-centre-and-arena",
+      "name": "R.J. Kennedy Community Centre and Arena",
+      "address": "",
+      "url": "https://ottawa.ca/en/recreation-and-parks/facilities/place-listing/rj-kennedy-community-centre-and-arena",
+      "sessions": [
+        {
+          "day": 6,
+          "label": "Public skating",
+          "start": 900,
+          "end": 1010,
+          "playFree": true
+        }
+      ]
+    },
+    {
+      "id": "st-laurent-complex",
+      "name": "St. Laurent Complex",
+      "address": "",
+      "url": "https://ottawa.ca/en/recreation-and-parks/facilities/place-listing/st-laurent-complex",
+      "sessions": [
+        {
+          "day": 1,
+          "label": "Public skating",
+          "start": 780,
+          "end": 830,
+          "playFree": false
+        },
+        {
+          "day": 2,
+          "label": "Public skating",
+          "start": 960,
+          "end": 1010,
+          "playFree": false
+        },
+        {
+          "day": 4,
+          "label": "Public skating",
+          "start": 960,
+          "end": 1010,
+          "playFree": false
+        },
+        {
+          "day": 0,
+          "label": "Public skating",
+          "start": 900,
+          "end": 950,
+          "playFree": true
+        },
+        {
+          "day": 0,
+          "label": "Family skating",
+          "start": 840,
+          "end": 890,
+          "playFree": true
+        }
+      ]
+    },
+    {
+      "id": "bernard-grandmaitre-arena",
+      "name": "Bernard Grandmaître Arena",
+      "address": "",
+      "url": "https://ottawa.ca/en/recreation-and-parks/facilities/place-listing/bernard-grandmaitre-arena",
+      "sessions": [
+        {
+          "day": 6,
+          "label": "Family skating",
+          "start": 720,
+          "end": 770,
+          "playFree": true
+        },
+        {
+          "day": 6,
+          "label": "Public skating",
+          "start": 780,
+          "end": 830,
+          "playFree": true
+        }
+      ]
+    },
+    {
+      "id": "brewer-pool-and-arena",
+      "name": "Brewer Pool and Arena",
+      "address": "100 Brewer Way",
+      "url": "https://ottawa.ca/en/recreation-and-parks/facilities/place-listing/brewer-pool-and-arena",
+      "sessions": [
+        {
+          "day": 6,
+          "label": "Public skating",
+          "start": 1140,
+          "end": 1250,
+          "playFree": true
+        },
+        {
+          "day": 0,
+          "label": "Public skating",
+          "start": 900,
+          "end": 950,
+          "playFree": false
+        },
+        {
+          "day": 0,
+          "label": "Family skating",
+          "start": 840,
+          "end": 890,
+          "playFree": false
+        }
+      ]
+    },
+    {
+      "id": "canterbury-recreation-complex",
+      "name": "Canterbury Recreation Complex - Brian Kilrea Arena",
+      "address": "",
+      "url": "https://ottawa.ca/en/recreation-and-parks/facilities/place-listing/canterbury-recreation-complex",
+      "sessions": [
+        {
+          "day": 1,
+          "label": "Public skating",
+          "start": 720,
+          "end": 780,
+          "playFree": false
+        },
+        {
+          "day": 3,
+          "label": "Public skating",
+          "start": 720,
+          "end": 780,
+          "playFree": false
+        },
+        {
+          "day": 5,
+          "label": "Public skating",
+          "start": 720,
+          "end": 780,
+          "playFree": false
+        },
+        {
+          "day": 6,
+          "label": "Public skating",
+          "start": 1020,
+          "end": 1080,
+          "playFree": true
+        },
+        {
+          "day": 6,
+          "label": "Family skating",
+          "start": 960,
+          "end": 1020,
+          "playFree": true
+        }
+      ]
+    },
+    {
+      "id": "howard-darwin-centennial-arena",
+      "name": "Howard Darwin Centennial Arena",
+      "address": "",
+      "url": "https://ottawa.ca/en/recreation-and-parks/facilities/place-listing/howard-darwin-centennial-arena",
+      "sessions": [
+        {
+          "day": 6,
+          "label": "Public skating",
+          "start": 960,
+          "end": 1010,
+          "playFree": true
+        },
+        {
+          "day": 0,
+          "label": "Public skating",
+          "start": 840,
+          "end": 890,
+          "playFree": false
+        },
+        {
+          "day": 5,
+          "label": "Family skating",
+          "start": 1140,
+          "end": 1190,
+          "playFree": false
+        },
+        {
+          "day": 6,
+          "label": "Family skating",
+          "start": 900,
+          "end": 950,
+          "playFree": true
+        },
+        {
+          "day": 0,
+          "label": "Family skating",
+          "start": 780,
+          "end": 830,
+          "playFree": false
+        }
+      ]
+    },
+    {
+      "id": "ja-dulude-arena",
+      "name": "J.A. Dulude Arena",
+      "address": "",
+      "url": "https://ottawa.ca/en/recreation-and-parks/facilities/place-listing/ja-dulude-arena",
+      "sessions": [
+        {
+          "day": 1,
+          "label": "Public skating",
+          "start": 660,
+          "end": 710,
+          "playFree": false
+        },
+        {
+          "day": 2,
+          "label": "Public skating",
+          "start": 660,
+          "end": 710,
+          "playFree": false
+        },
+        {
+          "day": 4,
+          "label": "Public skating",
+          "start": 720,
+          "end": 770,
+          "playFree": false
+        },
+        {
+          "day": 4,
+          "label": "Public skating",
+          "start": 1080,
+          "end": 1130,
+          "playFree": false
+        },
+        {
+          "day": 5,
+          "label": "Public skating",
+          "start": 720,
+          "end": 770,
+          "playFree": false
+        },
+        {
+          "day": 6,
+          "label": "Public skating",
+          "start": 840,
+          "end": 890,
+          "playFree": true
+        },
+        {
+          "day": 0,
+          "label": "Public skating",
+          "start": 960,
+          "end": 1010,
+          "playFree": false
+        },
+        {
+          "day": 6,
+          "label": "Family skating",
+          "start": 780,
+          "end": 830,
+          "playFree": true
+        },
+        {
+          "day": 0,
+          "label": "Family skating",
+          "start": 900,
+          "end": 950,
+          "playFree": false
+        }
+      ]
+    },
+    {
+      "id": "mcnabb-arena-and-community-centre",
+      "name": "McNabb Arena and Community Centre",
+      "address": "",
+      "url": "https://ottawa.ca/en/recreation-and-parks/facilities/place-listing/mcnabb-arena-and-community-centre",
+      "sessions": [
+        {
+          "day": 3,
+          "label": "Public skating",
+          "start": 1080,
+          "end": 1130,
+          "playFree": false
+        },
+        {
+          "day": 5,
+          "label": "Public skating",
+          "start": 1020,
+          "end": 1070,
+          "playFree": false
+        },
+        {
+          "day": 0,
+          "label": "Public skating",
+          "start": 840,
+          "end": 890,
+          "playFree": true
+        },
+        {
+          "day": 0,
+          "label": "Family skating",
+          "start": 780,
+          "end": 830,
+          "playFree": true
+        }
+      ]
+    },
+    {
+      "id": "sandy-hill-arena",
+      "name": "Sandy Hill Arena",
+      "address": "",
+      "url": "https://ottawa.ca/en/recreation-and-parks/facilities/place-listing/sandy-hill-arena",
+      "sessions": [
+        {
+          "day": 2,
+          "label": "Public skating",
+          "start": 1020,
+          "end": 1070,
+          "playFree": false
+        },
+        {
+          "day": 6,
+          "label": "Public skating",
+          "start": 1260,
+          "end": 1310,
+          "playFree": true
+        },
+        {
+          "day": 2,
+          "label": "Family skating",
+          "start": 960,
+          "end": 1010,
+          "playFree": false
+        },
+        {
+          "day": 6,
+          "label": "Family skating",
+          "start": 1200,
+          "end": 1250,
+          "playFree": true
+        },
+        {
+          "day": 0,
+          "label": "Family skating",
+          "start": 900,
+          "end": 950,
+          "playFree": false
+        }
+      ]
+    },
+    {
+      "id": "metcalfe-community-centre-and-larry-robinson-arena",
+      "name": "Metcalfe Community Centre and Larry Robinson Arena",
+      "address": "",
+      "url": "https://ottawa.ca/en/recreation-and-parks/facilities/place-listing/metcalfe-community-centre-and-larry-robinson-arena",
+      "sessions": [
+        {
+          "day": 4,
+          "label": "Public skating",
+          "start": 1020,
+          "end": 1070,
+          "playFree": false
+        },
+        {
+          "day": 6,
+          "label": "Public skating",
+          "start": 1020,
+          "end": 1070,
+          "playFree": true
+        },
+        {
+          "day": 4,
+          "label": "Family skating",
+          "start": 960,
+          "end": 1010,
+          "playFree": false
+        },
+        {
+          "day": 5,
+          "label": "Family skating",
+          "start": 900,
+          "end": 950,
+          "playFree": false
+        },
+        {
+          "day": 6,
+          "label": "Family skating",
+          "start": 960,
+          "end": 1010,
+          "playFree": true
+        }
+      ]
+    },
+    {
+      "id": "manotick-community-centre-and-mike-oneil-arena",
+      "name": "Manotick Community Centre and Mike O’Neil Arena",
+      "address": "",
+      "url": "https://ottawa.ca/en/recreation-and-parks/facilities/place-listing/manotick-community-centre-and-mike-oneil-arena",
+      "sessions": [
+        {
+          "day": 2,
+          "label": "Public skating",
+          "start": 1020,
+          "end": 1070,
+          "playFree": false
+        },
+        {
+          "day": 3,
+          "label": "Public skating",
+          "start": 600,
+          "end": 650,
+          "playFree": false
+        },
+        {
+          "day": 6,
+          "label": "Public skating",
+          "start": 1020,
+          "end": 1070,
+          "playFree": true
+        },
+        {
+          "day": 2,
+          "label": "Family skating",
+          "start": 960,
+          "end": 1010,
+          "playFree": false
+        },
+        {
+          "day": 6,
+          "label": "Family skating",
+          "start": 960,
+          "end": 1010,
+          "playFree": true
+        }
+      ]
+    },
+    {
+      "id": "osgoode-community-centre-and-stuart-holmes-arena",
+      "name": "Osgoode Community Centre and Stuart Holmes Arena",
+      "address": "",
+      "url": "https://ottawa.ca/en/recreation-and-parks/facilities/place-listing/osgoode-community-centre-and-stuart-holmes-arena",
+      "sessions": [
+        {
+          "day": 2,
+          "label": "Public skating",
+          "start": 900,
+          "end": 950,
+          "playFree": false
+        },
+        {
+          "day": 0,
+          "label": "Public skating",
+          "start": 840,
+          "end": 890,
+          "playFree": true
+        },
+        {
+          "day": 0,
+          "label": "Family skating",
+          "start": 780,
+          "end": 830,
+          "playFree": true
+        }
+      ]
+    },
+    {
+      "id": "walter-baker-sports-centre",
+      "name": "Walter Baker Sports Centre",
+      "address": "",
+      "url": "https://ottawa.ca/en/recreation-and-parks/facilities/place-listing/walter-baker-sports-centre",
+      "sessions": [
+        {
+          "day": 5,
+          "label": "Public skating",
+          "start": 1155,
+          "end": 1205,
+          "playFree": false
+        },
+        {
+          "day": 6,
+          "label": "Public skating",
+          "start": 675,
+          "end": 725,
+          "playFree": true
+        },
+        {
+          "day": 6,
+          "label": "Public skating",
+          "start": 735,
+          "end": 785,
+          "playFree": true
+        },
+        {
+          "day": 0,
+          "label": "Public skating",
+          "start": 675,
+          "end": 725,
+          "playFree": false
+        },
+        {
+          "day": 0,
+          "label": "Public skating",
+          "start": 735,
+          "end": 785,
+          "playFree": false
+        }
+      ]
+    },
+    {
+      "id": "bell-centennial-arena",
+      "name": "Bell Centennial Arena",
+      "address": "",
+      "url": "https://ottawa.ca/en/recreation-and-parks/facilities/place-listing/bell-centennial-arena",
+      "sessions": [
+        {
+          "day": 3,
+          "label": "Public skating",
+          "start": 960,
+          "end": 1010,
+          "playFree": false
+        },
+        {
+          "day": 6,
+          "label": "Public skating",
+          "start": 1200,
+          "end": 1250,
+          "playFree": true
+        }
+      ]
+    },
+    {
+      "id": "jack-charron-arena",
+      "name": "Jack Charron",
+      "address": "",
+      "url": "https://ottawa.ca/en/recreation-and-parks/facilities/place-listing/jack-charron-arena",
+      "sessions": [
+        {
+          "day": 5,
+          "label": "Public skating",
+          "start": 600,
+          "end": 650,
+          "playFree": false
+        },
+        {
+          "day": 0,
+          "label": "Public skating",
+          "start": 960,
+          "end": 1010,
+          "playFree": true
+        },
+        {
+          "day": 0,
+          "label": "Family skating",
+          "start": 900,
+          "end": 950,
+          "playFree": true
+        }
+      ]
+    },
+    {
+      "id": "john-g-mlacak-community-centre",
+      "name": "John G Mlacak Community Centre",
+      "address": "",
+      "url": "https://ottawa.ca/en/recreation-and-parks/facilities/place-listing/john-g-mlacak-community-centre",
+      "sessions": [
+        {
+          "day": 4,
+          "label": "Public skating",
+          "start": 1140,
+          "end": 1190,
+          "playFree": false
+        },
+        {
+          "day": 6,
+          "label": "Public skating",
+          "start": 1140,
+          "end": 1190,
+          "playFree": true
+        },
+        {
+          "day": 6,
+          "label": "Family skating",
+          "start": 1080,
+          "end": 1130,
+          "playFree": true
+        }
+      ]
+    },
+    {
+      "id": "nepean-sportsplex",
+      "name": "Nepean Sportsplex",
+      "address": "",
+      "url": "https://ottawa.ca/en/recreation-and-parks/facilities/place-listing/nepean-sportsplex",
+      "sessions": [
+        {
+          "day": 2,
+          "label": "Public Skating",
+          "start": 810,
+          "end": 900,
+          "playFree": false
+        }
+      ]
+    },
+    {
+      "id": "pinecrest-recreation-complex",
+      "name": "Pinecrest Recreation Complex",
+      "address": "",
+      "url": "https://ottawa.ca/en/recreation-and-parks/facilities/place-listing/pinecrest-recreation-complex",
+      "sessions": [
+        {
+          "day": 3,
+          "label": "Family skate",
+          "start": 840,
+          "end": 890,
+          "playFree": false
+        },
+        {
+          "day": 1,
+          "label": "Public skate",
+          "start": 780,
+          "end": 830,
+          "playFree": false
+        },
+        {
+          "day": 3,
+          "label": "Public skate",
+          "start": 900,
+          "end": 950,
+          "playFree": false
+        },
+        {
+          "day": 3,
+          "label": "Public skate",
+          "start": 960,
+          "end": 1010,
+          "playFree": false
+        },
+        {
+          "day": 0,
+          "label": "Public skate",
+          "start": 840,
+          "end": 890,
+          "playFree": true
+        },
+        {
+          "day": 0,
+          "label": "Public skate",
+          "start": 900,
+          "end": 950,
+          "playFree": true
+        },
+        {
+          "day": 1,
+          "label": "Public skate 50+",
+          "start": 660,
+          "end": 710,
+          "playFree": false
+        }
+      ]
+    },
+    {
+      "id": "richmond-memorial-community-centre",
+      "name": "Richmond Memorial Community Centre",
+      "address": "",
+      "url": "https://ottawa.ca/en/recreation-and-parks/facilities/place-listing/richmond-memorial-community-centre",
+      "sessions": [
+        {
+          "day": 1,
+          "label": "Public skating",
+          "start": 900,
+          "end": 950,
+          "playFree": false
+        },
+        {
+          "day": 4,
+          "label": "Public skating",
+          "start": 960,
+          "end": 1010,
+          "playFree": false
+        },
+        {
+          "day": 6,
+          "label": "Public skating",
+          "start": 840,
+          "end": 890,
+          "playFree": true
+        },
+        {
+          "day": 6,
+          "label": "Family skating",
+          "start": 780,
+          "end": 830,
+          "playFree": true
+        }
+      ]
+    },
+    {
+      "id": "tony-graham-recreation-complex-kanata",
+      "name": "Tony Graham Recreation Complex",
+      "address": "",
+      "url": "https://ottawa.ca/en/recreation-and-parks/facilities/place-listing/tony-graham-recreation-complex-kanata",
+      "sessions": [
+        {
+          "day": 2,
+          "label": "Public skating",
+          "start": 795,
+          "end": 845,
+          "playFree": false
+        },
+        {
+          "day": 3,
+          "label": "Public skating",
+          "start": 780,
+          "end": 830,
+          "playFree": false
+        },
+        {
+          "day": 4,
+          "label": "Public skating",
+          "start": 780,
+          "end": 830,
+          "playFree": false
+        },
+        {
+          "day": 5,
+          "label": "Public skating",
+          "start": 1155,
+          "end": 1205,
+          "playFree": false
+        },
+        {
+          "day": 0,
+          "label": "Public skating",
+          "start": 735,
+          "end": 785,
+          "playFree": true
+        },
+        {
+          "day": 0,
+          "label": "Public skating",
+          "start": 795,
+          "end": 845,
+          "playFree": true
+        }
+      ]
+    },
+    {
+      "id": "w-erskine-johnston-arena",
+      "name": "W. Erskine Johnston Arena",
+      "address": "",
+      "url": "https://ottawa.ca/en/recreation-and-parks/facilities/place-listing/w-erskine-johnston-arena",
+      "sessions": [
+        {
+          "day": 2,
+          "label": "Public skating",
+          "start": 690,
+          "end": 740,
+          "playFree": false
+        },
+        {
+          "day": 5,
+          "label": "Public skating",
+          "start": 690,
+          "end": 740,
+          "playFree": false
+        },
+        {
+          "day": 5,
+          "label": "Public skating",
+          "start": 960,
+          "end": 1070,
+          "playFree": false
+        },
+        {
+          "day": 0,
+          "label": "Public skating",
+          "start": 840,
+          "end": 950,
+          "playFree": true
         }
       ]
     }
