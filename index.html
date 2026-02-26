@@ -209,34 +209,35 @@ function haversine(lat1,lng1,lat2,lng2){
 
 // Match pool by name keyword (case-insensitive)
 const POOL_COORDS_BY_NAME=[
-  {k:'splash wave',         lat:45.4375,lng:-75.6004},
-  {k:'ray friel',           lat:45.4720,lng:-75.4929},
-  {k:'dupuis',              lat:45.4544,lng:-75.4636},
-  {k:'nepean sportsplex',   lat:45.3271,lng:-75.7447},
-  {k:'sensplex',            lat:45.2972,lng:-75.9093},
-  {k:'macquarrie',          lat:45.4663,lng:-75.5451},
-  {k:'brewer',              lat:45.3894,lng:-75.6919},
-  {k:'kirwan',              lat:45.3674,lng:-75.6573},
-  {k:'jack purcell',        lat:45.4158,lng:-75.6894},
-  {k:'mcnabb',              lat:45.4088,lng:-75.7022},
-  {k:'plant',               lat:45.4078,lng:-75.7146},
-  {k:'pinecrest',           lat:45.3478,lng:-75.7738},
-  {k:'walter baker',        lat:45.2804,lng:-75.7625},
-  {k:'goulbourn',           lat:45.2630,lng:-75.9078},
-  {k:'cardelrec',           lat:45.2630,lng:-75.9078},
-  {k:'richmond',            lat:45.1956,lng:-75.8378},
-  {k:'lowertown',           lat:45.4297,lng:-75.6671},
-  {k:'sawmill',             lat:45.3807,lng:-75.6384},
-  {k:'minto',               lat:45.2803,lng:-75.7374},
-  {k:'richcraft',           lat:45.3439,lng:-75.9075},
+  {k:'splash wave',         lat:45.4375,lng:-75.6004, addr:'2040 Ogilvie Rd'},
+  {k:'ray friel',           lat:45.4720,lng:-75.4929, addr:'1585 Tenth Line Rd'},
+  {k:'dupuis',              lat:45.4544,lng:-75.4636, addr:'2263 Portobello Blvd'},
+  {k:'nepean sportsplex',   lat:45.3271,lng:-75.7447, addr:'1701 Woodroffe Ave'},
+  {k:'sensplex',            lat:45.2972,lng:-75.9093, addr:'1565 Maple Grove Rd'},
+  {k:'macquarrie',          lat:45.4663,lng:-75.5451, addr:'1490 Youville Dr'},
+  {k:'brewer',              lat:45.3894,lng:-75.6919, addr:'100 Brewer Way'},
+  {k:'kirwan',              lat:45.3674,lng:-75.6573, addr:'1300 Kitchener Ave'},
+  {k:'jack purcell',        lat:45.4158,lng:-75.6894, addr:'320 Jack Purcell Ln'},
+  {k:'mcnabb',              lat:45.4088,lng:-75.7022, addr:'180 Percy St'},
+  {k:'plant',               lat:45.4078,lng:-75.7146, addr:'930 Somerset St W'},
+  {k:'pinecrest',           lat:45.3478,lng:-75.7738, addr:'2250 Torquay Ave'},
+  {k:'walter baker',        lat:45.2804,lng:-75.7625, addr:'100 Malvern Dr'},
+  {k:'goulbourn',           lat:45.2630,lng:-75.9078, addr:'1500 Shea Rd'},
+  {k:'cardelrec',           lat:45.2630,lng:-75.9078, addr:'1500 Shea Rd'},
+  {k:'richmond',            lat:45.1956,lng:-75.8378, addr:'6095 Perth St'},
+  {k:'lowertown',           lat:45.4347,lng:-75.6813, addr:'40 Cobourg St'},
+  {k:'sawmill',             lat:45.3498,lng:-75.6364, addr:"3380 D'Aoust Ave"},
+  {k:'minto',               lat:45.2529,lng:-75.7341, addr:'3500 Cambrian Rd'},
+  {k:'richcraft',           lat:45.3405,lng:-75.9304, addr:'4101 Innovation Dr'},
 ];
 
 function distanceForPool(pool){
-  if(!userCoords) return null;
+  if(!userCoords) return {dist:null,addr:pool.address||''};
   const name=pool.name.toLowerCase();
   const entry=POOL_COORDS_BY_NAME.find(e=>name.includes(e.k));
-  if(!entry) return null;
-  return haversine(userCoords.lat,userCoords.lng,entry.lat,entry.lng);
+  const addr=entry?entry.addr:(pool.address||'');
+  if(!entry) return {dist:null,addr:addr};
+  return {dist:haversine(userCoords.lat,userCoords.lng,entry.lat,entry.lng),addr:addr};
 }
 
 // Load scraped data
@@ -348,7 +349,7 @@ function doSearch(){
 
   let active=POOLS.map(pool=>{
     const hits=(pool.sessions||[]).filter(s=>s.day===day&&mins>=s.start&&mins<s.end);
-    const dist=distanceForPool(pool);
+    const {dist,addr}=distanceForPool(pool);
     return {pool,hits,dist};
   }).filter(r=>r.hits.length);
 
@@ -391,8 +392,7 @@ function render(active,later,dateStr,mins,sortedByDist){
     active.forEach(function(r){
       const pool=r.pool,hits=r.hits,dist=r.dist;
       const hasFree=hits.some(function(s){return s.playFree;});
-      const addrParts=[pool.area,pool.address].filter(function(x){return x&&x!=='undefined';});
-      const addrText=addrParts.length?'📍 '+addrParts.join(' - '):'';
+      const addrText=addr?'📍 '+addr:'';
       const distText=(dist!==null&&!isNaN(dist))
         ?(dist<1?(dist*1000).toFixed(0)+' m':dist.toFixed(1)+' km')+' away'
         :'';
