@@ -1,171 +1,319 @@
 {
-  "scraped_at": "2026-02-26T02:09:00.656475+00:00",
+  "scraped_at": "2026-02-26T02:16:16.295322+00:00",
   "pools": [
     {
-      "id": "splash",
-      "name": "Splash Wave Pool",
-      "area": "East · Gloucester",
-      "address": "2720 Queensview Dr",
-      "wave": true,
-      "url": "https://ottawa.ca/en/recreation-and-parks/facilities/place-listing/splash-wave-pool",
+      "id": "jack-purcell-community-centre",
+      "name": "Jack Purcell Community Centre",
+      "address": "320 Jack Purcell Lane",
+      "wave": false,
+      "url": "https://ottawa.ca/en/recreation-and-parks/facilities/place-listing/jack-purcell-community-centre",
       "sessions": [
         {
-          "day": 5,
-          "label": "Wave Swim",
-          "start": 1145,
-          "end": 1260,
-          "playFree": false
-        },
-        {
-          "day": 6,
-          "label": "Wave Swim",
-          "start": 780,
-          "end": 1020,
-          "playFree": false
-        },
-        {
-          "day": 0,
-          "label": "Wave Swim",
-          "start": 780,
-          "end": 1020,
-          "playFree": false
-        },
-        {
           "day": 1,
-          "label": "Public Swim - wave tank and warm pool",
-          "start": 660,
-          "end": 780,
+          "label": "Public swim",
+          "start": 1080,
+          "end": 1140,
           "playFree": false
         },
         {
           "day": 2,
-          "label": "Public Swim - wave tank and warm pool",
-          "start": 720,
-          "end": 780,
-          "playFree": false
-        },
-        {
-          "day": 2,
-          "label": "Public Swim - wave tank and warm pool",
-          "start": 990,
-          "end": 1260,
+          "label": "Public swim",
+          "start": 900,
+          "end": 960,
           "playFree": false
         },
         {
           "day": 3,
-          "label": "Public Swim - wave tank and warm pool",
-          "start": 570,
-          "end": 780,
+          "label": "Public swim",
+          "start": 1080,
+          "end": 1140,
           "playFree": false
         },
         {
           "day": 4,
-          "label": "Public Swim - wave tank and warm pool",
-          "start": 720,
-          "end": 780,
-          "playFree": false
-        },
-        {
-          "day": 4,
-          "label": "Public Swim - wave tank and warm pool",
-          "start": 990,
-          "end": 1260,
+          "label": "Public swim",
+          "start": 900,
+          "end": 960,
           "playFree": false
         },
         {
           "day": 5,
-          "label": "Public Swim - wave tank and warm pool",
-          "start": 570,
+          "label": "Public swim",
+          "start": 1080,
+          "end": 1200,
+          "playFree": false
+        },
+        {
+          "day": 6,
+          "label": "Public swim",
+          "start": 840,
+          "end": 960,
+          "playFree": true
+        },
+        {
+          "day": 0,
+          "label": "Public swim",
+          "start": 840,
+          "end": 900,
+          "playFree": false
+        },
+        {
+          "day": 6,
+          "label": "Public swim women’s only",
+          "start": 960,
+          "end": 1020,
+          "playFree": true
+        },
+        {
+          "day": 0,
+          "label": "Public swim women’s only",
+          "start": 900,
+          "end": 960,
+          "playFree": false
+        }
+      ]
+    },
+    {
+      "id": "lowertown-community-centre-and-pool",
+      "name": "Lowertown Community Centre and Pool",
+      "address": "",
+      "wave": false,
+      "url": "https://ottawa.ca/en/recreation-and-parks/facilities/place-listing/lowertown-community-centre-and-pool",
+      "sessions": [
+        {
+          "day": 3,
+          "label": "Public swim",
+          "start": 1080,
+          "end": 1200,
+          "playFree": false
+        },
+        {
+          "day": 4,
+          "label": "Public swim",
+          "start": 780,
+          "end": 840,
+          "playFree": false
+        },
+        {
+          "day": 5,
+          "label": "Public swim",
+          "start": 960,
+          "end": 1140,
+          "playFree": false
+        },
+        {
+          "day": 6,
+          "label": "Public swim",
+          "start": 720,
+          "end": 900,
+          "playFree": true
+        },
+        {
+          "day": 0,
+          "label": "Public swim",
+          "start": 720,
+          "end": 900,
+          "playFree": false
+        }
+      ]
+    },
+    {
+      "id": "plant-recreation-centre",
+      "name": "Plant Recreation Centre",
+      "address": "930 Somerset Street West",
+      "wave": false,
+      "url": "https://ottawa.ca/en/recreation-and-parks/facilities/place-listing/plant-recreation-centre",
+      "sessions": [
+        {
+          "day": 2,
+          "label": "Public swim",
+          "start": 1080,
+          "end": 1170,
+          "playFree": false
+        },
+        {
+          "day": 4,
+          "label": "Public swim",
+          "start": 780,
+          "end": 840,
+          "playFree": false
+        },
+        {
+          "day": 5,
+          "label": "Public swim",
+          "start": 780,
+          "end": 840,
+          "playFree": false
+        },
+        {
+          "day": 6,
+          "label": "Public swim",
+          "start": 810,
+          "end": 960,
+          "playFree": true
+        },
+        {
+          "day": 0,
+          "label": "Public swim",
+          "start": 810,
+          "end": 960,
+          "playFree": false
+        },
+        {
+          "day": 1,
+          "label": "Public swim - leisure pool only",
+          "start": 630,
           "end": 780,
           "playFree": false
         },
         {
           "day": 1,
-          "label": "Public Swim – warm pool only",
-          "start": 570,
-          "end": 660,
+          "label": "Public swim - leisure pool only",
+          "start": 960,
+          "end": 1020,
           "playFree": false
         },
         {
           "day": 2,
-          "label": "Public Swim – warm pool only",
-          "start": 600,
-          "end": 720,
+          "label": "Public swim - leisure pool only",
+          "start": 630,
+          "end": 780,
+          "playFree": false
+        },
+        {
+          "day": 2,
+          "label": "Public swim - leisure pool only",
+          "start": 960,
+          "end": 1020,
+          "playFree": false
+        },
+        {
+          "day": 3,
+          "label": "Public swim - leisure pool only",
+          "start": 630,
+          "end": 780,
+          "playFree": false
+        },
+        {
+          "day": 3,
+          "label": "Public swim - leisure pool only",
+          "start": 960,
+          "end": 1020,
           "playFree": false
         },
         {
           "day": 4,
-          "label": "Public Swim – warm pool only",
-          "start": 600,
-          "end": 720,
+          "label": "Public swim - leisure pool only",
+          "start": 630,
+          "end": 780,
           "playFree": false
         },
         {
-          "day": 6,
-          "label": "Public Swim – warm pool only",
-          "start": 720,
-          "end": 780,
-          "playFree": true
+          "day": 4,
+          "label": "Public swim - leisure pool only",
+          "start": 960,
+          "end": 1020,
+          "playFree": false
         },
         {
-          "day": 0,
-          "label": "Public Swim – warm pool only",
-          "start": 720,
+          "day": 5,
+          "label": "Public swim - leisure pool only",
+          "start": 630,
           "end": 780,
+          "playFree": false
+        },
+        {
+          "day": 5,
+          "label": "Public swim - leisure pool only",
+          "start": 960,
+          "end": 1200,
           "playFree": false
         }
       ]
     },
     {
-      "id": "rayfriel",
-      "name": "Ray Friel Recreation Complex",
-      "area": "East · Orléans",
-      "address": "1585 Tenth Line Rd",
-      "wave": true,
-      "url": "https://ottawa.ca/en/recreation-and-parks/facilities/place-listing/ray-friel-recreation-complex",
+      "id": "bob-macquarrie-recreation-complex-orleans",
+      "name": "Bob MacQuarrie Recreation Complex - Orléans",
+      "address": "",
+      "wave": false,
+      "url": "https://ottawa.ca/en/recreation-and-parks/facilities/place-listing/bob-macquarrie-recreation-complex-orleans",
       "sessions": [
         {
-          "day": 4,
-          "label": "Public swim",
-          "start": 1020,
-          "end": 1170,
-          "playFree": false
-        },
-        {
-          "day": 6,
-          "label": "Public swim",
-          "start": 720,
-          "end": 780,
-          "playFree": true
-        },
-        {
-          "day": 0,
-          "label": "Public swim",
-          "start": 720,
-          "end": 780,
-          "playFree": false
-        },
-        {
-          "day": 6,
-          "label": "Wave swim",
-          "start": 780,
+          "day": 2,
+          "label": "Public swim - 25 metre pool only",
+          "start": 840,
           "end": 960,
           "playFree": false
         },
         {
+          "day": 4,
+          "label": "Public swim - 25 metre pool only",
+          "start": 840,
+          "end": 960,
+          "playFree": false
+        },
+        {
+          "day": 5,
+          "label": "Public swim - 25 metre pool only",
+          "start": 1170,
+          "end": 1230,
+          "playFree": false
+        },
+        {
+          "day": 6,
+          "label": "Public swim - 25 metre pool only",
+          "start": 810,
+          "end": 960,
+          "playFree": true
+        },
+        {
           "day": 0,
-          "label": "Wave swim",
-          "start": 780,
+          "label": "Public swim - 25 metre pool only",
+          "start": 810,
+          "end": 960,
+          "playFree": false
+        },
+        {
+          "day": 2,
+          "label": "Public swim - therapeutic pool",
+          "start": 600,
+          "end": 660,
+          "playFree": false
+        },
+        {
+          "day": 4,
+          "label": "Public swim - therapeutic pool",
+          "start": 600,
+          "end": 660,
+          "playFree": false
+        },
+        {
+          "day": 5,
+          "label": "Public swim - therapeutic pool",
+          "start": 1170,
+          "end": 1230,
+          "playFree": false
+        },
+        {
+          "day": 6,
+          "label": "Public swim - therapeutic pool",
+          "start": 870,
+          "end": 960,
+          "playFree": true
+        },
+        {
+          "day": 0,
+          "label": "Public swim - therapeutic pool",
+          "start": 810,
           "end": 960,
           "playFree": false
         }
       ]
     },
     {
-      "id": "dupuis",
+      "id": "francois-dupuis-recreation-centre",
       "name": "François Dupuis Recreation Centre",
-      "area": "East · Orléans",
-      "address": "2263 St-Laurent Blvd",
+      "address": "2263 Portobello Boulevard",
       "wave": false,
       "url": "https://ottawa.ca/en/recreation-and-parks/facilities/place-listing/francois-dupuis-recreation-centre",
       "sessions": [
@@ -293,6 +441,600 @@
           "label": "Public swim - 25m pool",
           "start": 780,
           "end": 900,
+          "playFree": false
+        }
+      ]
+    },
+    {
+      "id": "ray-friel-recreation-complex",
+      "name": "Ray Friel Recreation Complex",
+      "address": "",
+      "wave": true,
+      "url": "https://ottawa.ca/en/recreation-and-parks/facilities/place-listing/ray-friel-recreation-complex",
+      "sessions": [
+        {
+          "day": 4,
+          "label": "Public swim",
+          "start": 1020,
+          "end": 1170,
+          "playFree": false
+        },
+        {
+          "day": 6,
+          "label": "Public swim",
+          "start": 720,
+          "end": 780,
+          "playFree": true
+        },
+        {
+          "day": 0,
+          "label": "Public swim",
+          "start": 720,
+          "end": 780,
+          "playFree": false
+        },
+        {
+          "day": 6,
+          "label": "Wave swim",
+          "start": 780,
+          "end": 960,
+          "playFree": false
+        },
+        {
+          "day": 0,
+          "label": "Wave swim",
+          "start": 780,
+          "end": 960,
+          "playFree": false
+        }
+      ]
+    },
+    {
+      "id": "splash-wave-pool",
+      "name": "Splash Wave Pool",
+      "address": "",
+      "wave": true,
+      "url": "https://ottawa.ca/en/recreation-and-parks/facilities/place-listing/splash-wave-pool",
+      "sessions": [
+        {
+          "day": 5,
+          "label": "Wave Swim",
+          "start": 1145,
+          "end": 1260,
+          "playFree": false
+        },
+        {
+          "day": 6,
+          "label": "Wave Swim",
+          "start": 780,
+          "end": 1020,
+          "playFree": false
+        },
+        {
+          "day": 0,
+          "label": "Wave Swim",
+          "start": 780,
+          "end": 1020,
+          "playFree": false
+        },
+        {
+          "day": 1,
+          "label": "Public Swim - wave tank and warm pool",
+          "start": 660,
+          "end": 780,
+          "playFree": false
+        },
+        {
+          "day": 2,
+          "label": "Public Swim - wave tank and warm pool",
+          "start": 720,
+          "end": 780,
+          "playFree": false
+        },
+        {
+          "day": 2,
+          "label": "Public Swim - wave tank and warm pool",
+          "start": 990,
+          "end": 1260,
+          "playFree": false
+        },
+        {
+          "day": 3,
+          "label": "Public Swim - wave tank and warm pool",
+          "start": 570,
+          "end": 780,
+          "playFree": false
+        },
+        {
+          "day": 4,
+          "label": "Public Swim - wave tank and warm pool",
+          "start": 720,
+          "end": 780,
+          "playFree": false
+        },
+        {
+          "day": 4,
+          "label": "Public Swim - wave tank and warm pool",
+          "start": 990,
+          "end": 1260,
+          "playFree": false
+        },
+        {
+          "day": 5,
+          "label": "Public Swim - wave tank and warm pool",
+          "start": 570,
+          "end": 780,
+          "playFree": false
+        },
+        {
+          "day": 1,
+          "label": "Public Swim – warm pool only",
+          "start": 570,
+          "end": 660,
+          "playFree": false
+        },
+        {
+          "day": 2,
+          "label": "Public Swim – warm pool only",
+          "start": 600,
+          "end": 720,
+          "playFree": false
+        },
+        {
+          "day": 4,
+          "label": "Public Swim – warm pool only",
+          "start": 600,
+          "end": 720,
+          "playFree": false
+        },
+        {
+          "day": 6,
+          "label": "Public Swim – warm pool only",
+          "start": 720,
+          "end": 780,
+          "playFree": true
+        },
+        {
+          "day": 0,
+          "label": "Public Swim – warm pool only",
+          "start": 720,
+          "end": 780,
+          "playFree": false
+        }
+      ]
+    },
+    {
+      "id": "deborah-anne-kirwan-pool",
+      "name": "Deborah Anne Kirwan Pool",
+      "address": "",
+      "wave": false,
+      "url": "https://ottawa.ca/en/recreation-and-parks/facilities/place-listing/deborah-anne-kirwan-pool",
+      "sessions": [
+        {
+          "day": 1,
+          "label": "Public swim",
+          "start": 1170,
+          "end": 1230,
+          "playFree": false
+        },
+        {
+          "day": 2,
+          "label": "Public swim",
+          "start": 1170,
+          "end": 1230,
+          "playFree": false
+        },
+        {
+          "day": 4,
+          "label": "Public swim",
+          "start": 1170,
+          "end": 1230,
+          "playFree": false
+        },
+        {
+          "day": 5,
+          "label": "Public swim",
+          "start": 1020,
+          "end": 1140,
+          "playFree": false
+        },
+        {
+          "day": 6,
+          "label": "Public swim",
+          "start": 780,
+          "end": 960,
+          "playFree": true
+        },
+        {
+          "day": 0,
+          "label": "Public swim",
+          "start": 780,
+          "end": 960,
+          "playFree": false
+        },
+        {
+          "day": 3,
+          "label": "Public swim - women's only",
+          "start": 1230,
+          "end": 1290,
+          "playFree": false
+        }
+      ]
+    },
+    {
+      "id": "sawmill-creek-community-centre-and-pool",
+      "name": "Sawmill Creek Community Centre and Pool",
+      "address": "",
+      "wave": false,
+      "url": "https://ottawa.ca/en/recreation-and-parks/facilities/place-listing/sawmill-creek-community-centre-and-pool",
+      "sessions": [
+        {
+          "day": 6,
+          "label": "Public swim",
+          "start": 780,
+          "end": 900,
+          "playFree": true
+        },
+        {
+          "day": 6,
+          "label": "Public swim",
+          "start": 1110,
+          "end": 1170,
+          "playFree": true
+        },
+        {
+          "day": 0,
+          "label": "Public swim",
+          "start": 780,
+          "end": 900,
+          "playFree": false
+        }
+      ]
+    },
+    {
+      "id": "nepean-sportsplex",
+      "name": "Nepean Sportsplex",
+      "address": "",
+      "wave": false,
+      "url": "https://ottawa.ca/en/recreation-and-parks/facilities/place-listing/nepean-sportsplex",
+      "sessions": [
+        {
+          "day": 1,
+          "label": "Public swim - 25m pool",
+          "start": 660,
+          "end": 780,
+          "playFree": false
+        },
+        {
+          "day": 2,
+          "label": "Public swim - 25m pool",
+          "start": 660,
+          "end": 780,
+          "playFree": false
+        },
+        {
+          "day": 3,
+          "label": "Public swim - 25m pool",
+          "start": 660,
+          "end": 780,
+          "playFree": false
+        },
+        {
+          "day": 4,
+          "label": "Public swim - 25m pool",
+          "start": 660,
+          "end": 780,
+          "playFree": false
+        },
+        {
+          "day": 5,
+          "label": "Public swim - 25m pool",
+          "start": 660,
+          "end": 780,
+          "playFree": false
+        },
+        {
+          "day": 6,
+          "label": "Public swim - 25m pool",
+          "start": 780,
+          "end": 900,
+          "playFree": true
+        },
+        {
+          "day": 0,
+          "label": "Public swim - 25m pool",
+          "start": 780,
+          "end": 900,
+          "playFree": false
+        }
+      ]
+    },
+    {
+      "id": "walter-baker-sports-centre",
+      "name": "Walter Baker Sports Centre",
+      "address": "",
+      "wave": false,
+      "url": "https://ottawa.ca/en/recreation-and-parks/facilities/place-listing/walter-baker-sports-centre",
+      "sessions": [
+        {
+          "day": 3,
+          "label": "Public swim",
+          "start": 1080,
+          "end": 1170,
+          "playFree": false
+        },
+        {
+          "day": 5,
+          "label": "Public swim",
+          "start": 1080,
+          "end": 1170,
+          "playFree": false
+        },
+        {
+          "day": 6,
+          "label": "Public swim",
+          "start": 780,
+          "end": 960,
+          "playFree": true
+        },
+        {
+          "day": 0,
+          "label": "Public swim",
+          "start": 780,
+          "end": 960,
+          "playFree": false
+        }
+      ]
+    },
+    {
+      "id": "cardelrec-recreation-complex-goulbourn",
+      "name": "CARDELREC Recreation Complex Goulbourn",
+      "address": "",
+      "wave": false,
+      "url": "https://ottawa.ca/en/recreation-and-parks/facilities/place-listing/cardelrec-recreation-complex-goulbourn",
+      "sessions": [
+        {
+          "day": 6,
+          "label": "Public swim with slide *Reservations not required",
+          "start": 810,
+          "end": 960,
+          "playFree": true
+        },
+        {
+          "day": 0,
+          "label": "Public swim with slide *Reservations not required",
+          "start": 810,
+          "end": 960,
+          "playFree": false
+        },
+        {
+          "day": 1,
+          "label": "Public swim with no slide *Reservations not required",
+          "start": 795,
+          "end": 855,
+          "playFree": false
+        },
+        {
+          "day": 3,
+          "label": "Public swim with no slide *Reservations not required",
+          "start": 795,
+          "end": 855,
+          "playFree": false
+        },
+        {
+          "day": 5,
+          "label": "Public swim with no slide *Reservations not required",
+          "start": 795,
+          "end": 855,
+          "playFree": false
+        },
+        {
+          "day": 5,
+          "label": "Public swim with no slide *Reservations not required",
+          "start": 1140,
+          "end": 1230,
+          "playFree": false
+        }
+      ]
+    },
+    {
+      "id": "minto-recreation-complex-barrhaven",
+      "name": "Minto Recreation Complex - Barrhaven",
+      "address": "",
+      "wave": false,
+      "url": "https://ottawa.ca/en/recreation-and-parks/facilities/place-listing/minto-recreation-complex-barrhaven",
+      "sessions": [
+        {
+          "day": 2,
+          "label": "Public Swim",
+          "start": 1125,
+          "end": 1245,
+          "playFree": false
+        },
+        {
+          "day": 5,
+          "label": "Public Swim",
+          "start": 1140,
+          "end": 1260,
+          "playFree": false
+        },
+        {
+          "day": 6,
+          "label": "Public Swim",
+          "start": 870,
+          "end": 1050,
+          "playFree": true
+        },
+        {
+          "day": 0,
+          "label": "Public Swim",
+          "start": 780,
+          "end": 900,
+          "playFree": false
+        },
+        {
+          "day": 1,
+          "label": "Public Swim - reduced capacity",
+          "start": 630,
+          "end": 810,
+          "playFree": false
+        },
+        {
+          "day": 2,
+          "label": "Public Swim - reduced capacity",
+          "start": 630,
+          "end": 810,
+          "playFree": false
+        },
+        {
+          "day": 3,
+          "label": "Public Swim - reduced capacity",
+          "start": 630,
+          "end": 810,
+          "playFree": false
+        },
+        {
+          "day": 4,
+          "label": "Public Swim - reduced capacity",
+          "start": 630,
+          "end": 810,
+          "playFree": false
+        },
+        {
+          "day": 5,
+          "label": "Public Swim - reduced capacity",
+          "start": 630,
+          "end": 810,
+          "playFree": false
+        },
+        {
+          "day": 6,
+          "label": "Public Swim with WIBIT",
+          "start": 1140,
+          "end": 1260,
+          "playFree": true
+        }
+      ]
+    },
+    {
+      "id": "pinecrest-recreation-complex",
+      "name": "Pinecrest Recreation Complex",
+      "address": "",
+      "wave": false,
+      "url": "https://ottawa.ca/en/recreation-and-parks/facilities/place-listing/pinecrest-recreation-complex",
+      "sessions": [
+        {
+          "day": 2,
+          "label": "Public Swim *Reservations not required.",
+          "start": 690,
+          "end": 765,
+          "playFree": false
+        },
+        {
+          "day": 4,
+          "label": "Public Swim *Reservations not required.",
+          "start": 690,
+          "end": 765,
+          "playFree": false
+        },
+        {
+          "day": 5,
+          "label": "Public Swim *Reservations not required.",
+          "start": 750,
+          "end": 810,
+          "playFree": false
+        },
+        {
+          "day": 6,
+          "label": "Public Swim *Reservations not required.",
+          "start": 750,
+          "end": 825,
+          "playFree": true
+        },
+        {
+          "day": 0,
+          "label": "Public Swim *Reservations not required.",
+          "start": 750,
+          "end": 825,
+          "playFree": false
+        }
+      ]
+    },
+    {
+      "id": "richcraft-recreation-complex-kanata",
+      "name": "Richcraft Recreation Complex-Kanata",
+      "address": "",
+      "wave": false,
+      "url": "https://ottawa.ca/en/recreation-and-parks/facilities/place-listing/richcraft-recreation-complex-kanata",
+      "sessions": [
+        {
+          "day": 1,
+          "label": "Public swim - leisure pool only *Reservations not required.",
+          "start": 630,
+          "end": 690,
+          "playFree": false
+        },
+        {
+          "day": 2,
+          "label": "Public swim - leisure pool only *Reservations not required.",
+          "start": 630,
+          "end": 780,
+          "playFree": false
+        },
+        {
+          "day": 5,
+          "label": "Public swim - leisure pool only *Reservations not required.",
+          "start": 690,
+          "end": 780,
+          "playFree": false
+        },
+        {
+          "day": 5,
+          "label": "Public swim - leisure pool only *Reservations not required.",
+          "start": 900,
+          "end": 990,
+          "playFree": false
+        },
+        {
+          "day": 6,
+          "label": "Public swim - leisure pool only *Reservations not required.",
+          "start": 510,
+          "end": 570,
+          "playFree": true
+        },
+        {
+          "day": 6,
+          "label": "Public swim - leisure pool only *Reservations not required.",
+          "start": 750,
+          "end": 810,
+          "playFree": true
+        },
+        {
+          "day": 0,
+          "label": "Public swim - leisure pool only *Reservations not required.",
+          "start": 510,
+          "end": 630,
+          "playFree": false
+        },
+        {
+          "day": 1,
+          "label": "Public swim *Reservations not required.",
+          "start": 1170,
+          "end": 1260,
+          "playFree": false
+        },
+        {
+          "day": 6,
+          "label": "Public swim *Reservations not required.",
+          "start": 810,
+          "end": 960,
+          "playFree": true
+        },
+        {
+          "day": 0,
+          "label": "Public swim *Reservations not required.",
+          "start": 810,
+          "end": 960,
           "playFree": false
         }
       ]
