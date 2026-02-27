@@ -24,7 +24,7 @@ BASE_URL = "https://ottawa.ca"
 DAYS = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
 DAY_INDEX = {d: i for i, d in enumerate(DAYS)}
 
-PUBLIC_SWIM_KEYWORDS = ["public swim", "wave swim"]
+PUBLIC_SWIM_KEYWORDS = ["public swim", "wave swim", "lane swim"]
 PUBLIC_SKATE_KEYWORDS = ["public skate", "public skating", "family skate", "family skating", "50+ skate"]
 WAVE_POOL_KEYWORDS = ["wave pool", "wave tank", "splash wave", "wave swim"]
 
@@ -271,7 +271,7 @@ def main():
             sessions, wave = scrape_venue(
                 page, pool,
                 row_keywords=PUBLIC_SWIM_KEYWORDS,
-                check_keywords=["public swim", "wave swim"],
+                check_keywords=["public swim", "wave swim", "lane swim"],
                 wave_check=True,
             )
             if sessions:
