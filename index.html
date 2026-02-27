@@ -229,8 +229,9 @@ select#st option{background:#fff;color:var(--text)}
     <div class="activity-toggle">
       <button class="act-btn active-swim" id="btn-swim" onclick="setActivity('swim')">🏊 Swim</button>
       <button class="act-btn" id="btn-skate" onclick="setActivity('skate')">⛸️ Skate</button>
-      <button class="act-btn" id="btn-both" onclick="setActivity('both')">🏊 + ⛸️ Both</button>
+      <button class="act-btn" id="btn-both" onclick="setActivity('both')">🏊 + ⛸️ All</button>
     </div>
+    <div id="sub-filter" style="margin-bottom:16px;display:none"></div>
     <div class="clabel">When?</div>
     <div class="row2">
       <div><label for="sd">Date</label><input type="date" id="sd"/></div>
@@ -261,6 +262,7 @@ function fmt(n){
 }
 function t(h,m){return h*60+(m||0)}
 
+
 // ── Fallback data (swim only) ─────────────────────────────────────────────────
 const FALLBACK_POOLS=[
   {id:'splash-wave-pool',name:'Splash Wave Pool',url:'https://ottawa.ca/en/recreation-and-parks/facilities/place-listing/splash-wave-pool',wave:true,sessions:[
@@ -287,15 +289,8 @@ let RINKS=[];
 let dataSource='loading';
 let scrapedAt=null;
 let userCoords=null;
-let activity='swim'; // 'swim' | 'skate' | 'both'
-
-// ── Activity toggle ───────────────────────────────────────────────────────────
-function setActivity(a){
-  activity=a;
-  document.getElementById('btn-swim').className='act-btn'+(a==='swim'?' active-swim':'');
-  document.getElementById('btn-skate').className='act-btn'+(a==='skate'?' active-skate':'');
-  document.getElementById('btn-both').className='act-btn'+(a==='both'?' active-both':'');
-}
+let activity='swim';    // 'swim' | 'skate' | 'all'
+let subActivity='all';  // 'all' | 'public' | 'lane' | 'public-skate' | 'family-skate'
 
 // ── Geolocation ───────────────────────────────────────────────────────────────
 function getUserLocation(){
@@ -465,151 +460,218 @@ function updateNotice(){
   n.style.display='block';
 }
 
-// ── Search ────────────────────────────────────────────────────────────────────
-function buildActive(venues,day,mins){
-  return venues.map(function(venue){
-    const hits=(venue.sessions||[]).filter(function(s){return s.day===day&&mins>=s.start&&mins<s.end;});
-    const info=infoForVenue(venue);
-    return {venue:venue,hits:hits,dist:info.dist,addr:info.addr,mapsUrl:info.mapsUrl};
-  }).filter(function(r){return r.hits.length;});
+// ── Activity toggle & sub-filter ─────────────────────────────────────────────
+function setActivity(a) {
+  activity = a;
+  subActivity = 'all';
+  document.getElementById('btn-swim').className  = 'act-btn' + (a==='swim'  ? ' active-swim'  : '');
+  document.getElementById('btn-skate').className = 'act-btn' + (a==='skate' ? ' active-skate' : '');
+  document.getElementById('btn-both').className  = 'act-btn' + (a==='all'   ? ' active-both'  : '');
+  renderSubFilter();
 }
 
-function sortResults(active){
-  const hasDistances=userCoords&&active.some(function(r){return r.dist!==null;});
-  if(hasDistances){
-    active.sort(function(a,b){
-      if(a.dist===null&&b.dist===null) return a.venue.name.localeCompare(b.venue.name);
-      if(a.dist===null) return 1;
-      if(b.dist===null) return -1;
-      return a.dist-b.dist;
+function setSubActivity(val) {
+  subActivity = val;
+  renderSubFilter();
+}
+
+function renderSubFilter() {
+  const el = document.getElementById('sub-filter');
+  if (activity === 'all') { el.style.display='none'; el.innerHTML=''; return; }
+  el.style.display = 'block';
+
+  const labelStyle = 'font-size:.67rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--text-muted);margin-bottom:7px;';
+  const base = 'display:inline-flex;align-items:center;padding:5px 12px;border-radius:20px;font-size:.76rem;font-weight:600;cursor:pointer;border:1.5px solid;margin-right:5px;margin-bottom:4px;font-family:inherit;';
+
+  function chip(val, label, color, bg, border) {
+    const on = subActivity === val;
+    const style = on
+      ? base + `background:${bg};color:${color};border-color:${border};`
+      : base + `background:#F8FAFC;color:var(--text-muted);border-color:var(--border);`;
+    return `<button style="${style}" onclick="setSubActivity('${val}')">${label}</button>`;
+  }
+
+  let html = `<div style="${labelStyle}">Which type?</div>`;
+  if (activity === 'swim') {
+    html += chip('all',    '● All swim',    'var(--accent-dark)', 'var(--accent-light)', 'var(--accent)');
+    html += chip('public', '○ Public swim', 'var(--accent-dark)', 'var(--accent-light)', 'var(--accent)');
+    html += chip('lane',   '○ Lane swim',   'var(--accent-dark)', 'var(--accent-light)', 'var(--accent)');
+  } else {
+    html += chip('all',          '● All skate',    'var(--blue)', 'var(--blue-light)', 'var(--blue)');
+    html += chip('public-skate', '○ Public skate', 'var(--blue)', 'var(--blue-light)', 'var(--blue)');
+    html += chip('family-skate', '○ Family skate', 'var(--blue)', 'var(--blue-light)', 'var(--blue)');
+  }
+  el.innerHTML = html;
+}
+
+// ── Session keyword matching ──────────────────────────────────────────────────
+const SWIM_PUBLIC_KW  = ['public swim','wave swim'];
+const SWIM_LANE_KW    = ['lane swim'];
+const SKATE_PUBLIC_KW = ['public skate','public skating'];
+const SKATE_FAMILY_KW = ['family skate','family skating'];
+
+function sessionMatchesFilter(s, isSkate) {
+  const lbl = s.label.toLowerCase();
+  if (!isSkate) {
+    if (subActivity === 'all')    return true;
+    if (subActivity === 'public') return SWIM_PUBLIC_KW.some(k => lbl.includes(k));
+    if (subActivity === 'lane')   return SWIM_LANE_KW.some(k => lbl.includes(k));
+  } else {
+    if (subActivity === 'all')          return true;
+    if (subActivity === 'public-skate') return SKATE_PUBLIC_KW.some(k => lbl.includes(k));
+    if (subActivity === 'family-skate') return SKATE_FAMILY_KW.some(k => lbl.includes(k));
+  }
+  return false;
+}
+
+// ── Search ────────────────────────────────────────────────────────────────────
+function buildActive(venues, day, mins, isSkate) {
+  return venues.map(function(venue) {
+    const hits = (venue.sessions||[]).filter(s =>
+      s.day===day && mins>=s.start && mins<s.end && sessionMatchesFilter(s, isSkate)
+    );
+    const info = infoForVenue(venue);
+    return {venue, hits, dist:info.dist, addr:info.addr, mapsUrl:info.mapsUrl};
+  }).filter(r => r.hits.length);
+}
+
+function sortResults(active) {
+  const hasDistances = userCoords && active.some(r => r.dist !== null);
+  if (hasDistances) {
+    active.sort((a,b) => {
+      if (a.dist===null && b.dist===null) return a.venue.name.localeCompare(b.venue.name);
+      if (a.dist===null) return 1;
+      if (b.dist===null) return -1;
+      return a.dist - b.dist;
     });
-  }else{
-    active.sort(function(a,b){return a.venue.name.localeCompare(b.venue.name);});
+  } else {
+    active.sort((a,b) => a.venue.name.localeCompare(b.venue.name));
   }
   return hasDistances;
 }
 
-function doSearch(){
-  const dateVal=document.getElementById('sd').value;
-  const timeVal=document.getElementById('st').value;
-  if(!dateVal||!timeVal){alert('Please pick both a date and time.');return}
+function doSearch() {
+  const dateVal = document.getElementById('sd').value;
+  const timeVal = document.getElementById('st').value;
+  if (!dateVal||!timeVal) { alert('Please pick both a date and time.'); return; }
 
-  const day=getDay(),mins=getMins();
-  const dateObj=new Date(dateVal+'T12:00:00');
-  const dateStr=dateObj.toLocaleDateString('en-CA',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
+  const day = getDay(), mins = getMins();
+  const dateObj = new Date(dateVal+'T12:00:00');
+  const dateStr = dateObj.toLocaleDateString('en-CA',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
 
-  const showSwim=(activity==='swim'||activity==='both');
-  const showSkate=(activity==='skate'||activity==='both');
+  const showSwim  = activity==='swim'  || activity==='all';
+  const showSkate = activity==='skate' || activity==='all';
 
-  const activePools=showSwim?buildActive(POOLS,day,mins):[];
-  const activeRinks=showSkate?buildActive(RINKS,day,mins):[];
+  const activePools = showSwim  ? buildActive(POOLS, day, mins, false) : [];
+  const activeRinks = showSkate ? buildActive(RINKS, day, mins, true)  : [];
 
-  const allActive=[...activePools,...activeRinks];
-  const hasDistances=sortResults(allActive);
+  const hasDistPools = sortResults(activePools);
+  const hasDistRinks = sortResults(activeRinks);
+  const hasDistances = hasDistPools || hasDistRinks;
 
-  // Also sort pools and rinks separately for display
-  sortResults(activePools);
-  sortResults(activeRinks);
-
-  // Later sessions
-  const laterPools=[];
-  const laterRinks=[];
-  if(showSwim) POOLS.forEach(function(p){
-    (p.sessions||[]).filter(function(s){return s.day===day&&s.start>mins;}).forEach(function(s){laterPools.push({venue:p,s:s});});
+  const laterPools=[], laterRinks=[];
+  if (showSwim) POOLS.forEach(p => {
+    (p.sessions||[]).filter(s => s.day===day && s.start>mins && sessionMatchesFilter(s,false))
+      .forEach(s => laterPools.push({venue:p, s}));
   });
-  if(showSkate) RINKS.forEach(function(r){
-    (r.sessions||[]).filter(function(s){return s.day===day&&s.start>mins;}).forEach(function(s){laterRinks.push({venue:r,s:s});});
+  if (showSkate) RINKS.forEach(r => {
+    (r.sessions||[]).filter(s => s.day===day && s.start>mins && sessionMatchesFilter(s,true))
+      .forEach(s => laterRinks.push({venue:r, s}));
   });
-  laterPools.sort(function(a,b){return a.s.start-b.s.start;});
-  laterRinks.sort(function(a,b){return a.s.start-b.s.start;});
+  laterPools.sort((a,b) => a.s.start-b.s.start);
+  laterRinks.sort((a,b) => a.s.start-b.s.start);
 
-  render(activePools,activeRinks,laterPools,laterRinks,dateStr,mins,hasDistances,showSwim,showSkate);
+  render(activePools, activeRinks, laterPools, laterRinks, dateStr, mins, hasDistances, showSwim, showSkate);
 }
 
-function toggle(el){el.classList.toggle('open')}
+function toggle(el) { el.classList.toggle('open'); }
 
 // ── Render ────────────────────────────────────────────────────────────────────
-function venueCard(r,isSkate,timeLabel){
-  const venue=r.venue,hits=r.hits,dist=r.dist,addr=r.addr,mapsUrl=r.mapsUrl;
-  const hasFree=hits.some(function(s){return s.playFree;});
-  const addrText=addr?'📍 '+addr:'';
-  const distText=(dist!==null&&!isNaN(dist))?(dist<1?(dist*1000).toFixed(0)+' m':dist.toFixed(1)+' km')+' away':'';
-  const addrLine=addrText&&distText?addrText+' · '+distText:addrText||distText;
-  const blockClass='pblock open'+(isSkate?' skate-block':'');
+function venueCard(r, isSkate, timeLabel) {
+  const {venue, hits, dist, addr, mapsUrl} = r;
+  const hasFree = hits.some(s => s.playFree);
+  const addrText = addr ? '📍 '+addr : '';
+  const distText = (dist!==null && !isNaN(dist))
+    ? (dist<1 ? (dist*1000).toFixed(0)+' m' : dist.toFixed(1)+' km')+' away' : '';
+  const addrLine = addrText&&distText ? addrText+' · '+distText : addrText||distText;
+  const blockClass = 'pblock open'+(isSkate?' skate-block':'');
+  const openTag = isSkate
+    ? '<span class="tag t-skate">⛸️ Open at '+timeLabel+'</span>'
+    : '<span class="tag t-open">🏊 Open at '+timeLabel+'</span>';
 
-  let h='<div class="'+blockClass+'" onclick="toggle(this)">'
+  let h = '<div class="'+blockClass+'" onclick="toggle(this)">'
     +'<div class="phead"><div>'
     +'<div class="pname">'+venue.name
-    +(mapsUrl?' <a href="'+mapsUrl+'" target="_blank" onclick="event.stopPropagation()" style="font-size:.72rem;font-weight:500;color:#29b6f6;text-decoration:none;vertical-align:middle;margin-left:6px" title="Open in Google Maps">📍 Maps</a>':'')
+    +(mapsUrl ? ' <a href="'+mapsUrl+'" target="_blank" onclick="event.stopPropagation()" style="font-size:.72rem;font-weight:600;color:var(--accent);text-decoration:none;vertical-align:middle;margin-left:6px" title="Open in Google Maps">📍 Maps</a>' : '')
     +'</div>'
-    +(addrLine?'<div class="parea">'+addrLine+'</div>':'')
-    +'<div class="ptags">'
-    +(isSkate?'<span class="tag t-skate">⛸️ Open at '+timeLabel+'</span>':'<span class="tag t-open">🏊 Open at '+timeLabel+'</span>')
-    +(hasFree?'<span class="tag t-free">Play Free</span>':'')
-    +(venue.wave?'<span class="tag t-wave">🌊 Wave pool</span>':'')
+    +(addrLine ? '<div class="parea">'+addrLine+'</div>' : '')
+    +'<div class="ptags">'+openTag
+    +(hasFree ? '<span class="tag t-free">Play Free</span>' : '')
+    +(venue.wave ? '<span class="tag t-wave">🌊 Wave pool</span>' : '')
     +'</div></div><div class="chev">▾</div></div>'
-    +'<div class="spanel"><div class="stitle">Active sessions at this time</div>';
+    +'<div class="spanel"><div class="stitle">Sessions open at '+timeLabel+'</div>';
 
-  hits.forEach(function(s){
-    h+='<div class="srow'+(s.playFree?' free':'')+'"><div class="styp">'+s.label+'</div>'
+  hits.forEach(s => {
+    h += '<div class="srow'+(s.playFree?' free':'')+'"><div class="styp">'+s.label+'</div>'
       +'<div style="display:flex;align-items:center;gap:8px">'
-      +(s.playFree?'<span class="fbadge">PLAY FREE</span>':'')
-      +'<div class="stim">'+fmt(s.start)+' - '+fmt(s.end)+'</div></div></div>';
+      +(s.playFree ? '<span class="fbadge">PLAY FREE</span>' : '')
+      +'<div class="stim">'+fmt(s.start)+' – '+fmt(s.end)+'</div>'
+      +'</div></div>';
   });
 
-  h+='<a class="extlink" href="'+venue.url+'" target="_blank">Full schedule on Ottawa.ca</a>'
+  h += '<a class="extlink" href="'+venue.url+'" target="_blank">Full schedule on Ottawa.ca ↗</a>'
     +'</div></div>';
   return h;
 }
 
-function render(activePools,activeRinks,laterPools,laterRinks,dateStr,mins,hasDistances,showSwim,showSkate){
-  const total=activePools.length+activeRinks.length;
-  const sortNote=hasDistances?' <span style="font-size:.78rem;color:var(--dim);font-weight:400">- sorted by distance</span>':'';
-  const typeLabel=showSwim&&showSkate?'venues':showSwim?'pools':'rinks';
+function render(activePools, activeRinks, laterPools, laterRinks, dateStr, mins, hasDistances, showSwim, showSkate) {
+  const total = activePools.length + activeRinks.length;
+  const timeLabel = fmt(mins);
+  const sortNote = hasDistances
+    ? ' <span style="font-size:.78rem;color:var(--text-muted);font-weight:500"> — sorted by distance</span>' : '';
+  const typeLabel = showSwim&&showSkate ? 'venues' : showSwim ? 'pools' : 'rinks';
 
-  let h='<div class="results">'
-    +'<div class="rlabel">'+total+' '+typeLabel+(total!==1?'':'')+(total!==1?' open':' open')+' at '+fmt(mins)+sortNote+'</div>'
+  let h = '<div class="results">'
+    +'<div class="rlabel">'+total+' '+typeLabel+' open at '+timeLabel+sortNote+'</div>'
     +'<div class="rsub">'+dateStr+'</div>';
 
-  if(!total){
-    const icon=showSwim&&showSkate?'🏊⛸️':showSwim?'🌊':'⛸️';
-    h+='<div class="no-results"><div class="big">'+icon+'</div>'
-      +'<p>No open sessions found at <strong>'+fmt(mins)+'</strong>.<br>Check sessions below or try a different time.</p></div>';
-  }else{
-    if(showSwim&&showSkate&&activePools.length){
-      h+='<div class="section-header swim-hdr">🏊 Swimming ('+activePools.length+')</div>';
-    }
-    activePools.forEach(function(r){h+=venueCard(r,false,timeLabel);});
-
-    if(showSwim&&showSkate&&activeRinks.length){
-      h+='<div class="section-header skate-hdr">⛸️ Skating ('+activeRinks.length+')</div>';
-    }
-    activeRinks.forEach(function(r){h+=venueCard(r,true,timeLabel);});
+  if (!total) {
+    const icon = showSwim&&showSkate ? '🏊 ⛸️' : showSwim ? '🌊' : '⛸️';
+    h += '<div class="no-results"><div class="big">'+icon+'</div>'
+      +'<p>No open sessions found at <strong>'+timeLabel+'</strong>.<br>Try a different time or activity type.</p></div>';
+  } else {
+    if (showSwim&&showSkate&&activePools.length)
+      h += '<div class="section-header swim-hdr">🏊 Swimming ('+activePools.length+')</div>';
+    activePools.forEach(r => { h += venueCard(r, false, timeLabel); });
+    if (showSwim&&showSkate&&activeRinks.length)
+      h += '<div class="section-header skate-hdr">⛸️ Skating ('+activeRinks.length+')</div>';
+    activeRinks.forEach(r => { h += venueCard(r, true, timeLabel); });
   }
 
-  const laterAll=[...laterPools.map(function(x){return {...x,isSkate:false};}),
-                  ...laterRinks.map(function(x){return {...x,isSkate:true};})];
-  laterAll.sort(function(a,b){return a.s.start-b.s.start;});
+  const laterAll = [
+    ...laterPools.map(x => ({...x, isSkate:false})),
+    ...laterRinks.map(x => ({...x, isSkate:true})),
+  ].sort((a,b) => a.s.start-b.s.start);
 
-  if(laterAll.length){
-    h+='<div class="later-sec"><div class="llabel">More sessions later today</div>';
-    laterAll.forEach(function(item){
-      const venue=item.venue,s=item.s;
-      const icon=item.isSkate?'⛸️':'🏊';
-      h+='<div class="srow'+(s.playFree?' free':'').toString()+'" style="margin-bottom:8px">'
-        +'<div><div style="font-size:.79rem;color:var(--dim);margin-bottom:2px">'+icon+' '+venue.name+'</div>'
+  if (laterAll.length) {
+    h += '<div class="later-sec"><div class="llabel">More sessions later today</div>';
+    laterAll.forEach(({venue, s, isSkate}) => {
+      const icon = isSkate ? '⛸️' : '🏊';
+      h += '<div class="srow'+(s.playFree?' free':'')+'" style="margin-bottom:8px">'
+        +'<div><div style="font-size:.78rem;color:var(--text-muted);margin-bottom:2px">'+icon+' '+venue.name+'</div>'
         +'<div class="styp">'+s.label+'</div></div>'
         +'<div style="display:flex;align-items:center;gap:8px;flex-shrink:0">'
-        +(s.playFree?'<span class="fbadge">PLAY FREE</span>':'')
-        +'<div class="stim">'+fmt(s.start)+' - '+fmt(s.end)+'</div></div></div>';
+        +(s.playFree ? '<span class="fbadge">PLAY FREE</span>' : '')
+        +'<div class="stim">'+fmt(s.start)+' – '+fmt(s.end)+'</div>'
+        +'</div></div>';
     });
-    h+='</div>';
+    h += '</div>';
   }
 
-  h+='</div>';
-  const area=document.getElementById('results');
-  area.innerHTML=h;
-  area.scrollIntoView({behavior:'smooth',block:'start'});
+  h += '</div>';
+  const area = document.getElementById('results');
+  area.innerHTML = h;
+  area.scrollIntoView({behavior:'smooth', block:'start'});
 }
 
 </script>
