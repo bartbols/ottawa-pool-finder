@@ -424,14 +424,24 @@ function showDataBadge(){
   [userCoords]=await Promise.all([getUserLocation(),loadScheduleData()]);
 
   const dbg=document.getElementById('loc-debug');
-  if(userCoords){
-    dbg.textContent='Location: '+userCoords.lat.toFixed(5)+', '+userCoords.lng.toFixed(5)+' - results sorted by distance';
-    
-  }else{
-    dbg.textContent='Location unavailable - results sorted alphabetically';
-    
-  }
   dbg.style.display='block';
+  if(userCoords){
+    dbg.textContent='📍 Locating… — results sorted by distance';
+    try{
+      const r=await fetch(
+        'https://nominatim.openstreetmap.org/reverse?lat='+userCoords.lat+'&lon='+userCoords.lng+'&format=json',
+        {headers:{'Accept-Language':'en'}}
+      );
+      const j=await r.json();
+      const a=j.address||{};
+      const place=a.suburb||a.neighbourhood||a.quarter||a.village||a.town||a.city_district||a.city||'your area';
+      dbg.textContent='📍 '+place+' — results sorted by distance';
+    }catch(e){
+      dbg.textContent='📍 Location found — results sorted by distance';
+    }
+  }else{
+    dbg.textContent='Location unavailable — results sorted alphabetically';
+  }
 })();
 
 function getDay(){
