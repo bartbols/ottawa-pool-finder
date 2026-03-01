@@ -1,5 +1,5 @@
 {
-  "scraped_at": "2026-02-28T04:17:28.668275+00:00",
+  "scraped_at": "2026-03-01T04:56:48.976209+00:00",
   "pools": [
     {
       "id": "brewer-pool-and-arena",
@@ -2351,6 +2351,237 @@
       "wave": false,
       "url": "https://ottawa.ca/en/recreation-and-parks/facilities/place-listing/cardelrec-recreation-complex-goulbourn",
       "sessions": [
+        {
+          "day": 1,
+          "label": "Lane swim",
+          "start": 435,
+          "end": 495,
+          "playFree": false
+        },
+        {
+          "day": 1,
+          "label": "Lane swim",
+          "start": 675,
+          "end": 735,
+          "playFree": false
+        },
+        {
+          "day": 1,
+          "label": "Lane swim",
+          "start": 1200,
+          "end": 1260,
+          "playFree": false
+        },
+        {
+          "day": 2,
+          "label": "Lane swim",
+          "start": 510,
+          "end": 570,
+          "playFree": false
+        },
+        {
+          "day": 2,
+          "label": "Lane swim",
+          "start": 630,
+          "end": 690,
+          "playFree": false
+        },
+        {
+          "day": 2,
+          "label": "Lane swim",
+          "start": 690,
+          "end": 750,
+          "playFree": false
+        },
+        {
+          "day": 3,
+          "label": "Lane swim",
+          "start": 435,
+          "end": 495,
+          "playFree": false
+        },
+        {
+          "day": 3,
+          "label": "Lane swim",
+          "start": 495,
+          "end": 555,
+          "playFree": false
+        },
+        {
+          "day": 3,
+          "label": "Lane swim",
+          "start": 555,
+          "end": 615,
+          "playFree": false
+        },
+        {
+          "day": 3,
+          "label": "Lane swim",
+          "start": 675,
+          "end": 735,
+          "playFree": false
+        },
+        {
+          "day": 3,
+          "label": "Lane swim",
+          "start": 1200,
+          "end": 1260,
+          "playFree": false
+        },
+        {
+          "day": 4,
+          "label": "Lane swim",
+          "start": 510,
+          "end": 570,
+          "playFree": false
+        },
+        {
+          "day": 4,
+          "label": "Lane swim",
+          "start": 630,
+          "end": 690,
+          "playFree": false
+        },
+        {
+          "day": 4,
+          "label": "Lane swim",
+          "start": 690,
+          "end": 750,
+          "playFree": false
+        },
+        {
+          "day": 5,
+          "label": "Lane swim",
+          "start": 435,
+          "end": 495,
+          "playFree": false
+        },
+        {
+          "day": 5,
+          "label": "Lane swim",
+          "start": 675,
+          "end": 735,
+          "playFree": false
+        },
+        {
+          "day": 5,
+          "label": "Lane swim",
+          "start": 1230,
+          "end": 1290,
+          "playFree": false
+        },
+        {
+          "day": 6,
+          "label": "Lane swim",
+          "start": 690,
+          "end": 750,
+          "playFree": true
+        },
+        {
+          "day": 6,
+          "label": "Lane swim",
+          "start": 750,
+          "end": 810,
+          "playFree": true
+        },
+        {
+          "day": 0,
+          "label": "Lane swim",
+          "start": 690,
+          "end": 750,
+          "playFree": false
+        },
+        {
+          "day": 0,
+          "label": "Lane swim",
+          "start": 750,
+          "end": 810,
+          "playFree": false
+        },
+        {
+          "day": 1,
+          "label": "Public swim with slide *Reservations not required",
+          "start": 735,
+          "end": 900,
+          "playFree": false
+        },
+        {
+          "day": 1,
+          "label": "Public swim with slide *Reservations not required",
+          "start": 1080,
+          "end": 1200,
+          "playFree": false
+        },
+        {
+          "day": 2,
+          "label": "Public swim with slide *Reservations not required",
+          "start": 750,
+          "end": 930,
+          "playFree": false
+        },
+        {
+          "day": 2,
+          "label": "Public swim with slide *Reservations not required",
+          "start": 1080,
+          "end": 1185,
+          "playFree": false
+        },
+        {
+          "day": 3,
+          "label": "Public swim with slide *Reservations not required",
+          "start": 735,
+          "end": 900,
+          "playFree": false
+        },
+        {
+          "day": 3,
+          "label": "Public swim with slide *Reservations not required",
+          "start": 1080,
+          "end": 1200,
+          "playFree": false
+        },
+        {
+          "day": 4,
+          "label": "Public swim with slide *Reservations not required",
+          "start": 750,
+          "end": 930,
+          "playFree": false
+        },
+        {
+          "day": 4,
+          "label": "Public swim with slide *Reservations not required",
+          "start": 1080,
+          "end": 1185,
+          "playFree": false
+        },
+        {
+          "day": 5,
+          "label": "Public swim with slide *Reservations not required",
+          "start": 735,
+          "end": 900,
+          "playFree": false
+        },
+        {
+          "day": 6,
+          "label": "Public swim with slide *Reservations not required",
+          "start": 810,
+          "end": 960,
+          "playFree": true
+        },
+        {
+          "day": 0,
+          "label": "Public swim with slide *Reservations not required",
+          "start": 810,
+          "end": 960,
+          "playFree": false
+        },
+        {
+          "day": 5,
+          "label": "Public swim with no slide *Reservations not required",
+          "start": 1140,
+          "end": 1230,
+          "playFree": false
+        },
         {
           "day": 1,
           "label": "Lane swim",
