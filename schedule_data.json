@@ -1,5 +1,5 @@
 {
-  "scraped_at": "2026-03-07T04:23:45.696832+00:00",
+  "scraped_at": "2026-03-08T04:45:39.924623+00:00",
   "pools": [
     {
       "id": "brewer-pool-and-arena",
@@ -300,6 +300,118 @@
           "label": "Public swim",
           "start": 780,
           "end": 840,
+          "playFree": false
+        },
+        {
+          "day": 1,
+          "label": "Lane swim",
+          "start": 450,
+          "end": 780,
+          "playFree": false
+        },
+        {
+          "day": 1,
+          "label": "Lane swim",
+          "start": 1235,
+          "end": 1295,
+          "playFree": false
+        },
+        {
+          "day": 2,
+          "label": "Lane swim",
+          "start": 480,
+          "end": 540,
+          "playFree": false
+        },
+        {
+          "day": 2,
+          "label": "Lane swim",
+          "start": 660,
+          "end": 720,
+          "playFree": false
+        },
+        {
+          "day": 2,
+          "label": "Lane swim",
+          "start": 1230,
+          "end": 1290,
+          "playFree": false
+        },
+        {
+          "day": 3,
+          "label": "Lane swim",
+          "start": 450,
+          "end": 570,
+          "playFree": false
+        },
+        {
+          "day": 3,
+          "label": "Lane swim",
+          "start": 690,
+          "end": 780,
+          "playFree": false
+        },
+        {
+          "day": 3,
+          "label": "Lane swim",
+          "start": 1230,
+          "end": 1290,
+          "playFree": false
+        },
+        {
+          "day": 4,
+          "label": "Lane swim",
+          "start": 480,
+          "end": 540,
+          "playFree": false
+        },
+        {
+          "day": 4,
+          "label": "Lane swim",
+          "start": 660,
+          "end": 720,
+          "playFree": false
+        },
+        {
+          "day": 5,
+          "label": "Lane swim",
+          "start": 450,
+          "end": 570,
+          "playFree": false
+        },
+        {
+          "day": 5,
+          "label": "Lane swim",
+          "start": 690,
+          "end": 780,
+          "playFree": false
+        },
+        {
+          "day": 6,
+          "label": "Lane swim",
+          "start": 720,
+          "end": 780,
+          "playFree": true
+        },
+        {
+          "day": 0,
+          "label": "Lane swim",
+          "start": 750,
+          "end": 840,
+          "playFree": false
+        },
+        {
+          "day": 6,
+          "label": "Public swim",
+          "start": 780,
+          "end": 840,
+          "playFree": true
+        },
+        {
+          "day": 0,
+          "label": "Public swim",
+          "start": 840,
+          "end": 900,
           "playFree": false
         }
       ]
@@ -1984,6 +2096,146 @@
           "start": 810,
           "end": 960,
           "playFree": false
+        },
+        {
+          "day": 1,
+          "label": "Lane swim",
+          "start": 360,
+          "end": 480,
+          "playFree": false
+        },
+        {
+          "day": 1,
+          "label": "Lane swim",
+          "start": 660,
+          "end": 780,
+          "playFree": false
+        },
+        {
+          "day": 2,
+          "label": "Lane swim",
+          "start": 600,
+          "end": 840,
+          "playFree": false
+        },
+        {
+          "day": 2,
+          "label": "Lane swim",
+          "start": 1260,
+          "end": 1320,
+          "playFree": false
+        },
+        {
+          "day": 3,
+          "label": "Lane swim",
+          "start": 360,
+          "end": 480,
+          "playFree": false
+        },
+        {
+          "day": 3,
+          "label": "Lane swim",
+          "start": 600,
+          "end": 780,
+          "playFree": false
+        },
+        {
+          "day": 4,
+          "label": "Lane swim",
+          "start": 600,
+          "end": 840,
+          "playFree": false
+        },
+        {
+          "day": 4,
+          "label": "Lane swim",
+          "start": 1290,
+          "end": 1350,
+          "playFree": false
+        },
+        {
+          "day": 5,
+          "label": "Lane swim",
+          "start": 360,
+          "end": 480,
+          "playFree": false
+        },
+        {
+          "day": 5,
+          "label": "Lane swim",
+          "start": 660,
+          "end": 780,
+          "playFree": false
+        },
+        {
+          "day": 2,
+          "label": "Public swim - 25 metre pool only",
+          "start": 840,
+          "end": 960,
+          "playFree": false
+        },
+        {
+          "day": 4,
+          "label": "Public swim - 25 metre pool only",
+          "start": 840,
+          "end": 960,
+          "playFree": false
+        },
+        {
+          "day": 5,
+          "label": "Public swim - 25 metre pool only",
+          "start": 1170,
+          "end": 1230,
+          "playFree": false
+        },
+        {
+          "day": 6,
+          "label": "Public swim - 25 metre pool only",
+          "start": 810,
+          "end": 960,
+          "playFree": true
+        },
+        {
+          "day": 0,
+          "label": "Public swim - 25 metre pool only",
+          "start": 810,
+          "end": 960,
+          "playFree": false
+        },
+        {
+          "day": 2,
+          "label": "Public swim - therapeutic pool",
+          "start": 600,
+          "end": 660,
+          "playFree": false
+        },
+        {
+          "day": 4,
+          "label": "Public swim - therapeutic pool",
+          "start": 600,
+          "end": 660,
+          "playFree": false
+        },
+        {
+          "day": 5,
+          "label": "Public swim - therapeutic pool",
+          "start": 1170,
+          "end": 1230,
+          "playFree": false
+        },
+        {
+          "day": 6,
+          "label": "Public swim - therapeutic pool",
+          "start": 870,
+          "end": 960,
+          "playFree": true
+        },
+        {
+          "day": 0,
+          "label": "Public swim - therapeutic pool",
+          "start": 810,
+          "end": 960,
+          "playFree": false
         }
       ]
     },
@@ -3045,6 +3297,160 @@
           "start": 780,
           "end": 960,
           "playFree": false
+        },
+        {
+          "day": 1,
+          "label": "Lane swim",
+          "start": 360,
+          "end": 540,
+          "playFree": false
+        },
+        {
+          "day": 1,
+          "label": "Lane swim",
+          "start": 600,
+          "end": 780,
+          "playFree": false
+        },
+        {
+          "day": 1,
+          "label": "Lane swim",
+          "start": 1170,
+          "end": 1290,
+          "playFree": false
+        },
+        {
+          "day": 2,
+          "label": "Lane swim",
+          "start": 360,
+          "end": 480,
+          "playFree": false
+        },
+        {
+          "day": 2,
+          "label": "Lane swim",
+          "start": 540,
+          "end": 780,
+          "playFree": false
+        },
+        {
+          "day": 2,
+          "label": "Lane swim",
+          "start": 1170,
+          "end": 1230,
+          "playFree": false
+        },
+        {
+          "day": 3,
+          "label": "Lane swim",
+          "start": 360,
+          "end": 480,
+          "playFree": false
+        },
+        {
+          "day": 3,
+          "label": "Lane swim",
+          "start": 600,
+          "end": 780,
+          "playFree": false
+        },
+        {
+          "day": 3,
+          "label": "Lane swim",
+          "start": 1170,
+          "end": 1290,
+          "playFree": false
+        },
+        {
+          "day": 4,
+          "label": "Lane swim",
+          "start": 360,
+          "end": 480,
+          "playFree": false
+        },
+        {
+          "day": 4,
+          "label": "Lane swim",
+          "start": 600,
+          "end": 780,
+          "playFree": false
+        },
+        {
+          "day": 4,
+          "label": "Lane swim",
+          "start": 1170,
+          "end": 1230,
+          "playFree": false
+        },
+        {
+          "day": 5,
+          "label": "Lane swim",
+          "start": 360,
+          "end": 480,
+          "playFree": false
+        },
+        {
+          "day": 5,
+          "label": "Lane swim",
+          "start": 540,
+          "end": 780,
+          "playFree": false
+        },
+        {
+          "day": 5,
+          "label": "Lane swim",
+          "start": 1200,
+          "end": 1260,
+          "playFree": false
+        },
+        {
+          "day": 6,
+          "label": "Lane swim",
+          "start": 450,
+          "end": 510,
+          "playFree": true
+        },
+        {
+          "day": 0,
+          "label": "Lane swim",
+          "start": 450,
+          "end": 510,
+          "playFree": false
+        },
+        {
+          "day": 6,
+          "label": "Public swim",
+          "start": 720,
+          "end": 780,
+          "playFree": true
+        },
+        {
+          "day": 0,
+          "label": "Public swim",
+          "start": 720,
+          "end": 780,
+          "playFree": false
+        },
+        {
+          "day": 5,
+          "label": "Wave swim",
+          "start": 1080,
+          "end": 1200,
+          "playFree": false
+        },
+        {
+          "day": 6,
+          "label": "Wave swim",
+          "start": 780,
+          "end": 960,
+          "playFree": false
+        },
+        {
+          "day": 0,
+          "label": "Wave swim",
+          "start": 780,
+          "end": 960,
+          "playFree": false
         }
       ]
     },
@@ -3460,6 +3866,379 @@
           "start": 600,
           "end": 720,
           "playFree": false
+        },
+        {
+          "day": 5,
+          "label": "Wave Swim",
+          "start": 1145,
+          "end": 1260,
+          "playFree": false
+        },
+        {
+          "day": 6,
+          "label": "Wave Swim",
+          "start": 780,
+          "end": 1020,
+          "playFree": false
+        },
+        {
+          "day": 0,
+          "label": "Wave Swim",
+          "start": 780,
+          "end": 1020,
+          "playFree": false
+        },
+        {
+          "day": 1,
+          "label": "Public Swim - wave tank and warm pool",
+          "start": 660,
+          "end": 780,
+          "playFree": false
+        },
+        {
+          "day": 2,
+          "label": "Public Swim - wave tank and warm pool",
+          "start": 720,
+          "end": 780,
+          "playFree": false
+        },
+        {
+          "day": 2,
+          "label": "Public Swim - wave tank and warm pool",
+          "start": 990,
+          "end": 1260,
+          "playFree": false
+        },
+        {
+          "day": 3,
+          "label": "Public Swim - wave tank and warm pool",
+          "start": 570,
+          "end": 780,
+          "playFree": false
+        },
+        {
+          "day": 4,
+          "label": "Public Swim - wave tank and warm pool",
+          "start": 720,
+          "end": 780,
+          "playFree": false
+        },
+        {
+          "day": 4,
+          "label": "Public Swim - wave tank and warm pool",
+          "start": 990,
+          "end": 1260,
+          "playFree": false
+        },
+        {
+          "day": 5,
+          "label": "Public Swim - wave tank and warm pool",
+          "start": 570,
+          "end": 780,
+          "playFree": false
+        },
+        {
+          "day": 1,
+          "label": "Public Swim – warm pool only",
+          "start": 570,
+          "end": 660,
+          "playFree": false
+        },
+        {
+          "day": 2,
+          "label": "Public Swim – warm pool only",
+          "start": 600,
+          "end": 720,
+          "playFree": false
+        },
+        {
+          "day": 4,
+          "label": "Public Swim – warm pool only",
+          "start": 600,
+          "end": 720,
+          "playFree": false
+        },
+        {
+          "day": 6,
+          "label": "Public Swim – warm pool only",
+          "start": 720,
+          "end": 780,
+          "playFree": true
+        },
+        {
+          "day": 0,
+          "label": "Public Swim – warm pool only",
+          "start": 720,
+          "end": 780,
+          "playFree": false
+        },
+        {
+          "day": 1,
+          "label": "Lane Swim",
+          "start": 390,
+          "end": 510,
+          "playFree": false
+        },
+        {
+          "day": 1,
+          "label": "Lane Swim",
+          "start": 660,
+          "end": 780,
+          "playFree": false
+        },
+        {
+          "day": 1,
+          "label": "Lane Swim",
+          "start": 1215,
+          "end": 1275,
+          "playFree": false
+        },
+        {
+          "day": 2,
+          "label": "Lane Swim",
+          "start": 720,
+          "end": 780,
+          "playFree": false
+        },
+        {
+          "day": 3,
+          "label": "Lane Swim",
+          "start": 450,
+          "end": 510,
+          "playFree": false
+        },
+        {
+          "day": 3,
+          "label": "Lane Swim",
+          "start": 570,
+          "end": 780,
+          "playFree": false
+        },
+        {
+          "day": 3,
+          "label": "Lane Swim",
+          "start": 1215,
+          "end": 1275,
+          "playFree": false
+        },
+        {
+          "day": 4,
+          "label": "Lane Swim",
+          "start": 720,
+          "end": 780,
+          "playFree": false
+        },
+        {
+          "day": 5,
+          "label": "Lane Swim",
+          "start": 450,
+          "end": 510,
+          "playFree": false
+        },
+        {
+          "day": 5,
+          "label": "Lane Swim",
+          "start": 570,
+          "end": 780,
+          "playFree": false
+        },
+        {
+          "day": 6,
+          "label": "Lane Swim",
+          "start": 720,
+          "end": 780,
+          "playFree": true
+        },
+        {
+          "day": 0,
+          "label": "Lane Swim",
+          "start": 720,
+          "end": 780,
+          "playFree": false
+        },
+        {
+          "day": 1,
+          "label": "Lane Swim - shared pool",
+          "start": 570,
+          "end": 660,
+          "playFree": false
+        },
+        {
+          "day": 2,
+          "label": "Lane Swim - shared pool",
+          "start": 600,
+          "end": 720,
+          "playFree": false
+        },
+        {
+          "day": 4,
+          "label": "Lane Swim - shared pool",
+          "start": 600,
+          "end": 720,
+          "playFree": false
+        }
+      ]
+    },
+    {
+      "id": "st-laurent-complex",
+      "name": "St. Laurent Complex",
+      "address": "",
+      "wave": false,
+      "url": "https://ottawa.ca/en/recreation-and-parks/facilities/place-listing/st-laurent-complex",
+      "sessions": [
+        {
+          "day": 1,
+          "label": "Lane Swim",
+          "start": 420,
+          "end": 600,
+          "playFree": false
+        },
+        {
+          "day": 1,
+          "label": "Lane Swim",
+          "start": 720,
+          "end": 840,
+          "playFree": false
+        },
+        {
+          "day": 1,
+          "label": "Lane Swim",
+          "start": 1230,
+          "end": 1320,
+          "playFree": false
+        },
+        {
+          "day": 2,
+          "label": "Lane Swim",
+          "start": 420,
+          "end": 540,
+          "playFree": false
+        },
+        {
+          "day": 2,
+          "label": "Lane Swim",
+          "start": 660,
+          "end": 780,
+          "playFree": false
+        },
+        {
+          "day": 2,
+          "label": "Lane Swim",
+          "start": 1230,
+          "end": 1320,
+          "playFree": false
+        },
+        {
+          "day": 3,
+          "label": "Lane Swim",
+          "start": 1140,
+          "end": 840,
+          "playFree": false
+        },
+        {
+          "day": 3,
+          "label": "Lane Swim",
+          "start": 1260,
+          "end": 1320,
+          "playFree": false
+        },
+        {
+          "day": 4,
+          "label": "Lane Swim",
+          "start": 420,
+          "end": 480,
+          "playFree": false
+        },
+        {
+          "day": 4,
+          "label": "Lane Swim",
+          "start": 600,
+          "end": 780,
+          "playFree": false
+        },
+        {
+          "day": 4,
+          "label": "Lane Swim",
+          "start": 1230,
+          "end": 1320,
+          "playFree": false
+        },
+        {
+          "day": 5,
+          "label": "Lane Swim",
+          "start": 420,
+          "end": 555,
+          "playFree": false
+        },
+        {
+          "day": 5,
+          "label": "Lane Swim",
+          "start": 675,
+          "end": 780,
+          "playFree": false
+        },
+        {
+          "day": 5,
+          "label": "Lane Swim",
+          "start": 1260,
+          "end": 1320,
+          "playFree": false
+        },
+        {
+          "day": 6,
+          "label": "Lane Swim",
+          "start": 480,
+          "end": 540,
+          "playFree": false
+        },
+        {
+          "day": 6,
+          "label": "Lane Swim",
+          "start": 1140,
+          "end": 1200,
+          "playFree": false
+        },
+        {
+          "day": 0,
+          "label": "Lane Swim",
+          "start": 480,
+          "end": 540,
+          "playFree": false
+        },
+        {
+          "day": 0,
+          "label": "Lane Swim",
+          "start": 780,
+          "end": 840,
+          "playFree": false
+        },
+        {
+          "day": 0,
+          "label": "Lane Swim",
+          "start": 1140,
+          "end": 1200,
+          "playFree": false
+        },
+        {
+          "day": 5,
+          "label": "Public swim *Reservations not required",
+          "start": 1140,
+          "end": 1260,
+          "playFree": false
+        },
+        {
+          "day": 6,
+          "label": "Public swim *Reservations not required",
+          "start": 780,
+          "end": 960,
+          "playFree": false
+        },
+        {
+          "day": 0,
+          "label": "Public swim *Reservations not required",
+          "start": 1020,
+          "end": 1140,
+          "playFree": false
         }
       ]
     },
@@ -3531,6 +4310,76 @@
           "label": "Public swim - women's only",
           "start": 1140,
           "end": 1200,
+          "playFree": false
+        },
+        {
+          "day": 1,
+          "label": "Lane swim",
+          "start": 1230,
+          "end": 1290,
+          "playFree": false
+        },
+        {
+          "day": 2,
+          "label": "Lane swim",
+          "start": 1230,
+          "end": 1290,
+          "playFree": false
+        },
+        {
+          "day": 4,
+          "label": "Lane swim",
+          "start": 1230,
+          "end": 1290,
+          "playFree": false
+        },
+        {
+          "day": 1,
+          "label": "Public swim",
+          "start": 1170,
+          "end": 1230,
+          "playFree": false
+        },
+        {
+          "day": 2,
+          "label": "Public swim",
+          "start": 1170,
+          "end": 1230,
+          "playFree": false
+        },
+        {
+          "day": 4,
+          "label": "Public swim",
+          "start": 1170,
+          "end": 1230,
+          "playFree": false
+        },
+        {
+          "day": 5,
+          "label": "Public swim",
+          "start": 1020,
+          "end": 1140,
+          "playFree": false
+        },
+        {
+          "day": 6,
+          "label": "Public swim",
+          "start": 780,
+          "end": 960,
+          "playFree": true
+        },
+        {
+          "day": 0,
+          "label": "Public swim",
+          "start": 780,
+          "end": 960,
+          "playFree": false
+        },
+        {
+          "day": 3,
+          "label": "Public swim - women's only",
+          "start": 1230,
+          "end": 1290,
           "playFree": false
         },
         {
@@ -4047,6 +4896,153 @@
           "start": 780,
           "end": 900,
           "playFree": false
+        },
+        {
+          "day": 1,
+          "label": "Lane swim - 25m pool",
+          "start": 420,
+          "end": 480,
+          "playFree": false
+        },
+        {
+          "day": 3,
+          "label": "Lane swim - 25m pool",
+          "start": 420,
+          "end": 480,
+          "playFree": false
+        },
+        {
+          "day": 5,
+          "label": "Lane swim - 25m pool",
+          "start": 420,
+          "end": 480,
+          "playFree": false
+        },
+        {
+          "day": 1,
+          "label": "Lane swim - 50m long course",
+          "start": 510,
+          "end": 780,
+          "playFree": false
+        },
+        {
+          "day": 2,
+          "label": "Lane swim - 50m long course",
+          "start": 510,
+          "end": 780,
+          "playFree": false
+        },
+        {
+          "day": 3,
+          "label": "Lane swim - 50m long course",
+          "start": 510,
+          "end": 780,
+          "playFree": false
+        },
+        {
+          "day": 4,
+          "label": "Lane swim - 50m long course",
+          "start": 510,
+          "end": 780,
+          "playFree": false
+        },
+        {
+          "day": 5,
+          "label": "Lane swim - 50m long course",
+          "start": 510,
+          "end": 780,
+          "playFree": false
+        },
+        {
+          "day": 1,
+          "label": "Lane swim - 50m short course",
+          "start": 1170,
+          "end": 1290,
+          "playFree": false
+        },
+        {
+          "day": 2,
+          "label": "Lane swim - 50m short course",
+          "start": 1170,
+          "end": 1290,
+          "playFree": false
+        },
+        {
+          "day": 3,
+          "label": "Lane swim - 50m short course",
+          "start": 1170,
+          "end": 1290,
+          "playFree": false
+        },
+        {
+          "day": 4,
+          "label": "Lane swim - 50m short course",
+          "start": 1170,
+          "end": 1290,
+          "playFree": false
+        },
+        {
+          "day": 6,
+          "label": "Lane swim - 50m short course",
+          "start": 660,
+          "end": 900,
+          "playFree": true
+        },
+        {
+          "day": 0,
+          "label": "Lane swim - 50m short course",
+          "start": 660,
+          "end": 900,
+          "playFree": false
+        },
+        {
+          "day": 1,
+          "label": "Public swim - 25m pool",
+          "start": 660,
+          "end": 780,
+          "playFree": false
+        },
+        {
+          "day": 2,
+          "label": "Public swim - 25m pool",
+          "start": 660,
+          "end": 780,
+          "playFree": false
+        },
+        {
+          "day": 3,
+          "label": "Public swim - 25m pool",
+          "start": 660,
+          "end": 780,
+          "playFree": false
+        },
+        {
+          "day": 4,
+          "label": "Public swim - 25m pool",
+          "start": 660,
+          "end": 780,
+          "playFree": false
+        },
+        {
+          "day": 5,
+          "label": "Public swim - 25m pool",
+          "start": 660,
+          "end": 780,
+          "playFree": false
+        },
+        {
+          "day": 6,
+          "label": "Public swim - 25m pool",
+          "start": 780,
+          "end": 900,
+          "playFree": true
+        },
+        {
+          "day": 0,
+          "label": "Public swim - 25m pool",
+          "start": 780,
+          "end": 900,
+          "playFree": false
         }
       ]
     },
@@ -4398,6 +5394,209 @@
           "label": "Lane swim",
           "start": 570,
           "end": 645,
+          "playFree": false
+        },
+        {
+          "day": 5,
+          "label": "Lane swim",
+          "start": 705,
+          "end": 780,
+          "playFree": false
+        },
+        {
+          "day": 5,
+          "label": "Lane swim",
+          "start": 1170,
+          "end": 1260,
+          "playFree": false
+        },
+        {
+          "day": 6,
+          "label": "Lane swim",
+          "start": 720,
+          "end": 780,
+          "playFree": true
+        },
+        {
+          "day": 0,
+          "label": "Lane swim",
+          "start": 720,
+          "end": 780,
+          "playFree": false
+        },
+        {
+          "day": 1,
+          "label": "Half lane swim",
+          "start": 450,
+          "end": 570,
+          "playFree": false
+        },
+        {
+          "day": 1,
+          "label": "Half lane swim",
+          "start": 645,
+          "end": 705,
+          "playFree": false
+        },
+        {
+          "day": 2,
+          "label": "Half lane swim",
+          "start": 570,
+          "end": 690,
+          "playFree": false
+        },
+        {
+          "day": 3,
+          "label": "Half lane swim",
+          "start": 450,
+          "end": 570,
+          "playFree": false
+        },
+        {
+          "day": 3,
+          "label": "Half lane swim",
+          "start": 645,
+          "end": 705,
+          "playFree": false
+        },
+        {
+          "day": 3,
+          "label": "Half lane swim",
+          "start": 1170,
+          "end": 1260,
+          "playFree": false
+        },
+        {
+          "day": 4,
+          "label": "Half lane swim",
+          "start": 570,
+          "end": 690,
+          "playFree": false
+        },
+        {
+          "day": 5,
+          "label": "Half lane swim",
+          "start": 450,
+          "end": 570,
+          "playFree": false
+        },
+        {
+          "day": 5,
+          "label": "Half lane swim",
+          "start": 645,
+          "end": 705,
+          "playFree": false
+        },
+        {
+          "day": 3,
+          "label": "Public swim",
+          "start": 1080,
+          "end": 1170,
+          "playFree": false
+        },
+        {
+          "day": 5,
+          "label": "Public swim",
+          "start": 1080,
+          "end": 1170,
+          "playFree": false
+        },
+        {
+          "day": 6,
+          "label": "Public swim",
+          "start": 780,
+          "end": 960,
+          "playFree": true
+        },
+        {
+          "day": 0,
+          "label": "Public swim",
+          "start": 780,
+          "end": 960,
+          "playFree": false
+        },
+        {
+          "day": 1,
+          "label": "Lane swim",
+          "start": 570,
+          "end": 630,
+          "playFree": false
+        },
+        {
+          "day": 1,
+          "label": "Lane swim",
+          "start": 705,
+          "end": 780,
+          "playFree": false
+        },
+        {
+          "day": 1,
+          "label": "Lane swim",
+          "start": 1200,
+          "end": 1260,
+          "playFree": false
+        },
+        {
+          "day": 2,
+          "label": "Lane swim",
+          "start": 450,
+          "end": 570,
+          "playFree": false
+        },
+        {
+          "day": 2,
+          "label": "Lane swim",
+          "start": 690,
+          "end": 780,
+          "playFree": false
+        },
+        {
+          "day": 2,
+          "label": "Lane swim",
+          "start": 1200,
+          "end": 1260,
+          "playFree": false
+        },
+        {
+          "day": 3,
+          "label": "Lane swim",
+          "start": 570,
+          "end": 630,
+          "playFree": false
+        },
+        {
+          "day": 3,
+          "label": "Lane swim",
+          "start": 1425,
+          "end": 780,
+          "playFree": false
+        },
+        {
+          "day": 4,
+          "label": "Lane swim",
+          "start": 450,
+          "end": 570,
+          "playFree": false
+        },
+        {
+          "day": 4,
+          "label": "Lane swim",
+          "start": 690,
+          "end": 780,
+          "playFree": false
+        },
+        {
+          "day": 4,
+          "label": "Lane swim",
+          "start": 1200,
+          "end": 1260,
+          "playFree": false
+        },
+        {
+          "day": 5,
+          "label": "Lane swim",
+          "start": 570,
+          "end": 630,
           "playFree": false
         },
         {
@@ -5152,6 +6351,167 @@
           "start": 840,
           "end": 1080,
           "playFree": false
+        },
+        {
+          "day": 1,
+          "label": "Lane swim",
+          "start": 480,
+          "end": 600,
+          "playFree": false
+        },
+        {
+          "day": 1,
+          "label": "Lane swim",
+          "start": 660,
+          "end": 780,
+          "playFree": false
+        },
+        {
+          "day": 1,
+          "label": "Lane swim",
+          "start": 1200,
+          "end": 1260,
+          "playFree": false
+        },
+        {
+          "day": 2,
+          "label": "Lane swim",
+          "start": 480,
+          "end": 600,
+          "playFree": false
+        },
+        {
+          "day": 2,
+          "label": "Lane swim",
+          "start": 660,
+          "end": 780,
+          "playFree": false
+        },
+        {
+          "day": 2,
+          "label": "Lane swim",
+          "start": 1200,
+          "end": 1260,
+          "playFree": false
+        },
+        {
+          "day": 3,
+          "label": "Lane swim",
+          "start": 480,
+          "end": 600,
+          "playFree": false
+        },
+        {
+          "day": 3,
+          "label": "Lane swim",
+          "start": 660,
+          "end": 780,
+          "playFree": false
+        },
+        {
+          "day": 3,
+          "label": "Lane swim",
+          "start": 1200,
+          "end": 1260,
+          "playFree": false
+        },
+        {
+          "day": 4,
+          "label": "Lane swim",
+          "start": 480,
+          "end": 600,
+          "playFree": false
+        },
+        {
+          "day": 4,
+          "label": "Lane swim",
+          "start": 660,
+          "end": 780,
+          "playFree": false
+        },
+        {
+          "day": 4,
+          "label": "Lane swim",
+          "start": 1020,
+          "end": 1260,
+          "playFree": false
+        },
+        {
+          "day": 5,
+          "label": "Lane swim",
+          "start": 480,
+          "end": 600,
+          "playFree": false
+        },
+        {
+          "day": 5,
+          "label": "Lane swim",
+          "start": 660,
+          "end": 780,
+          "playFree": false
+        },
+        {
+          "day": 5,
+          "label": "Lane swim",
+          "start": 1200,
+          "end": 1260,
+          "playFree": false
+        },
+        {
+          "day": 3,
+          "label": "Public swim",
+          "start": 1020,
+          "end": 1080,
+          "playFree": false
+        },
+        {
+          "day": 5,
+          "label": "Public swim",
+          "start": 1020,
+          "end": 1080,
+          "playFree": false
+        },
+        {
+          "day": 6,
+          "label": "Public swim",
+          "start": 720,
+          "end": 780,
+          "playFree": true
+        },
+        {
+          "day": 0,
+          "label": "Public swim",
+          "start": 720,
+          "end": 780,
+          "playFree": false
+        },
+        {
+          "day": 3,
+          "label": "Wave swim",
+          "start": 1080,
+          "end": 1200,
+          "playFree": false
+        },
+        {
+          "day": 5,
+          "label": "Wave swim",
+          "start": 1080,
+          "end": 1200,
+          "playFree": false
+        },
+        {
+          "day": 6,
+          "label": "Wave swim",
+          "start": 780,
+          "end": 1020,
+          "playFree": false
+        },
+        {
+          "day": 0,
+          "label": "Wave swim",
+          "start": 780,
+          "end": 1020,
+          "playFree": false
         }
       ]
     },
@@ -5672,6 +7032,202 @@
           "start": 1140,
           "end": 1260,
           "playFree": true
+        },
+        {
+          "day": 1,
+          "label": "Lane swim",
+          "start": 450,
+          "end": 510,
+          "playFree": false
+        },
+        {
+          "day": 1,
+          "label": "Lane swim",
+          "start": 1260,
+          "end": 1320,
+          "playFree": false
+        },
+        {
+          "day": 2,
+          "label": "Lane swim",
+          "start": 390,
+          "end": 510,
+          "playFree": false
+        },
+        {
+          "day": 2,
+          "label": "Lane swim",
+          "start": 1245,
+          "end": 1320,
+          "playFree": false
+        },
+        {
+          "day": 3,
+          "label": "Lane swim",
+          "start": 450,
+          "end": 510,
+          "playFree": false
+        },
+        {
+          "day": 3,
+          "label": "Lane swim",
+          "start": 1260,
+          "end": 1320,
+          "playFree": false
+        },
+        {
+          "day": 4,
+          "label": "Lane swim",
+          "start": 390,
+          "end": 510,
+          "playFree": false
+        },
+        {
+          "day": 4,
+          "label": "Lane swim",
+          "start": 1245,
+          "end": 1320,
+          "playFree": false
+        },
+        {
+          "day": 5,
+          "label": "Lane swim",
+          "start": 450,
+          "end": 510,
+          "playFree": false
+        },
+        {
+          "day": 5,
+          "label": "Lane swim",
+          "start": 1260,
+          "end": 1320,
+          "playFree": false
+        },
+        {
+          "day": 0,
+          "label": "Lane swim",
+          "start": 420,
+          "end": 540,
+          "playFree": false
+        },
+        {
+          "day": 0,
+          "label": "Lane swim",
+          "start": 675,
+          "end": 765,
+          "playFree": false
+        },
+        {
+          "day": 1,
+          "label": "Lane swim - reduced capacity shared pool)",
+          "start": 510,
+          "end": 900,
+          "playFree": false
+        },
+        {
+          "day": 2,
+          "label": "Lane swim - reduced capacity shared pool)",
+          "start": 510,
+          "end": 900,
+          "playFree": false
+        },
+        {
+          "day": 3,
+          "label": "Lane swim - reduced capacity shared pool)",
+          "start": 510,
+          "end": 900,
+          "playFree": false
+        },
+        {
+          "day": 4,
+          "label": "Lane swim - reduced capacity shared pool)",
+          "start": 510,
+          "end": 900,
+          "playFree": false
+        },
+        {
+          "day": 5,
+          "label": "Lane swim - reduced capacity shared pool)",
+          "start": 510,
+          "end": 900,
+          "playFree": false
+        },
+        {
+          "day": 6,
+          "label": "Lane swim - reduced capacity shared pool)",
+          "start": 735,
+          "end": 855,
+          "playFree": true
+        },
+        {
+          "day": 2,
+          "label": "Public Swim",
+          "start": 1125,
+          "end": 1245,
+          "playFree": false
+        },
+        {
+          "day": 5,
+          "label": "Public Swim",
+          "start": 1140,
+          "end": 1260,
+          "playFree": false
+        },
+        {
+          "day": 6,
+          "label": "Public Swim",
+          "start": 870,
+          "end": 1050,
+          "playFree": true
+        },
+        {
+          "day": 0,
+          "label": "Public Swim",
+          "start": 780,
+          "end": 900,
+          "playFree": false
+        },
+        {
+          "day": 1,
+          "label": "Public Swim - reduced capacity",
+          "start": 630,
+          "end": 810,
+          "playFree": false
+        },
+        {
+          "day": 2,
+          "label": "Public Swim - reduced capacity",
+          "start": 630,
+          "end": 810,
+          "playFree": false
+        },
+        {
+          "day": 3,
+          "label": "Public Swim - reduced capacity",
+          "start": 630,
+          "end": 810,
+          "playFree": false
+        },
+        {
+          "day": 4,
+          "label": "Public Swim - reduced capacity",
+          "start": 630,
+          "end": 810,
+          "playFree": false
+        },
+        {
+          "day": 5,
+          "label": "Public Swim - reduced capacity",
+          "start": 630,
+          "end": 810,
+          "playFree": false
+        },
+        {
+          "day": 6,
+          "label": "Public Swim with WIBIT",
+          "start": 1140,
+          "end": 1260,
+          "playFree": true
         }
       ]
     },
@@ -5912,6 +7468,209 @@
           "start": 690,
           "end": 750,
           "playFree": false
+        },
+        {
+          "day": 0,
+          "label": "Lane Swim",
+          "start": 690,
+          "end": 750,
+          "playFree": false
+        },
+        {
+          "day": 2,
+          "label": "Public Swim *Reservations not required.",
+          "start": 690,
+          "end": 765,
+          "playFree": false
+        },
+        {
+          "day": 4,
+          "label": "Public Swim *Reservations not required.",
+          "start": 690,
+          "end": 765,
+          "playFree": false
+        },
+        {
+          "day": 5,
+          "label": "Public Swim *Reservations not required.",
+          "start": 750,
+          "end": 810,
+          "playFree": false
+        },
+        {
+          "day": 6,
+          "label": "Public Swim *Reservations not required.",
+          "start": 750,
+          "end": 825,
+          "playFree": true
+        },
+        {
+          "day": 0,
+          "label": "Public Swim *Reservations not required.",
+          "start": 750,
+          "end": 825,
+          "playFree": false
+        },
+        {
+          "day": 1,
+          "label": "Lane Swim",
+          "start": 450,
+          "end": 510,
+          "playFree": false
+        },
+        {
+          "day": 1,
+          "label": "Lane Swim",
+          "start": 630,
+          "end": 690,
+          "playFree": false
+        },
+        {
+          "day": 1,
+          "label": "Lane Swim",
+          "start": 690,
+          "end": 750,
+          "playFree": false
+        },
+        {
+          "day": 1,
+          "label": "Lane Swim",
+          "start": 960,
+          "end": 1020,
+          "playFree": false
+        },
+        {
+          "day": 1,
+          "label": "Lane Swim",
+          "start": 1200,
+          "end": 1260,
+          "playFree": false
+        },
+        {
+          "day": 2,
+          "label": "Lane Swim",
+          "start": 390,
+          "end": 450,
+          "playFree": false
+        },
+        {
+          "day": 2,
+          "label": "Lane Swim",
+          "start": 450,
+          "end": 510,
+          "playFree": false
+        },
+        {
+          "day": 2,
+          "label": "Lane Swim",
+          "start": 630,
+          "end": 690,
+          "playFree": false
+        },
+        {
+          "day": 2,
+          "label": "Lane Swim",
+          "start": 960,
+          "end": 1020,
+          "playFree": false
+        },
+        {
+          "day": 3,
+          "label": "Lane Swim",
+          "start": 450,
+          "end": 510,
+          "playFree": false
+        },
+        {
+          "day": 3,
+          "label": "Lane Swim",
+          "start": 630,
+          "end": 690,
+          "playFree": false
+        },
+        {
+          "day": 3,
+          "label": "Lane Swim",
+          "start": 960,
+          "end": 1020,
+          "playFree": false
+        },
+        {
+          "day": 3,
+          "label": "Lane Swim",
+          "start": 1200,
+          "end": 1260,
+          "playFree": false
+        },
+        {
+          "day": 4,
+          "label": "Lane Swim",
+          "start": 390,
+          "end": 450,
+          "playFree": false
+        },
+        {
+          "day": 4,
+          "label": "Lane Swim",
+          "start": 450,
+          "end": 510,
+          "playFree": false
+        },
+        {
+          "day": 4,
+          "label": "Lane Swim",
+          "start": 630,
+          "end": 690,
+          "playFree": false
+        },
+        {
+          "day": 4,
+          "label": "Lane Swim",
+          "start": 960,
+          "end": 1020,
+          "playFree": false
+        },
+        {
+          "day": 5,
+          "label": "Lane Swim",
+          "start": 450,
+          "end": 510,
+          "playFree": false
+        },
+        {
+          "day": 5,
+          "label": "Lane Swim",
+          "start": 630,
+          "end": 690,
+          "playFree": false
+        },
+        {
+          "day": 5,
+          "label": "Lane Swim",
+          "start": 690,
+          "end": 750,
+          "playFree": false
+        },
+        {
+          "day": 5,
+          "label": "Lane Swim",
+          "start": 960,
+          "end": 1020,
+          "playFree": false
+        },
+        {
+          "day": 5,
+          "label": "Lane Swim",
+          "start": 1200,
+          "end": 1260,
+          "playFree": false
+        },
+        {
+          "day": 6,
+          "label": "Lane Swim",
+          "start": 690,
+          "end": 750,
+          "playFree": true
         },
         {
           "day": 0,
@@ -6886,6 +8645,41 @@
           "start": 840,
           "end": 890,
           "playFree": true
+        },
+        {
+          "day": 1,
+          "label": "Public skating",
+          "start": 780,
+          "end": 830,
+          "playFree": false
+        },
+        {
+          "day": 2,
+          "label": "Public skating",
+          "start": 960,
+          "end": 1010,
+          "playFree": false
+        },
+        {
+          "day": 4,
+          "label": "Public skating",
+          "start": 960,
+          "end": 1010,
+          "playFree": false
+        },
+        {
+          "day": 0,
+          "label": "Public skating",
+          "start": 900,
+          "end": 950,
+          "playFree": true
+        },
+        {
+          "day": 0,
+          "label": "Family skating",
+          "start": 840,
+          "end": 890,
+          "playFree": true
         }
       ]
     },
@@ -7394,6 +9188,41 @@
           "start": 735,
           "end": 785,
           "playFree": false
+        },
+        {
+          "day": 5,
+          "label": "Public skating",
+          "start": 1155,
+          "end": 1205,
+          "playFree": false
+        },
+        {
+          "day": 6,
+          "label": "Public skating",
+          "start": 675,
+          "end": 725,
+          "playFree": true
+        },
+        {
+          "day": 6,
+          "label": "Public skating",
+          "start": 735,
+          "end": 785,
+          "playFree": true
+        },
+        {
+          "day": 0,
+          "label": "Public skating",
+          "start": 675,
+          "end": 725,
+          "playFree": false
+        },
+        {
+          "day": 0,
+          "label": "Public skating",
+          "start": 735,
+          "end": 785,
+          "playFree": false
         }
       ]
     },
@@ -7566,6 +9395,55 @@
           "label": "Family skate *Reservations not required.",
           "start": 840,
           "end": 890,
+          "playFree": false
+        },
+        {
+          "day": 3,
+          "label": "Family skate",
+          "start": 840,
+          "end": 890,
+          "playFree": false
+        },
+        {
+          "day": 1,
+          "label": "Public skate",
+          "start": 780,
+          "end": 830,
+          "playFree": false
+        },
+        {
+          "day": 3,
+          "label": "Public skate",
+          "start": 900,
+          "end": 950,
+          "playFree": false
+        },
+        {
+          "day": 3,
+          "label": "Public skate",
+          "start": 960,
+          "end": 1010,
+          "playFree": false
+        },
+        {
+          "day": 0,
+          "label": "Public skate",
+          "start": 840,
+          "end": 890,
+          "playFree": true
+        },
+        {
+          "day": 0,
+          "label": "Public skate",
+          "start": 900,
+          "end": 950,
+          "playFree": true
+        },
+        {
+          "day": 1,
+          "label": "Public skate 50+",
+          "start": 660,
+          "end": 710,
           "playFree": false
         },
         {
