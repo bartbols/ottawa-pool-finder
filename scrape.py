@@ -162,7 +162,17 @@ def parse_schedule_tables(html, row_keywords):
                         "playFree": play_free,
                     })
 
-    return sessions
+    # Deduplicate: drop any session with identical (day, label, start, end)
+    seen = set()
+    unique = []
+    for s in sessions:
+        key = (s["day"], s["label"].lower(), s["start"], s["end"])
+        if key not in seen:
+            seen.add(key)
+            unique.append(s)
+    if len(unique) < len(sessions):
+        print("      Deduped " + str(len(sessions) - len(unique)) + " duplicate session(s)")
+    return unique
 
 
 def discover_venues(page, index_url, label):
