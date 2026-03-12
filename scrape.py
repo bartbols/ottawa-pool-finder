@@ -74,6 +74,37 @@ def parse_time_range(cell_text):
     return results
 
 
+HOLIDAY_KEYWORDS = [
+    "march break", "spring break", "pa day", "p.a. day",
+    "holiday", "statutory holiday", "civic holiday",
+    "christmas", "new year", "thanksgiving", "family day",
+    "victoria day", "canada day", "labour day",
+    "reading week", "winter break", "summer schedule",
+]
+
+
+def is_holiday_table(table):
+    """Return (True, reason) if this table is a special holiday/break schedule."""
+    caption = table.find("caption")
+    if caption:
+        cap_text = caption.get_text(strip=True).lower()
+        if any(k in cap_text for k in HOLIDAY_KEYWORDS):
+            return True, cap_text
+
+    # Check headings/paragraphs preceding the table (up to 3 siblings back)
+    node = table
+    for _ in range(3):
+        node = node.find_previous_sibling()
+        if node is None:
+            break
+        if node.name in ("h1", "h2", "h3", "h4", "h5", "h6", "p", "div"):
+            text = node.get_text(strip=True).lower()
+            if any(k in text for k in HOLIDAY_KEYWORDS):
+                return True, text[:80]
+
+    return False, None
+
+
 def parse_schedule_tables(html, row_keywords):
     soup = BeautifulSoup(html, "html.parser")
     sessions = []
@@ -81,6 +112,12 @@ def parse_schedule_tables(html, row_keywords):
     for table in soup.find_all("table"):
         table_text = table.get_text().lower()
         if not any(k in table_text for k in row_keywords):
+            continue
+
+        # Skip holiday/break schedule tables
+        holiday, reason = is_holiday_table(table)
+        if holiday:
+            print("      SKIP holiday table: " + reason)
             continue
 
         caption = table.find("caption")
