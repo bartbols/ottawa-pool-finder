@@ -207,6 +207,16 @@ select#st option{background:#fff;color:var(--text)}
 }
 .llabel::before{content:'';width:3px;height:12px;background:var(--border);border-radius:2px}
 
+/* Holiday banner */
+.holiday-banner{
+  margin-bottom:16px;padding:12px 16px;
+  background:#FFF8E1;border:1.5px solid #FFE082;
+  border-radius:10px;font-size:.84rem;color:#7B5800;line-height:1.55;
+  display:none;
+}
+.holiday-banner strong{color:#5D4000;}
+.holiday-banner a{color:#7B5800;font-weight:600;}
+
 /* Disclaimer */
 .disc{
   margin-top:28px;padding:13px 17px;
@@ -232,6 +242,7 @@ select#st option{background:#fff;color:var(--text)}
       <button class="act-btn" id="btn-both" onclick="setActivity('all')">🏊 + ⛸️ All</button>
     </div>
     <div id="sub-filter" style="margin-bottom:16px;display:none"></div>
+    <div id="holiday-banner" class="holiday-banner"></div>
     <div class="clabel">When?</div>
     <div class="row2">
       <div><label for="sd">Date</label><input type="date" id="sd"/></div>
@@ -683,6 +694,39 @@ function render(activePools, activeRinks, laterPools, laterRinks, dateStr, mins,
   area.innerHTML = h;
   area.scrollIntoView({behavior:'smooth', block:'start'});
 }
+
+// ── Holiday banner ────────────────────────────────────────────────────────────
+const HOLIDAY_WINDOWS = [
+  // March Break (Ottawa school board dates — update yearly)
+  { start: '2026-03-14', end: '2026-03-22', label: 'March Break (Mar 14–22)' },
+  { start: '2027-03-13', end: '2027-03-21', label: 'March Break (Mar 13–21)' },
+  // PA Days (approximate — add more as known)
+  { start: '2026-04-03', end: '2026-04-03', label: 'PA Day (Apr 3)' },
+  { start: '2026-06-05', end: '2026-06-05', label: 'PA Day (Jun 5)' },
+  // Statutory holidays
+  { start: '2026-01-01', end: '2026-01-01', label: 'New Year’s Day' },
+  { start: '2026-02-16', end: '2026-02-16', label: 'Family Day' },
+  { start: '2026-04-03', end: '2026-04-06', label: 'Easter weekend' },
+  { start: '2026-05-18', end: '2026-05-18', label: 'Victoria Day' },
+  { start: '2026-07-01', end: '2026-07-01', label: 'Canada Day' },
+  { start: '2026-08-03', end: '2026-08-03', label: 'Civic Holiday' },
+  { start: '2026-09-07', end: '2026-09-07', label: 'Labour Day' },
+  { start: '2026-10-12', end: '2026-10-12', label: 'Thanksgiving' },
+  { start: '2026-12-25', end: '2026-12-28', label: 'Christmas / Holiday week' },
+];
+
+(function checkHolidayBanner(){
+  const today = new Date().toISOString().split('T')[0];
+  const match = HOLIDAY_WINDOWS.find(w => today >= w.start && today <= w.end);
+  const el = document.getElementById('holiday-banner');
+  if (match) {
+    el.innerHTML = '⚠️ <strong>' + match.label + '</strong> — special holiday schedules '
+      + 'may be in effect at some facilities. Always '
+      + '<a href="https://ottawa.ca/en/recreation-and-parks" target="_blank">verify on Ottawa.ca</a> '
+      + 'before heading out.';
+    el.style.display = 'block';
+  }
+})();
 
 </script>
 </body>
