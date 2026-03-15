@@ -1,5 +1,5 @@
 {
-  "scraped_at": "2026-03-14T04:45:37.782663+00:00",
+  "scraped_at": "2026-03-15T05:08:26.816147+00:00",
   "pools": [
     {
       "id": "brewer-pool-and-arena",
@@ -3584,13 +3584,6 @@
           "playFree": false
         },
         {
-          "day": 0,
-          "label": "Lane swim",
-          "start": 600,
-          "end": 780,
-          "playFree": false
-        },
-        {
           "day": 1,
           "label": "Lane swim",
           "start": 570,
@@ -3675,6 +3668,13 @@
           "playFree": false
         },
         {
+          "day": 0,
+          "label": "Lane swim",
+          "start": 600,
+          "end": 780,
+          "playFree": false
+        },
+        {
           "day": 1,
           "label": "Half lane swim",
           "start": 450,
@@ -3731,80 +3731,80 @@
           "playFree": true
         },
         {
+          "day": 1,
+          "label": "Public swim",
+          "start": 780,
+          "end": 960,
+          "playFree": false
+        },
+        {
+          "day": 1,
+          "label": "Public swim",
+          "start": 1080,
+          "end": 1200,
+          "playFree": false
+        },
+        {
+          "day": 2,
+          "label": "Public swim",
+          "start": 780,
+          "end": 960,
+          "playFree": false
+        },
+        {
+          "day": 2,
+          "label": "Public swim",
+          "start": 1080,
+          "end": 1200,
+          "playFree": false
+        },
+        {
+          "day": 3,
+          "label": "Public swim",
+          "start": 780,
+          "end": 960,
+          "playFree": false
+        },
+        {
+          "day": 3,
+          "label": "Public swim",
+          "start": 1080,
+          "end": 1200,
+          "playFree": false
+        },
+        {
+          "day": 4,
+          "label": "Public swim",
+          "start": 780,
+          "end": 960,
+          "playFree": false
+        },
+        {
+          "day": 4,
+          "label": "Public swim",
+          "start": 1080,
+          "end": 1200,
+          "playFree": false
+        },
+        {
+          "day": 5,
+          "label": "Public swim",
+          "start": 780,
+          "end": 960,
+          "playFree": false
+        },
+        {
+          "day": 5,
+          "label": "Public swim",
+          "start": 1080,
+          "end": 1200,
+          "playFree": false
+        },
+        {
           "day": 0,
           "label": "Public swim",
           "start": 780,
           "end": 960,
-          "playFree": false
-        },
-        {
-          "day": 1,
-          "label": "Public swim",
-          "start": 780,
-          "end": 960,
-          "playFree": false
-        },
-        {
-          "day": 1,
-          "label": "Public swim",
-          "start": 1080,
-          "end": 1200,
-          "playFree": false
-        },
-        {
-          "day": 2,
-          "label": "Public swim",
-          "start": 780,
-          "end": 960,
-          "playFree": false
-        },
-        {
-          "day": 2,
-          "label": "Public swim",
-          "start": 1080,
-          "end": 1200,
-          "playFree": false
-        },
-        {
-          "day": 3,
-          "label": "Public swim",
-          "start": 780,
-          "end": 960,
-          "playFree": false
-        },
-        {
-          "day": 3,
-          "label": "Public swim",
-          "start": 1080,
-          "end": 1200,
-          "playFree": false
-        },
-        {
-          "day": 4,
-          "label": "Public swim",
-          "start": 780,
-          "end": 960,
-          "playFree": false
-        },
-        {
-          "day": 4,
-          "label": "Public swim",
-          "start": 1080,
-          "end": 1200,
-          "playFree": false
-        },
-        {
-          "day": 5,
-          "label": "Public swim",
-          "start": 780,
-          "end": 960,
-          "playFree": false
-        },
-        {
-          "day": 5,
-          "label": "Public swim",
-          "start": 1080,
-          "end": 1200,
           "playFree": false
         },
         {
