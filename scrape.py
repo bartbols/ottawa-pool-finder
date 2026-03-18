@@ -15,12 +15,12 @@ from bs4 import BeautifulSoup
 # Primary URLs (current as of 2026-03)
 POOL_INDEX_URL = (
     "https://ottawa.ca/en/recreation-and-parks/swimming/"
-    "drop-swimming-and-aquafit"
+    "drop-swimming-and-aquafitness/indoor-pools-drop-locations"
 )
 # Fallback if primary 404s
 POOL_INDEX_URL_FALLBACK = (
     "https://ottawa.ca/en/recreation-and-parks/swimming/"
-    "drop-swimming-and-aquafitness/drop-ins-indoor-pool-locations"
+    "drop-swimming-and-aquafit"
 )
 RINK_INDEX_URL = (
     "https://ottawa.ca/en/recreation-and-parks/skating/"
