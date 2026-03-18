@@ -7,11 +7,18 @@ Outputs schedule_data.json with separate pools[] and rinks[] arrays.
 import json
 import re
 import sys
+import time
 from datetime import datetime, timezone
 from playwright.sync_api import sync_playwright, TimeoutError as PWTimeout
 from bs4 import BeautifulSoup
 
+# Primary URLs (current as of 2026-03)
 POOL_INDEX_URL = (
+    "https://ottawa.ca/en/recreation-and-parks/swimming/"
+    "drop-swimming-and-aquafit"
+)
+# Fallback if primary 404s
+POOL_INDEX_URL_FALLBACK = (
     "https://ottawa.ca/en/recreation-and-parks/swimming/"
     "drop-swimming-and-aquafitness/drop-ins-indoor-pool-locations"
 )
@@ -19,14 +26,31 @@ RINK_INDEX_URL = (
     "https://ottawa.ca/en/recreation-and-parks/skating/"
     "drop-skating/drop-skating-locations"
 )
+RINK_INDEX_URL_FALLBACK = (
+    "https://ottawa.ca/en/recreation-and-parks/skating/"
+    "drop-skating"
+)
 BASE_URL = "https://ottawa.ca"
 
 DAYS = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
 DAY_INDEX = {d: i for i, d in enumerate(DAYS)}
 
-PUBLIC_SWIM_KEYWORDS = ["public swim", "wave swim", "lane swim"]
+PUBLIC_SWIM_KEYWORDS  = ["public swim", "wave swim", "lane swim"]
 PUBLIC_SKATE_KEYWORDS = ["public skate", "public skating", "family skate", "family skating", "50+ skate"]
-WAVE_POOL_KEYWORDS = ["wave pool", "wave tank", "splash wave", "wave swim"]
+WAVE_POOL_KEYWORDS    = ["wave pool", "wave tank", "splash wave", "wave swim"]
+
+HOLIDAY_KEYWORDS = [
+    "march break", "spring break", "pa day", "p.a. day",
+    "holiday", "statutory holiday", "civic holiday",
+    "christmas", "new year", "thanksgiving", "family day",
+    "victoria day", "canada day", "labour day",
+    "reading week", "winter break", "summer schedule",
+]
+
+PAGE_TIMEOUT    = 60000   # ms — page load timeout
+WAIT_AFTER_LOAD = 3000    # ms — extra wait for JS rendering
+RETRY_ATTEMPTS  = 3       # retries per URL
+RETRY_DELAY     = 8       # seconds between retries
 
 
 def parse_time_str(s):
@@ -74,15 +98,6 @@ def parse_time_range(cell_text):
     return results
 
 
-HOLIDAY_KEYWORDS = [
-    "march break", "spring break", "pa day", "p.a. day",
-    "holiday", "statutory holiday", "civic holiday",
-    "christmas", "new year", "thanksgiving", "family day",
-    "victoria day", "canada day", "labour day",
-    "reading week", "winter break", "summer schedule",
-]
-
-
 def is_holiday_table(table):
     """Return (True, reason) if this table is a special holiday/break schedule."""
     caption = table.find("caption")
@@ -91,7 +106,6 @@ def is_holiday_table(table):
         if any(k in cap_text for k in HOLIDAY_KEYWORDS):
             return True, cap_text
 
-    # Check headings/paragraphs preceding the table (up to 3 siblings back)
     node = table
     for _ in range(3):
         node = node.find_previous_sibling()
@@ -114,7 +128,6 @@ def parse_schedule_tables(html, row_keywords):
         if not any(k in table_text for k in row_keywords):
             continue
 
-        # Skip holiday/break schedule tables
         holiday, reason = is_holiday_table(table)
         if holiday:
             print("      SKIP holiday table: " + reason)
@@ -175,81 +188,88 @@ def parse_schedule_tables(html, row_keywords):
     return unique
 
 
-def discover_venues(page, index_url, label):
-    print("\nDiscovering " + label + " from index page...")
-    venues = []
+def load_page(page, url):
+    """Try to load a URL. Returns True on success (HTTP < 400)."""
+    for attempt in range(1, RETRY_ATTEMPTS + 1):
+        for wait_mode in ("networkidle", "domcontentloaded"):
+            try:
+                resp = page.goto(url, wait_until=wait_mode, timeout=PAGE_TIMEOUT)
+                code = resp.status if resp else 0
+                print("  HTTP " + str(code) + " (" + wait_mode + ")" +
+                      (" [attempt " + str(attempt) + "]" if attempt > 1 else ""))
+                if resp and resp.status < 400:
+                    page.wait_for_timeout(WAIT_AFTER_LOAD)
+                    return True
+                break  # 4xx/5xx — no point retrying same wait_mode
+            except PWTimeout:
+                print("  Timeout (" + wait_mode + ") [attempt " + str(attempt) + "]")
+            except Exception as e:
+                print("  Error: " + str(e))
+                break
+        if attempt < RETRY_ATTEMPTS:
+            print("  Waiting " + str(RETRY_DELAY) + "s before retry...")
+            time.sleep(RETRY_DELAY)
+    return False
 
-    try:
-        resp = page.goto(index_url, wait_until="networkidle", timeout=30000)
-        print("  Index page HTTP " + str(resp.status))
-    except PWTimeout:
-        page.goto(index_url, wait_until="domcontentloaded", timeout=30000)
 
-    page.wait_for_timeout(2000)
-    html = page.content()
+def discover_venues(page, primary_url, label, fallback_url=None):
+    print("\nDiscovering " + label + "...")
+    urls = [primary_url] + ([fallback_url] if fallback_url else [])
 
-    safe_label = label.replace(" ", "_")
-    with open("debug_index_" + safe_label + ".html", "w", encoding="utf-8") as f:
-        f.write(html)
-
-    soup = BeautifulSoup(html, "html.parser")
-
-    seen_urls = set()
-    for a in soup.find_all("a", href=True):
-        href = a["href"]
-        if href.startswith("/"):
-            href = BASE_URL + href
-        if "place-listing" not in href:
+    for url in urls:
+        print("  Trying: " + url)
+        if not load_page(page, url):
+            print("  Could not load — " + ("trying fallback..." if url != urls[-1] else "giving up."))
             continue
-        if href in seen_urls:
-            continue
-        seen_urls.add(href)
 
-        name = a.get_text(strip=True)
-        if not name or len(name) < 4:
-            continue
+        html = page.content()
+        safe_label = label.replace(" ", "_")
+        with open("debug_index_" + safe_label + ".html", "w", encoding="utf-8") as f:
+            f.write(html)
 
-        slug = href.rstrip("/").split("/")[-1]
-        venues.append({"id": slug, "name": name, "url": href})
+        soup = BeautifulSoup(html, "html.parser")
+        seen_urls = set()
+        venues = []
+        for a in soup.find_all("a", href=True):
+            href = a["href"]
+            if href.startswith("/"):
+                href = BASE_URL + href
+            if "place-listing" not in href:
+                continue
+            if href in seen_urls:
+                continue
+            seen_urls.add(href)
+            name = a.get_text(strip=True)
+            if not name or len(name) < 4:
+                continue
+            slug = href.rstrip("/").split("/")[-1]
+            venues.append({"id": slug, "name": name, "url": href})
 
-    print("  Found " + str(len(venues)) + " " + label + " links")
-    for v in venues:
-        print("    * " + v["name"] + "  ->  " + v["url"])
+        if venues:
+            print("  Found " + str(len(venues)) + " " + label + " links")
+            for v in venues:
+                print("    * " + v["name"] + "  ->  " + v["url"])
+            return venues
 
-    return venues
+        print("  No venue links found — " + ("trying fallback..." if url != urls[-1] else "giving up."))
+
+    return []
 
 
 def scrape_venue(page, venue, row_keywords, check_keywords, wave_check=False):
     print("\n  [" + venue["id"] + "] " + venue["name"])
 
-    loaded = False
-    for wait_mode in ("networkidle", "domcontentloaded"):
-        try:
-            resp = page.goto(venue["url"], wait_until=wait_mode, timeout=30000)
-            print("    HTTP " + str(resp.status) + " (" + wait_mode + ")")
-            loaded = True
-            break
-        except PWTimeout:
-            print("    Timeout (" + wait_mode + "), retrying...")
-        except Exception as e:
-            print("    Error: " + str(e))
-            break
-
-    if not loaded:
+    if not load_page(page, venue["url"]):
+        print("    FAILED to load venue page, skipping")
         return [], False
 
-    page.wait_for_timeout(3000)
     html = page.content()
-
     safe_id = re.sub(r"[^a-z0-9_-]", "_", venue["id"])
     with open("debug_" + safe_id + ".html", "w", encoding="utf-8") as f:
         f.write(html)
 
     html_lower = html.lower()
-
-    wave = False
-    if wave_check:
-        wave = any(k in html_lower for k in WAVE_POOL_KEYWORDS)
+    wave = any(k in html_lower for k in WAVE_POOL_KEYWORDS) if wave_check else False
 
     if not any(k in html_lower for k in check_keywords):
         print("    - No relevant sessions found, skipping")
@@ -262,8 +282,7 @@ def scrape_venue(page, venue, row_keywords, check_keywords, wave_check=False):
 
 def extract_address(page):
     try:
-        html = page.content()
-        soup = BeautifulSoup(html, "html.parser")
+        soup = BeautifulSoup(page.content(), "html.parser")
         for sel in [
             "[class*='field--name-field-address']",
             "[class*='address']",
@@ -299,7 +318,7 @@ def main():
             user_agent=(
                 "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
                 "AppleWebKit/537.36 (KHTML, like Gecko) "
-                "Chrome/121.0.0.0 Safari/537.36"
+                "Chrome/122.0.0.0 Safari/537.36"
             ),
             viewport={"width": 1280, "height": 900},
             locale="en-CA",
@@ -307,11 +326,11 @@ def main():
         page = context.new_page()
         page.on("console", lambda _: None)
 
-        # Pools
-        pools = discover_venues(page, POOL_INDEX_URL, "pools")
+        # ── Pools ─────────────────────────────────────────────────────────────
+        pools = discover_venues(page, POOL_INDEX_URL, "pools", POOL_INDEX_URL_FALLBACK)
         if not pools:
-            print("WARNING: Could not discover any pools.")
-            sys.exit(1)
+            print("WARNING: Could not discover any pools — keeping previous schedule_data.json.")
+            sys.exit(0)  # exit 0: old data is better than empty
 
         print("\n=== Scraping " + str(len(pools)) + " pool pages ===")
         for pool in pools:
@@ -322,18 +341,17 @@ def main():
                 wave_check=True,
             )
             if sessions:
-                address = extract_address(page)
                 output["pools"].append({
                     "id": pool["id"],
                     "name": pool["name"],
-                    "address": address,
+                    "address": extract_address(page),
                     "wave": wave,
                     "url": pool["url"],
                     "sessions": sessions,
                 })
 
-        # Rinks
-        rinks = discover_venues(page, RINK_INDEX_URL, "rinks")
+        # ── Rinks ─────────────────────────────────────────────────────────────
+        rinks = discover_venues(page, RINK_INDEX_URL, "rinks", RINK_INDEX_URL_FALLBACK)
         if rinks:
             print("\n=== Scraping " + str(len(rinks)) + " rink pages ===")
             for rink in rinks:
@@ -344,11 +362,10 @@ def main():
                     wave_check=False,
                 )
                 if sessions:
-                    address = extract_address(page)
                     output["rinks"].append({
                         "id": rink["id"],
                         "name": rink["name"],
-                        "address": address,
+                        "address": extract_address(page),
                         "url": rink["url"],
                         "sessions": sessions,
                     })
@@ -357,22 +374,23 @@ def main():
 
         browser.close()
 
+    pool_sessions = sum(len(p["sessions"]) for p in output["pools"])
+    rink_sessions = sum(len(r["sessions"]) for r in output["rinks"])
+
+    if pool_sessions == 0 and rink_sessions == 0:
+        print("WARNING: Scraper ran but found zero sessions — keeping previous schedule_data.json.")
+        sys.exit(0)  # exit 0: old data is better than empty
+
     with open("schedule_data.json", "w", encoding="utf-8") as f:
         json.dump(output, f, indent=2, ensure_ascii=False)
 
-    pool_sessions = sum(len(p["sessions"]) for p in output["pools"])
-    rink_sessions = sum(len(r["sessions"]) for r in output["rinks"])
     print("\nDone. Wrote schedule_data.json")
-    print("  Pools: " + str(len(output["pools"])) + " venues, " + str(pool_sessions) + " session slots")
+    print("  Pools: " + str(len(output["pools"])) + " venues, " + str(pool_sessions) + " sessions")
     for p in output["pools"]:
         print("    * " + p["name"] + ": " + str(len(p["sessions"])) + " sessions")
-    print("  Rinks: " + str(len(output["rinks"])) + " venues, " + str(rink_sessions) + " session slots")
+    print("  Rinks: " + str(len(output["rinks"])) + " venues, " + str(rink_sessions) + " sessions")
     for r in output["rinks"]:
         print("    * " + r["name"] + ": " + str(len(r["sessions"])) + " sessions")
-
-    if pool_sessions == 0 and rink_sessions == 0:
-        print("WARNING: No sessions scraped at all.")
-        sys.exit(1)
 
 
 if __name__ == "__main__":
