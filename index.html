@@ -440,4 +440,296 @@ function showDataBadge(){
     dbg.textContent='📍 Locating… — results sorted by distance';
     try{
       const r=await fetch(
-        'https://nominatim.openstreet
+        'https://nominatim.openstreetmap.org/reverse?lat='+userCoords.lat+'&lon='+userCoords.lng+'&format=json',
+        {headers:{'Accept-Language':'en'}}
+      );
+      const j=await r.json();
+      const a=j.address||{};
+      const place=a.suburb||a.neighbourhood||a.quarter||a.village||a.town||a.city_district||a.city||'your area';
+      dbg.textContent='📍 '+place+' — results sorted by distance';
+    }catch(e){
+      dbg.textContent='📍 Location found — results sorted by distance';
+    }
+  }else{
+    dbg.textContent='Location unavailable — results sorted alphabetically';
+  }
+})();
+
+function getDay(){
+  const v=document.getElementById('sd').value;
+  return v?new Date(v+'T12:00:00').getDay():null;
+}
+function getMins(){
+  const v=document.getElementById('st').value;
+  if(!v) return 0;
+  const parts=v.split(':').map(Number);
+  return parts[0]*60+parts[1];
+}
+
+document.getElementById('sd').addEventListener('change',updateNotice);
+
+function updateNotice(){
+  const n=document.getElementById('notice'),day=getDay();
+  if(day===null){n.style.display='none';return}
+  if(day===6){
+    n.className='notice info';
+    n.innerHTML='Saturday! Play Free is active - kids 17 & under swim free at marked sessions.';
+  }else{
+    n.className='notice warn';
+    n.innerHTML='Play Free is Saturdays only. Regular fees apply today.';
+  }
+  n.style.display='block';
+}
+
+// ── Activity toggle & sub-filter ─────────────────────────────────────────────
+function setActivity(a) {
+  activity = a;
+  subActivity = 'all';
+  document.getElementById('btn-swim').className  = 'act-btn' + (a==='swim'  ? ' active-swim'  : '');
+  document.getElementById('btn-skate').className = 'act-btn' + (a==='skate' ? ' active-skate' : '');
+  document.getElementById('btn-both').className  = 'act-btn' + (a==='all'   ? ' active-both'  : '');
+  renderSubFilter();
+}
+
+function setSubActivity(val) {
+  subActivity = val;
+  renderSubFilter();
+}
+
+function renderSubFilter() {
+  const el = document.getElementById('sub-filter');
+  if (activity === 'all') { el.style.display='none'; el.innerHTML=''; return; }
+  el.style.display = 'block';
+
+  const labelStyle = 'font-size:.67rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--text-muted);margin-bottom:7px;';
+  const base = 'display:inline-flex;align-items:center;padding:5px 12px;border-radius:20px;font-size:.76rem;font-weight:600;cursor:pointer;border:1.5px solid;margin-right:5px;margin-bottom:4px;font-family:inherit;';
+
+  function chip(val, label, color, bg, border) {
+    const on = subActivity === val;
+    const style = on
+      ? base + `background:${bg};color:${color};border-color:${border};`
+      : base + `background:#F8FAFC;color:var(--text-muted);border-color:var(--border);`;
+    return `<button style="${style}" onclick="setSubActivity('${val}')">${label}</button>`;
+  }
+
+  let html = `<div style="${labelStyle}">Which type?</div>`;
+  if (activity === 'swim') {
+    html += chip('all',    '● All swim',    'var(--accent-dark)', 'var(--accent-light)', 'var(--accent)');
+    html += chip('public', '○ Public swim', 'var(--accent-dark)', 'var(--accent-light)', 'var(--accent)');
+    html += chip('lane',   '○ Lane swim',   'var(--accent-dark)', 'var(--accent-light)', 'var(--accent)');
+  } else {
+    html += chip('all',          '● All skate',    'var(--blue)', 'var(--blue-light)', 'var(--blue)');
+    html += chip('public-skate', '○ Public skate', 'var(--blue)', 'var(--blue-light)', 'var(--blue)');
+    html += chip('family-skate', '○ Family skate', 'var(--blue)', 'var(--blue-light)', 'var(--blue)');
+  }
+  el.innerHTML = html;
+}
+
+// ── Session keyword matching ──────────────────────────────────────────────────
+const SWIM_PUBLIC_KW  = ['public swim','wave swim'];
+const SWIM_LANE_KW    = ['lane swim'];
+const SKATE_PUBLIC_KW = ['public skate','public skating'];
+const SKATE_FAMILY_KW = ['family skate','family skating'];
+
+function sessionMatchesFilter(s, isSkate) {
+  const lbl = s.label.toLowerCase();
+  if (!isSkate) {
+    if (subActivity === 'all')    return true;
+    if (subActivity === 'public') return SWIM_PUBLIC_KW.some(k => lbl.includes(k));
+    if (subActivity === 'lane')   return SWIM_LANE_KW.some(k => lbl.includes(k));
+  } else {
+    if (subActivity === 'all')          return true;
+    if (subActivity === 'public-skate') return SKATE_PUBLIC_KW.some(k => lbl.includes(k));
+    if (subActivity === 'family-skate') return SKATE_FAMILY_KW.some(k => lbl.includes(k));
+  }
+  return false;
+}
+
+// ── Search ────────────────────────────────────────────────────────────────────
+function buildActive(venues, day, mins, isSkate) {
+  return venues.map(function(venue) {
+    const hits = (venue.sessions||[]).filter(s =>
+      s.day===day && mins>=s.start && mins<s.end && sessionMatchesFilter(s, isSkate)
+    );
+    const info = infoForVenue(venue);
+    return {venue, hits, dist:info.dist, addr:info.addr, mapsUrl:info.mapsUrl};
+  }).filter(r => r.hits.length);
+}
+
+function sortResults(active) {
+  const hasDistances = userCoords && active.some(r => r.dist !== null);
+  if (hasDistances) {
+    active.sort((a,b) => {
+      if (a.dist===null && b.dist===null) return a.venue.name.localeCompare(b.venue.name);
+      if (a.dist===null) return 1;
+      if (b.dist===null) return -1;
+      return a.dist - b.dist;
+    });
+  } else {
+    active.sort((a,b) => a.venue.name.localeCompare(b.venue.name));
+  }
+  return hasDistances;
+}
+
+function doSearch() {
+  const dateVal = document.getElementById('sd').value;
+  const timeVal = document.getElementById('st').value;
+  if (!dateVal||!timeVal) { alert('Please pick both a date and time.'); return; }
+
+  const day = getDay(), mins = getMins();
+  const dateObj = new Date(dateVal+'T12:00:00');
+  const dateStr = dateObj.toLocaleDateString('en-CA',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
+
+  const showSwim  = activity==='swim'  || activity==='all';
+  const showSkate = activity==='skate' || activity==='all';
+
+  const activePools = showSwim  ? buildActive(POOLS, day, mins, false) : [];
+  const activeRinks = showSkate ? buildActive(RINKS, day, mins, true)  : [];
+
+  const hasDistPools = sortResults(activePools);
+  const hasDistRinks = sortResults(activeRinks);
+  const hasDistances = hasDistPools || hasDistRinks;
+
+  const laterPools=[], laterRinks=[];
+  if (showSwim) POOLS.forEach(p => {
+    (p.sessions||[]).filter(s => s.day===day && s.start>mins && sessionMatchesFilter(s,false))
+      .forEach(s => laterPools.push({venue:p, s}));
+  });
+  if (showSkate) RINKS.forEach(r => {
+    (r.sessions||[]).filter(s => s.day===day && s.start>mins && sessionMatchesFilter(s,true))
+      .forEach(s => laterRinks.push({venue:r, s}));
+  });
+  laterPools.sort((a,b) => a.s.start-b.s.start);
+  laterRinks.sort((a,b) => a.s.start-b.s.start);
+
+  render(activePools, activeRinks, laterPools, laterRinks, dateStr, mins, hasDistances, showSwim, showSkate);
+}
+
+function toggle(el) { el.classList.toggle('open'); }
+
+// ── Render ────────────────────────────────────────────────────────────────────
+function venueCard(r, isSkate, timeLabel) {
+  const {venue, hits, dist, addr, mapsUrl} = r;
+  const hasFree = hits.some(s => s.playFree);
+  const addrText = addr ? '📍 '+addr : '';
+  const distText = (dist!==null && !isNaN(dist))
+    ? (dist<1 ? (dist*1000).toFixed(0)+' m' : dist.toFixed(1)+' km')+' away' : '';
+  const addrLine = addrText&&distText ? addrText+' · '+distText : addrText||distText;
+  const blockClass = 'pblock open'+(isSkate?' skate-block':'');
+  const openTag = isSkate
+    ? '<span class="tag t-skate">⛸️ Open at '+timeLabel+'</span>'
+    : '<span class="tag t-open">🏊 Open at '+timeLabel+'</span>';
+
+  let h = '<div class="'+blockClass+'" onclick="toggle(this)">'
+    +'<div class="phead"><div>'
+    +'<div class="pname">'+venue.name
+    +(mapsUrl ? ' <a href="'+mapsUrl+'" target="_blank" onclick="event.stopPropagation()" style="font-size:.72rem;font-weight:600;color:var(--accent);text-decoration:none;vertical-align:middle;margin-left:6px" title="Open in Google Maps">📍 Maps</a>' : '')
+    +'</div>'
+    +(addrLine ? '<div class="parea">'+addrLine+'</div>' : '')
+    +'<div class="ptags">'+openTag
+    +(hasFree ? '<span class="tag t-free">Play Free</span>' : '')
+    +(venue.wave ? '<span class="tag t-wave">🌊 Wave pool</span>' : '')
+    +'</div></div><div class="chev">▾</div></div>'
+    +'<div class="spanel"><div class="stitle">Sessions open at '+timeLabel+'</div>';
+
+  hits.forEach(s => {
+    h += '<div class="srow'+(s.playFree?' free':'')+'"><div class="styp">'+s.label+'</div>'
+      +'<div style="display:flex;align-items:center;gap:8px">'
+      +(s.playFree ? '<span class="fbadge">PLAY FREE</span>' : '')
+      +'<div class="stim">'+fmt(s.start)+' – '+fmt(s.end)+'</div>'
+      +'</div></div>';
+  });
+
+  h += '<a class="extlink" href="'+venue.url+'" target="_blank">Full schedule on Ottawa.ca ↗</a>'
+    +'</div></div>';
+  return h;
+}
+
+function render(activePools, activeRinks, laterPools, laterRinks, dateStr, mins, hasDistances, showSwim, showSkate) {
+  const total = activePools.length + activeRinks.length;
+  const timeLabel = fmt(mins);
+  const sortNote = hasDistances
+    ? ' <span style="font-size:.78rem;color:var(--text-muted);font-weight:500"> — sorted by distance</span>' : '';
+  const typeLabel = showSwim&&showSkate ? 'venues' : showSwim ? 'pools' : 'rinks';
+
+  let h = '<div class="results">'
+    +'<div class="rlabel">'+total+' '+typeLabel+' open at '+timeLabel+sortNote+'</div>'
+    +'<div class="rsub">'+dateStr+'</div>';
+
+  if (!total) {
+    const icon = showSwim&&showSkate ? '🏊 ⛸️' : showSwim ? '🌊' : '⛸️';
+    h += '<div class="no-results"><div class="big">'+icon+'</div>'
+      +'<p>No open sessions found at <strong>'+timeLabel+'</strong>.<br>Try a different time or activity type.</p></div>';
+  } else {
+    if (showSwim&&showSkate&&activePools.length)
+      h += '<div class="section-header swim-hdr">🏊 Swimming ('+activePools.length+')</div>';
+    activePools.forEach(r => { h += venueCard(r, false, timeLabel); });
+    if (showSwim&&showSkate&&activeRinks.length)
+      h += '<div class="section-header skate-hdr">⛸️ Skating ('+activeRinks.length+')</div>';
+    activeRinks.forEach(r => { h += venueCard(r, true, timeLabel); });
+  }
+
+  const laterAll = [
+    ...laterPools.map(x => ({...x, isSkate:false})),
+    ...laterRinks.map(x => ({...x, isSkate:true})),
+  ].sort((a,b) => a.s.start-b.s.start);
+
+  if (laterAll.length) {
+    h += '<div class="later-sec"><div class="llabel">More sessions later today</div>';
+    laterAll.forEach(({venue, s, isSkate}) => {
+      const icon = isSkate ? '⛸️' : '🏊';
+      h += '<div class="srow'+(s.playFree?' free':'')+'" style="margin-bottom:8px">'
+        +'<div><div style="font-size:.78rem;color:var(--text-muted);margin-bottom:2px">'+icon+' '+venue.name+'</div>'
+        +'<div class="styp">'+s.label+'</div>'
+        +'<a class="extlink" href="'+venue.url+'" target="_blank" style="margin-top:5px">Full schedule on Ottawa.ca ↗</a>'
+        +'</div>'
+        +'<div style="display:flex;align-items:center;gap:8px;flex-shrink:0">'
+        +(s.playFree ? '<span class="fbadge">PLAY FREE</span>' : '')
+        +'<div class="stim">'+fmt(s.start)+' – '+fmt(s.end)+'</div>'
+        +'</div></div>';
+    });
+    h += '</div>';
+  }
+
+  h += '</div>';
+  const area = document.getElementById('results');
+  area.innerHTML = h;
+  area.scrollIntoView({behavior:'smooth', block:'start'});
+}
+
+// ── Holiday banner ────────────────────────────────────────────────────────────
+const HOLIDAY_WINDOWS = [
+  // March Break (Ottawa school board dates — update yearly)
+  { start: '2026-03-14', end: '2026-03-22', label: 'March Break (Mar 14–22)' },
+  { start: '2027-03-13', end: '2027-03-21', label: 'March Break (Mar 13–21)' },
+  // PA Days (approximate — add more as known)
+  { start: '2026-04-03', end: '2026-04-03', label: 'PA Day (Apr 3)' },
+  { start: '2026-06-05', end: '2026-06-05', label: 'PA Day (Jun 5)' },
+  // Statutory holidays
+  { start: '2026-01-01', end: '2026-01-01', label: 'New Year’s Day' },
+  { start: '2026-02-16', end: '2026-02-16', label: 'Family Day' },
+  { start: '2026-04-03', end: '2026-04-06', label: 'Easter weekend' },
+  { start: '2026-05-18', end: '2026-05-18', label: 'Victoria Day' },
+  { start: '2026-07-01', end: '2026-07-01', label: 'Canada Day' },
+  { start: '2026-08-03', end: '2026-08-03', label: 'Civic Holiday' },
+  { start: '2026-09-07', end: '2026-09-07', label: 'Labour Day' },
+  { start: '2026-10-12', end: '2026-10-12', label: 'Thanksgiving' },
+  { start: '2026-12-25', end: '2026-12-28', label: 'Christmas / Holiday week' },
+];
+
+(function checkHolidayBanner(){
+  const today = new Date().toISOString().split('T')[0];
+  const match = HOLIDAY_WINDOWS.find(w => today >= w.start && today <= w.end);
+  const el = document.getElementById('holiday-banner');
+  if (match) {
+    el.innerHTML = '⚠️ <strong>' + match.label + '</strong> — special holiday schedules '
+      + 'may be in effect at some facilities. Always '
+      + '<a href="https://ottawa.ca/en/recreation-and-parks" target="_blank">verify on Ottawa.ca</a> '
+      + 'before heading out.';
+    el.style.display = 'block';
+  }
+})();
+
+</script>
+</body>
+</html>
