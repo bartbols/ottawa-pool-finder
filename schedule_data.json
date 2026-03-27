@@ -1,5 +1,5 @@
 {
-  "scraped_at": "2026-03-26T05:09:24.844345+00:00",
+  "scraped_at": "2026-03-27T05:10:12.909845+00:00",
   "pools": [
     {
       "id": "brewer-pool-and-arena",
@@ -8,6 +8,34 @@
       "wave": false,
       "url": "https://ottawa.ca/en/recreation-and-parks/facilities/place-listing/brewer-pool-and-arena",
       "sessions": [
+        {
+          "day": 6,
+          "label": "Lane swim",
+          "start": 720,
+          "end": 810,
+          "playFree": true
+        },
+        {
+          "day": 0,
+          "label": "Lane swim",
+          "start": 720,
+          "end": 810,
+          "playFree": false
+        },
+        {
+          "day": 6,
+          "label": "Public swim",
+          "start": 810,
+          "end": 870,
+          "playFree": true
+        },
+        {
+          "day": 0,
+          "label": "Public swim",
+          "start": 810,
+          "end": 870,
+          "playFree": false
+        },
         {
           "day": 1,
           "label": "Lane swim",
@@ -39,7 +67,7 @@
         {
           "day": 2,
           "label": "Lane swim",
-          "start": 1230,
+          "start": 1200,
           "end": 1290,
           "playFree": false
         },
@@ -60,7 +88,7 @@
         {
           "day": 3,
           "label": "Lane swim",
-          "start": 1230,
+          "start": 1200,
           "end": 1290,
           "playFree": false
         },
@@ -410,7 +438,7 @@
           "day": 2,
           "label": "Lane swim",
           "start": 660,
-          "end": 780,
+          "end": 840,
           "playFree": false
         },
         {
@@ -2322,13 +2350,6 @@
         {
           "day": 0,
           "label": "Lane swim",
-          "start": 450,
-          "end": 510,
-          "playFree": false
-        },
-        {
-          "day": 0,
-          "label": "Lane swim",
           "start": 1140,
           "end": 1200,
           "playFree": false
@@ -2350,20 +2371,6 @@
       "url": "https://ottawa.ca/en/recreation-and-parks/facilities/place-listing/nepean-sportsplex",
       "sessions": [
         {
-          "day": 1,
-          "label": "Lane swim - 25m pool",
-          "start": 420,
-          "end": 480,
-          "playFree": false
-        },
-        {
-          "day": 3,
-          "label": "Lane swim - 25m pool",
-          "start": 420,
-          "end": 480,
-          "playFree": false
-        },
-        {
           "day": 5,
           "label": "Lane swim - 25m pool",
           "start": 420,
@@ -2372,63 +2379,14 @@
         },
         {
           "day": 1,
-          "label": "Lane swim - 50m short course",
-          "start": 510,
-          "end": 780,
-          "playFree": false
-        },
-        {
-          "day": 1,
-          "label": "Lane swim - 50m short course",
-          "start": 1170,
-          "end": 1290,
-          "playFree": false
-        },
-        {
-          "day": 2,
-          "label": "Lane swim - 50m short course",
-          "start": 510,
-          "end": 780,
-          "playFree": false
-        },
-        {
-          "day": 2,
-          "label": "Lane swim - 50m short course",
-          "start": 1170,
-          "end": 1290,
-          "playFree": false
-        },
-        {
-          "day": 3,
-          "label": "Lane swim - 50m short course",
-          "start": 510,
-          "end": 780,
-          "playFree": false
-        },
-        {
-          "day": 3,
-          "label": "Lane swim - 50m short course",
-          "start": 1170,
-          "end": 1290,
-          "playFree": false
-        },
-        {
-          "day": 4,
-          "label": "Lane swim - 50m short course",
-          "start": 510,
-          "end": 780,
-          "playFree": false
-        },
-        {
-          "day": 4,
-          "label": "Lane swim - 50m short course",
-          "start": 1170,
-          "end": 1290,
+          "label": "Lane swim - 25m pool",
+          "start": 420,
+          "end": 480,
           "playFree": false
         },
         {
           "day": 5,
-          "label": "Lane swim - 50m short course",
+          "label": "Lane swim - 50m long course",
           "start": 510,
           "end": 780,
           "playFree": false
@@ -2438,7 +2396,7 @@
           "label": "Lane swim - 50m short course",
           "start": 660,
           "end": 900,
-          "playFree": true
+          "playFree": false
         },
         {
           "day": 0,
@@ -2449,30 +2407,16 @@
         },
         {
           "day": 1,
-          "label": "Public swim - 25m pool",
-          "start": 660,
+          "label": "Lane swim - 50m short course",
+          "start": 510,
           "end": 780,
           "playFree": false
         },
         {
-          "day": 2,
-          "label": "Public swim - 25m pool",
-          "start": 660,
-          "end": 780,
-          "playFree": false
-        },
-        {
-          "day": 3,
-          "label": "Public swim - 25m pool",
-          "start": 660,
-          "end": 780,
-          "playFree": false
-        },
-        {
-          "day": 4,
-          "label": "Public swim - 25m pool",
-          "start": 660,
-          "end": 780,
+          "day": 1,
+          "label": "Lane swim - 50m short course",
+          "start": 1170,
+          "end": 1230,
           "playFree": false
         },
         {
@@ -2498,6 +2442,13 @@
         },
         {
           "day": 1,
+          "label": "Public swim - 25m pool",
+          "start": 660,
+          "end": 780,
+          "playFree": false
+        },
+        {
+          "day": 1,
           "label": "Lane swim - 25m pool",
           "start": 420,
           "end": 480,
@@ -2546,10 +2497,31 @@
           "playFree": false
         },
         {
-          "day": 5,
-          "label": "Lane swim - 50m long course",
-          "start": 510,
-          "end": 780,
+          "day": 1,
+          "label": "Lane swim - 50m short course",
+          "start": 1170,
+          "end": 1290,
+          "playFree": false
+        },
+        {
+          "day": 2,
+          "label": "Lane swim - 50m short course",
+          "start": 1170,
+          "end": 1290,
+          "playFree": false
+        },
+        {
+          "day": 3,
+          "label": "Lane swim - 50m short course",
+          "start": 1170,
+          "end": 1290,
+          "playFree": false
+        },
+        {
+          "day": 4,
+          "label": "Lane swim - 50m short course",
+          "start": 1170,
+          "end": 1290,
           "playFree": false
         },
         {
@@ -3119,24 +3091,38 @@
           "playFree": false
         },
         {
-          "day": 6,
-          "label": "Lane swim",
-          "start": 480,
-          "end": 660,
-          "playFree": false
-        },
-        {
-          "day": 0,
-          "label": "Lane swim",
-          "start": 480,
-          "end": 660,
-          "playFree": false
-        },
-        {
           "day": 1,
           "label": "Lane swim",
           "start": 480,
           "end": 660,
+          "playFree": false
+        },
+        {
+          "day": 5,
+          "label": "Public swim",
+          "start": 660,
+          "end": 780,
+          "playFree": false
+        },
+        {
+          "day": 6,
+          "label": "Public swim",
+          "start": 720,
+          "end": 780,
+          "playFree": true
+        },
+        {
+          "day": 0,
+          "label": "Public swim",
+          "start": 720,
+          "end": 780,
+          "playFree": false
+        },
+        {
+          "day": 1,
+          "label": "Public swim",
+          "start": 660,
+          "end": 780,
           "playFree": false
         },
         {
@@ -3149,29 +3135,15 @@
         {
           "day": 6,
           "label": "Wave swim",
-          "start": 660,
-          "end": 780,
-          "playFree": false
-        },
-        {
-          "day": 6,
-          "label": "Wave swim",
-          "start": 840,
-          "end": 1080,
+          "start": 780,
+          "end": 1020,
           "playFree": false
         },
         {
           "day": 0,
           "label": "Wave swim",
-          "start": 660,
-          "end": 780,
-          "playFree": false
-        },
-        {
-          "day": 0,
-          "label": "Wave swim",
-          "start": 840,
-          "end": 1080,
+          "start": 780,
+          "end": 1020,
           "playFree": false
         },
         {
@@ -3301,20 +3273,6 @@
           "playFree": false
         },
         {
-          "day": 6,
-          "label": "Public swim",
-          "start": 720,
-          "end": 780,
-          "playFree": true
-        },
-        {
-          "day": 0,
-          "label": "Public swim",
-          "start": 720,
-          "end": 780,
-          "playFree": false
-        },
-        {
           "day": 3,
           "label": "Wave swim",
           "start": 1080,
@@ -3326,20 +3284,6 @@
           "label": "Wave swim",
           "start": 1080,
           "end": 1200,
-          "playFree": false
-        },
-        {
-          "day": 6,
-          "label": "Wave swim",
-          "start": 780,
-          "end": 1020,
-          "playFree": false
-        },
-        {
-          "day": 0,
-          "label": "Wave swim",
-          "start": 780,
-          "end": 1020,
           "playFree": false
         }
       ]
@@ -4708,7 +4652,7 @@
       "sessions": [
         {
           "day": 2,
-          "label": "Public skating",
+          "label": "Public Skating",
           "start": 810,
           "end": 900,
           "playFree": false
