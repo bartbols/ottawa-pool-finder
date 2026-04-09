@@ -1,5 +1,5 @@
 {
-  "scraped_at": "2026-04-08T05:14:10.165965+00:00",
+  "scraped_at": "2026-04-09T05:13:01.691718+00:00",
   "pools": [
     {
       "id": "brewer-pool-and-arena",
@@ -605,7 +605,7 @@
         {
           "day": 5,
           "label": "Public swim",
-          "start": 1140,
+          "start": 1080,
           "end": 1200,
           "playFree": false
         },
@@ -3681,35 +3681,6 @@
           "start": 735,
           "end": 785,
           "playFree": false
-        }
-      ]
-    },
-    {
-      "id": "jack-charron-arena",
-      "name": "Jack Charron",
-      "address": "",
-      "url": "https://ottawa.ca/en/recreation-and-parks/facilities/place-listing/jack-charron-arena",
-      "sessions": [
-        {
-          "day": 5,
-          "label": "Public skating",
-          "start": 600,
-          "end": 650,
-          "playFree": false
-        },
-        {
-          "day": 0,
-          "label": "Public skating",
-          "start": 960,
-          "end": 1010,
-          "playFree": true
-        },
-        {
-          "day": 0,
-          "label": "Family skating",
-          "start": 900,
-          "end": 950,
-          "playFree": true
         }
       ]
     },
