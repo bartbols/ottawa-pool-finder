@@ -1,5 +1,5 @@
 {
-  "scraped_at": "2026-04-09T05:13:01.691718+00:00",
+  "scraped_at": "2026-04-10T05:28:03.922527+00:00",
   "pools": [
     {
       "id": "brewer-pool-and-arena",
@@ -1942,6 +1942,13 @@
         {
           "day": 2,
           "label": "Lane swim",
+          "start": 660,
+          "end": 720,
+          "playFree": false
+        },
+        {
+          "day": 2,
+          "label": "Lane swim",
           "start": 720,
           "end": 780,
           "playFree": false
@@ -1972,13 +1979,6 @@
           "label": "Lane swim",
           "start": 420,
           "end": 660,
-          "playFree": false
-        },
-        {
-          "day": 4,
-          "label": "Lane swim",
-          "start": 660,
-          "end": 720,
           "playFree": false
         },
         {
@@ -3685,6 +3685,28 @@
       ]
     },
     {
+      "id": "john-g-mlacak-community-centre",
+      "name": "John G Mlacak Community Centre",
+      "address": "",
+      "url": "https://ottawa.ca/en/recreation-and-parks/facilities/place-listing/john-g-mlacak-community-centre",
+      "sessions": [
+        {
+          "day": 6,
+          "label": "Family skate",
+          "start": 1080,
+          "end": 1130,
+          "playFree": true
+        },
+        {
+          "day": 6,
+          "label": "Public skate",
+          "start": 1140,
+          "end": 1190,
+          "playFree": true
+        }
+      ]
+    },
+    {
       "id": "nepean-sportsplex",
       "name": "Nepean Sportsplex",
       "address": "",
@@ -3802,42 +3824,6 @@
           "label": "Public skating",
           "start": 795,
           "end": 845,
-          "playFree": true
-        }
-      ]
-    },
-    {
-      "id": "w-erskine-johnston-arena",
-      "name": "W. Erskine Johnston Arena",
-      "address": "",
-      "url": "https://ottawa.ca/en/recreation-and-parks/facilities/place-listing/w-erskine-johnston-arena",
-      "sessions": [
-        {
-          "day": 2,
-          "label": "Public skating",
-          "start": 690,
-          "end": 740,
-          "playFree": false
-        },
-        {
-          "day": 5,
-          "label": "Public skating",
-          "start": 690,
-          "end": 740,
-          "playFree": false
-        },
-        {
-          "day": 5,
-          "label": "Public skating",
-          "start": 960,
-          "end": 1070,
-          "playFree": false
-        },
-        {
-          "day": 0,
-          "label": "Public skating",
-          "start": 840,
-          "end": 950,
           "playFree": true
         }
       ]
