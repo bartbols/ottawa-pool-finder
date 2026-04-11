@@ -1,5 +1,5 @@
 {
-  "scraped_at": "2026-04-10T05:28:03.922527+00:00",
+  "scraped_at": "2026-04-11T04:58:00.344831+00:00",
   "pools": [
     {
       "id": "brewer-pool-and-arena",
@@ -3599,92 +3599,6 @@
       ]
     },
     {
-      "id": "metcalfe-community-centre-and-larry-robinson-arena",
-      "name": "Metcalfe Community Centre and Larry Robinson Arena",
-      "address": "",
-      "url": "https://ottawa.ca/en/recreation-and-parks/facilities/place-listing/metcalfe-community-centre-and-larry-robinson-arena",
-      "sessions": [
-        {
-          "day": 4,
-          "label": "Public skating",
-          "start": 1020,
-          "end": 1070,
-          "playFree": false
-        },
-        {
-          "day": 6,
-          "label": "Public skating",
-          "start": 1020,
-          "end": 1070,
-          "playFree": true
-        },
-        {
-          "day": 4,
-          "label": "Family skating",
-          "start": 960,
-          "end": 1010,
-          "playFree": false
-        },
-        {
-          "day": 5,
-          "label": "Family skating",
-          "start": 900,
-          "end": 950,
-          "playFree": false
-        },
-        {
-          "day": 6,
-          "label": "Family skating",
-          "start": 960,
-          "end": 1010,
-          "playFree": true
-        }
-      ]
-    },
-    {
-      "id": "walter-baker-sports-centre",
-      "name": "Walter Baker Sports Centre",
-      "address": "",
-      "url": "https://ottawa.ca/en/recreation-and-parks/facilities/place-listing/walter-baker-sports-centre",
-      "sessions": [
-        {
-          "day": 5,
-          "label": "Public skating",
-          "start": 1155,
-          "end": 1205,
-          "playFree": false
-        },
-        {
-          "day": 6,
-          "label": "Public skating",
-          "start": 675,
-          "end": 725,
-          "playFree": true
-        },
-        {
-          "day": 6,
-          "label": "Public skating",
-          "start": 735,
-          "end": 785,
-          "playFree": true
-        },
-        {
-          "day": 0,
-          "label": "Public skating",
-          "start": 675,
-          "end": 725,
-          "playFree": false
-        },
-        {
-          "day": 0,
-          "label": "Public skating",
-          "start": 735,
-          "end": 785,
-          "playFree": false
-        }
-      ]
-    },
-    {
       "id": "john-g-mlacak-community-centre",
       "name": "John G Mlacak Community Centre",
       "address": "",
@@ -3703,78 +3617,6 @@
           "start": 1140,
           "end": 1190,
           "playFree": true
-        }
-      ]
-    },
-    {
-      "id": "nepean-sportsplex",
-      "name": "Nepean Sportsplex",
-      "address": "",
-      "url": "https://ottawa.ca/en/recreation-and-parks/facilities/place-listing/nepean-sportsplex",
-      "sessions": [
-        {
-          "day": 2,
-          "label": "Public Skating",
-          "start": 810,
-          "end": 900,
-          "playFree": false
-        }
-      ]
-    },
-    {
-      "id": "pinecrest-recreation-complex",
-      "name": "Pinecrest Recreation Complex",
-      "address": "",
-      "url": "https://ottawa.ca/en/recreation-and-parks/facilities/place-listing/pinecrest-recreation-complex",
-      "sessions": [
-        {
-          "day": 3,
-          "label": "Family skate",
-          "start": 840,
-          "end": 890,
-          "playFree": false
-        },
-        {
-          "day": 1,
-          "label": "Public skate",
-          "start": 780,
-          "end": 830,
-          "playFree": false
-        },
-        {
-          "day": 3,
-          "label": "Public skate",
-          "start": 900,
-          "end": 950,
-          "playFree": false
-        },
-        {
-          "day": 3,
-          "label": "Public skate",
-          "start": 960,
-          "end": 1010,
-          "playFree": false
-        },
-        {
-          "day": 0,
-          "label": "Public skate",
-          "start": 840,
-          "end": 890,
-          "playFree": true
-        },
-        {
-          "day": 0,
-          "label": "Public skate",
-          "start": 900,
-          "end": 950,
-          "playFree": true
-        },
-        {
-          "day": 1,
-          "label": "Public skate 50+",
-          "start": 660,
-          "end": 710,
-          "playFree": false
         }
       ]
     },
