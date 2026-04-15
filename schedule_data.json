@@ -1,5 +1,5 @@
 {
-  "scraped_at": "2026-04-14T05:27:25.403765+00:00",
+  "scraped_at": "2026-04-15T05:27:26.885127+00:00",
   "pools": [
     {
       "id": "brewer-pool-and-arena",
@@ -1255,7 +1255,7 @@
         {
           "day": 2,
           "label": "Lane swim",
-          "start": 540,
+          "start": 600,
           "end": 780,
           "playFree": false
         },
