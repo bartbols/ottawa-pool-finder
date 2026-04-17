@@ -1,5 +1,5 @@
 {
-  "scraped_at": "2026-04-16T05:33:49.672672+00:00",
+  "scraped_at": "2026-04-17T05:30:56.539912+00:00",
   "pools": [
     {
       "id": "brewer-pool-and-arena",
@@ -3399,21 +3399,6 @@
     }
   ],
   "rinks": [
-    {
-      "id": "earl-armstrong-arena",
-      "name": "Earl Armstrong Arena",
-      "address": "",
-      "url": "https://ottawa.ca/en/recreation-and-parks/facilities/place-listing/earl-armstrong-arena",
-      "sessions": [
-        {
-          "day": 4,
-          "label": "Public skating",
-          "start": 900,
-          "end": 950,
-          "playFree": false
-        }
-      ]
-    },
     {
       "id": "canterbury-recreation-complex",
       "name": "Canterbury Recreation Complex - Brian Kilrea Arena",
