@@ -1,5 +1,5 @@
 {
-  "scraped_at": "2026-04-17T05:30:56.539912+00:00",
+  "scraped_at": "2026-04-18T05:09:50.600155+00:00",
   "pools": [
     {
       "id": "brewer-pool-and-arena",
@@ -1291,7 +1291,7 @@
           "day": 4,
           "label": "Lane swim",
           "start": 360,
-          "end": 480,
+          "end": 540,
           "playFree": false
         },
         {
@@ -3491,7 +3491,7 @@
           "playFree": false
         },
         {
-          "day": 6,
+          "day": 0,
           "label": "Public skating",
           "start": 960,
           "end": 1010,
@@ -3503,13 +3503,6 @@
           "start": 1020,
           "end": 1070,
           "playFree": false
-        },
-        {
-          "day": 6,
-          "label": "Family skating",
-          "start": 900,
-          "end": 950,
-          "playFree": true
         }
       ]
     },
