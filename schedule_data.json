@@ -1,5 +1,5 @@
 {
-  "scraped_at": "2026-04-26T05:42:48.808624+00:00",
+  "scraped_at": "2026-04-27T05:57:43.100860+00:00",
   "pools": [
     {
       "id": "brewer-pool-and-arena",
@@ -3406,49 +3406,6 @@
     }
   ],
   "rinks": [
-    {
-      "id": "canterbury-recreation-complex",
-      "name": "Canterbury Recreation Complex - Brian Kilrea Arena",
-      "address": "",
-      "url": "https://ottawa.ca/en/recreation-and-parks/facilities/place-listing/canterbury-recreation-complex",
-      "sessions": [
-        {
-          "day": 1,
-          "label": "Public skating",
-          "start": 720,
-          "end": 780,
-          "playFree": false
-        },
-        {
-          "day": 3,
-          "label": "Public skating",
-          "start": 720,
-          "end": 780,
-          "playFree": false
-        },
-        {
-          "day": 5,
-          "label": "Public skating",
-          "start": 720,
-          "end": 780,
-          "playFree": false
-        },
-        {
-          "day": 6,
-          "label": "Public skating",
-          "start": 1020,
-          "end": 1080,
-          "playFree": true
-        },
-        {
-          "day": 6,
-          "label": "Family skating",
-          "start": 960,
-          "end": 1020,
-          "playFree": true
-        }
-      ]
-    },
     {
       "id": "sandy-hill-arena",
       "name": "Sandy Hill Arena",
