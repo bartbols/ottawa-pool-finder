@@ -1,5 +1,5 @@
 {
-  "scraped_at": "2026-04-27T05:57:43.100860+00:00",
+  "scraped_at": "2026-04-28T06:09:33.581112+00:00",
   "pools": [
     {
       "id": "brewer-pool-and-arena",
@@ -176,6 +176,148 @@
           "label": "Lane swim",
           "start": 600,
           "end": 840,
+          "playFree": false
+        }
+      ]
+    },
+    {
+      "id": "jack-purcell-community-centre",
+      "name": "Jack Purcell Community Centre",
+      "address": "320 Jack Purcell Lane",
+      "wave": false,
+      "url": "https://ottawa.ca/en/recreation-and-parks/facilities/place-listing/jack-purcell-community-centre",
+      "sessions": [
+        {
+          "day": 1,
+          "label": "Lane swim",
+          "start": 720,
+          "end": 780,
+          "playFree": false
+        },
+        {
+          "day": 1,
+          "label": "Lane swim",
+          "start": 960,
+          "end": 1020,
+          "playFree": false
+        },
+        {
+          "day": 2,
+          "label": "Lane swim",
+          "start": 720,
+          "end": 780,
+          "playFree": false
+        },
+        {
+          "day": 3,
+          "label": "Lane swim",
+          "start": 720,
+          "end": 780,
+          "playFree": false
+        },
+        {
+          "day": 3,
+          "label": "Lane swim",
+          "start": 960,
+          "end": 1020,
+          "playFree": false
+        },
+        {
+          "day": 4,
+          "label": "Lane swim",
+          "start": 720,
+          "end": 780,
+          "playFree": false
+        },
+        {
+          "day": 5,
+          "label": "Lane swim",
+          "start": 720,
+          "end": 780,
+          "playFree": false
+        },
+        {
+          "day": 5,
+          "label": "Lane swim",
+          "start": 960,
+          "end": 1020,
+          "playFree": false
+        },
+        {
+          "day": 6,
+          "label": "Lane swim",
+          "start": 780,
+          "end": 840,
+          "playFree": true
+        },
+        {
+          "day": 0,
+          "label": "Lane swim",
+          "start": 780,
+          "end": 840,
+          "playFree": false
+        },
+        {
+          "day": 1,
+          "label": "Public swim",
+          "start": 1080,
+          "end": 1140,
+          "playFree": false
+        },
+        {
+          "day": 2,
+          "label": "Public swim",
+          "start": 900,
+          "end": 960,
+          "playFree": false
+        },
+        {
+          "day": 3,
+          "label": "Public swim",
+          "start": 1080,
+          "end": 1140,
+          "playFree": false
+        },
+        {
+          "day": 4,
+          "label": "Public swim",
+          "start": 900,
+          "end": 960,
+          "playFree": false
+        },
+        {
+          "day": 5,
+          "label": "Public swim",
+          "start": 1080,
+          "end": 1200,
+          "playFree": false
+        },
+        {
+          "day": 6,
+          "label": "Public swim",
+          "start": 840,
+          "end": 960,
+          "playFree": true
+        },
+        {
+          "day": 0,
+          "label": "Public swim",
+          "start": 840,
+          "end": 900,
+          "playFree": false
+        },
+        {
+          "day": 6,
+          "label": "Public swim women’s only",
+          "start": 960,
+          "end": 1020,
+          "playFree": true
+        },
+        {
+          "day": 0,
+          "label": "Public swim women’s only",
+          "start": 900,
+          "end": 960,
           "playFree": false
         }
       ]
@@ -868,6 +1010,13 @@
         {
           "day": 1,
           "label": "Lane swim",
+          "start": 870,
+          "end": 930,
+          "playFree": false
+        },
+        {
+          "day": 1,
+          "label": "Lane swim",
           "start": 1200,
           "end": 1260,
           "playFree": false
@@ -981,7 +1130,7 @@
           "day": 1,
           "label": "Lane swim - shared pool",
           "start": 780,
-          "end": 930,
+          "end": 870,
           "playFree": false
         },
         {
@@ -1617,7 +1766,7 @@
           "day": 1,
           "label": "Lane Swim",
           "start": 720,
-          "end": 840,
+          "end": 780,
           "playFree": false
         },
         {
@@ -1659,7 +1808,7 @@
           "day": 3,
           "label": "Lane Swim",
           "start": 720,
-          "end": 840,
+          "end": 780,
           "playFree": false
         },
         {
@@ -1757,7 +1906,7 @@
           "day": 6,
           "label": "Public swim *Reservations not required",
           "start": 780,
-          "end": 960,
+          "end": 900,
           "playFree": true
         },
         {
@@ -3467,78 +3616,6 @@
           "start": 1020,
           "end": 1070,
           "playFree": false
-        }
-      ]
-    },
-    {
-      "id": "john-g-mlacak-community-centre",
-      "name": "John G Mlacak Community Centre",
-      "address": "",
-      "url": "https://ottawa.ca/en/recreation-and-parks/facilities/place-listing/john-g-mlacak-community-centre",
-      "sessions": [
-        {
-          "day": 6,
-          "label": "Family skate",
-          "start": 1080,
-          "end": 1130,
-          "playFree": true
-        },
-        {
-          "day": 6,
-          "label": "Public skate",
-          "start": 1140,
-          "end": 1190,
-          "playFree": true
-        }
-      ]
-    },
-    {
-      "id": "tony-graham-recreation-complex-kanata",
-      "name": "Tony Graham Recreation Complex",
-      "address": "",
-      "url": "https://ottawa.ca/en/recreation-and-parks/facilities/place-listing/tony-graham-recreation-complex-kanata",
-      "sessions": [
-        {
-          "day": 2,
-          "label": "Public skating",
-          "start": 795,
-          "end": 845,
-          "playFree": false
-        },
-        {
-          "day": 3,
-          "label": "Public skating",
-          "start": 780,
-          "end": 830,
-          "playFree": false
-        },
-        {
-          "day": 4,
-          "label": "Public skating",
-          "start": 780,
-          "end": 830,
-          "playFree": false
-        },
-        {
-          "day": 5,
-          "label": "Public skating",
-          "start": 1155,
-          "end": 1205,
-          "playFree": false
-        },
-        {
-          "day": 0,
-          "label": "Public skating",
-          "start": 735,
-          "end": 785,
-          "playFree": true
-        },
-        {
-          "day": 0,
-          "label": "Public skating",
-          "start": 795,
-          "end": 845,
-          "playFree": true
         }
       ]
     }
