@@ -1,5 +1,5 @@
 {
-  "scraped_at": "2026-04-30T06:07:52.027329+00:00",
+  "scraped_at": "2026-05-01T06:18:12.730033+00:00",
   "pools": [
     {
       "id": "brewer-pool-and-arena",
@@ -3562,41 +3562,6 @@
       "url": "https://ottawa.ca/en/recreation-and-parks/facilities/place-listing/sandy-hill-arena",
       "sessions": [
         {
-          "day": 2,
-          "label": "Public skating",
-          "start": 1020,
-          "end": 1070,
-          "playFree": false
-        },
-        {
-          "day": 6,
-          "label": "Public skating",
-          "start": 1260,
-          "end": 1310,
-          "playFree": true
-        },
-        {
-          "day": 2,
-          "label": "Family skating",
-          "start": 960,
-          "end": 1010,
-          "playFree": false
-        },
-        {
-          "day": 6,
-          "label": "Family skating",
-          "start": 1200,
-          "end": 1250,
-          "playFree": true
-        },
-        {
-          "day": 0,
-          "label": "Family skating",
-          "start": 900,
-          "end": 950,
-          "playFree": false
-        },
-        {
           "day": 5,
           "label": "Public skating",
           "start": 1080,
@@ -3604,18 +3569,18 @@
           "playFree": false
         },
         {
-          "day": 0,
-          "label": "Public skating",
-          "start": 960,
-          "end": 1010,
-          "playFree": true
-        },
-        {
           "day": 5,
           "label": "Family skating",
           "start": 1020,
           "end": 1070,
           "playFree": false
+        },
+        {
+          "day": 0,
+          "label": "Family skating",
+          "start": 900,
+          "end": 950,
+          "playFree": true
         }
       ]
     }
