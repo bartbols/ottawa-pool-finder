@@ -1,5 +1,5 @@
 {
-  "scraped_at": "2026-05-07T06:13:19.249238+00:00",
+  "scraped_at": "2026-05-08T05:31:50.690625+00:00",
   "pools": [
     {
       "id": "brewer-pool-and-arena",
@@ -300,6 +300,69 @@
       "url": "https://ottawa.ca/en/recreation-and-parks/facilities/place-listing/lowertown-community-centre-and-pool",
       "sessions": [
         {
+          "day": 6,
+          "label": "Lane swim",
+          "start": 540,
+          "end": 720,
+          "playFree": true
+        },
+        {
+          "day": 6,
+          "label": "Lane swim",
+          "start": 900,
+          "end": 960,
+          "playFree": true
+        },
+        {
+          "day": 0,
+          "label": "Lane swim",
+          "start": 540,
+          "end": 720,
+          "playFree": false
+        },
+        {
+          "day": 0,
+          "label": "Lane swim",
+          "start": 900,
+          "end": 960,
+          "playFree": false
+        },
+        {
+          "day": 1,
+          "label": "Lane swim",
+          "start": 540,
+          "end": 600,
+          "playFree": false
+        },
+        {
+          "day": 1,
+          "label": "Lane swim",
+          "start": 660,
+          "end": 780,
+          "playFree": false
+        },
+        {
+          "day": 6,
+          "label": "Public swim",
+          "start": 720,
+          "end": 900,
+          "playFree": true
+        },
+        {
+          "day": 0,
+          "label": "Public swim",
+          "start": 720,
+          "end": 900,
+          "playFree": false
+        },
+        {
+          "day": 1,
+          "label": "Public swim",
+          "start": 780,
+          "end": 900,
+          "playFree": false
+        },
+        {
           "day": 1,
           "label": "Lane swim",
           "start": 450,
@@ -398,20 +461,6 @@
           "playFree": false
         },
         {
-          "day": 6,
-          "label": "Lane swim",
-          "start": 900,
-          "end": 960,
-          "playFree": true
-        },
-        {
-          "day": 0,
-          "label": "Lane swim",
-          "start": 900,
-          "end": 960,
-          "playFree": false
-        },
-        {
           "day": 3,
           "label": "Public swim",
           "start": 1080,
@@ -430,20 +479,6 @@
           "label": "Public swim",
           "start": 990,
           "end": 1140,
-          "playFree": false
-        },
-        {
-          "day": 6,
-          "label": "Public swim",
-          "start": 720,
-          "end": 900,
-          "playFree": true
-        },
-        {
-          "day": 0,
-          "label": "Public swim",
-          "start": 720,
-          "end": 900,
           "playFree": false
         }
       ]
@@ -992,6 +1027,69 @@
       "url": "https://ottawa.ca/en/recreation-and-parks/facilities/place-listing/francois-dupuis-recreation-centre",
       "sessions": [
         {
+          "day": 6,
+          "label": "Lane swim",
+          "start": 540,
+          "end": 780,
+          "playFree": true
+        },
+        {
+          "day": 6,
+          "label": "Lane swim",
+          "start": 900,
+          "end": 960,
+          "playFree": true
+        },
+        {
+          "day": 0,
+          "label": "Lane swim",
+          "start": 630,
+          "end": 780,
+          "playFree": false
+        },
+        {
+          "day": 0,
+          "label": "Lane swim - shared pool",
+          "start": 540,
+          "end": 630,
+          "playFree": false
+        },
+        {
+          "day": 0,
+          "label": "Lane swim - shared pool",
+          "start": 900,
+          "end": 960,
+          "playFree": false
+        },
+        {
+          "day": 6,
+          "label": "Public swim - therapeutic pool",
+          "start": 540,
+          "end": 900,
+          "playFree": true
+        },
+        {
+          "day": 0,
+          "label": "Public swim - therapeutic pool",
+          "start": 540,
+          "end": 900,
+          "playFree": false
+        },
+        {
+          "day": 6,
+          "label": "Public swim - 25m pool",
+          "start": 780,
+          "end": 900,
+          "playFree": true
+        },
+        {
+          "day": 0,
+          "label": "Public swim - 25m pool",
+          "start": 780,
+          "end": 900,
+          "playFree": false
+        },
+        {
           "day": 1,
           "label": "Lane swim",
           "start": 450,
@@ -1227,13 +1325,6 @@
           "label": "Lane swim - shared pool",
           "start": 630,
           "end": 720,
-          "playFree": false
-        },
-        {
-          "day": 0,
-          "label": "Lane swim - shared pool",
-          "start": 900,
-          "end": 960,
           "playFree": false
         },
         {
@@ -2174,13 +2265,13 @@
           "day": 4,
           "label": "Lane swim",
           "start": 420,
-          "end": 660,
+          "end": 600,
           "playFree": false
         },
         {
           "day": 4,
           "label": "Lane swim",
-          "start": 720,
+          "start": 660,
           "end": 810,
           "playFree": false
         },
@@ -2237,13 +2328,13 @@
           "day": 4,
           "label": "Lane swim",
           "start": 420,
-          "end": 600,
+          "end": 660,
           "playFree": false
         },
         {
           "day": 4,
           "label": "Lane swim",
-          "start": 660,
+          "start": 720,
           "end": 810,
           "playFree": false
         }
@@ -2256,6 +2347,34 @@
       "wave": false,
       "url": "https://ottawa.ca/en/recreation-and-parks/facilities/place-listing/nepean-sportsplex",
       "sessions": [
+        {
+          "day": 1,
+          "label": "Lane swim - 25m pool",
+          "start": 420,
+          "end": 480,
+          "playFree": false
+        },
+        {
+          "day": 1,
+          "label": "Lane swim - 50m long course",
+          "start": 510,
+          "end": 780,
+          "playFree": false
+        },
+        {
+          "day": 1,
+          "label": "Lane swim - 50m short course",
+          "start": 1170,
+          "end": 1260,
+          "playFree": false
+        },
+        {
+          "day": 1,
+          "label": "Public swim - 25m pool",
+          "start": 660,
+          "end": 780,
+          "playFree": false
+        },
         {
           "day": 1,
           "label": "Lane swim - 25m pool",
@@ -2275,13 +2394,6 @@
           "label": "Lane swim - 25m pool",
           "start": 420,
           "end": 480,
-          "playFree": false
-        },
-        {
-          "day": 1,
-          "label": "Lane swim - 50m long course",
-          "start": 510,
-          "end": 780,
           "playFree": false
         },
         {
@@ -2352,13 +2464,6 @@
           "label": "Lane swim - 50m short course",
           "start": 660,
           "end": 900,
-          "playFree": false
-        },
-        {
-          "day": 1,
-          "label": "Public swim - 25m pool",
-          "start": 660,
-          "end": 780,
           "playFree": false
         },
         {
@@ -3063,6 +3168,55 @@
       "url": "https://ottawa.ca/en/recreation-and-parks/facilities/place-listing/minto-recreation-complex-barrhaven",
       "sessions": [
         {
+          "day": 6,
+          "label": "Lane swim",
+          "start": 555,
+          "end": 855,
+          "playFree": false
+        },
+        {
+          "day": 0,
+          "label": "Lane swim",
+          "start": 450,
+          "end": 765,
+          "playFree": false
+        },
+        {
+          "day": 1,
+          "label": "Lane swim",
+          "start": 450,
+          "end": 765,
+          "playFree": false
+        },
+        {
+          "day": 6,
+          "label": "Public swim",
+          "start": 870,
+          "end": 1050,
+          "playFree": false
+        },
+        {
+          "day": 0,
+          "label": "Public swim",
+          "start": 780,
+          "end": 900,
+          "playFree": false
+        },
+        {
+          "day": 1,
+          "label": "Public swim",
+          "start": 780,
+          "end": 900,
+          "playFree": false
+        },
+        {
+          "day": 6,
+          "label": "Public swim with WIBIT",
+          "start": 1140,
+          "end": 1260,
+          "playFree": false
+        },
+        {
           "day": 1,
           "label": "Lane swim",
           "start": 450,
@@ -3203,20 +3357,6 @@
           "playFree": false
         },
         {
-          "day": 6,
-          "label": "Public Swim",
-          "start": 870,
-          "end": 1050,
-          "playFree": true
-        },
-        {
-          "day": 0,
-          "label": "Public Swim",
-          "start": 780,
-          "end": 900,
-          "playFree": false
-        },
-        {
           "day": 1,
           "label": "Public Swim - reduced capacity",
           "start": 630,
@@ -3250,13 +3390,6 @@
           "start": 630,
           "end": 810,
           "playFree": false
-        },
-        {
-          "day": 6,
-          "label": "Public Swim with WIBIT",
-          "start": 1140,
-          "end": 1260,
-          "playFree": true
         }
       ]
     },
