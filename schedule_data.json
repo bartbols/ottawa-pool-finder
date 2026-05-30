@@ -1,5 +1,5 @@
 {
-  "scraped_at": "2026-05-29T06:56:57.773409+00:00",
+  "scraped_at": "2026-05-30T06:25:48.452928+00:00",
   "pools": [
     {
       "id": "brewer-pool-and-arena",
@@ -2006,13 +2006,13 @@
           "day": 4,
           "label": "Lane swim",
           "start": 420,
-          "end": 600,
+          "end": 660,
           "playFree": false
         },
         {
           "day": 4,
           "label": "Lane swim",
-          "start": 660,
+          "start": 720,
           "end": 810,
           "playFree": false
         },
@@ -2077,20 +2077,6 @@
           "label": "Public swim",
           "start": 780,
           "end": 900,
-          "playFree": false
-        },
-        {
-          "day": 4,
-          "label": "Lane swim",
-          "start": 420,
-          "end": 660,
-          "playFree": false
-        },
-        {
-          "day": 4,
-          "label": "Lane swim",
-          "start": 720,
-          "end": 810,
           "playFree": false
         }
       ]
@@ -2162,7 +2148,7 @@
           "day": 1,
           "label": "Lane swim - 50m short course",
           "start": 1170,
-          "end": 1260,
+          "end": 1290,
           "playFree": false
         },
         {
@@ -2176,7 +2162,7 @@
           "day": 3,
           "label": "Lane swim - 50m short course",
           "start": 1170,
-          "end": 1260,
+          "end": 1290,
           "playFree": false
         },
         {
@@ -2247,20 +2233,6 @@
           "label": "Public swim - 25m pool",
           "start": 780,
           "end": 900,
-          "playFree": false
-        },
-        {
-          "day": 1,
-          "label": "Lane swim - 50m short course",
-          "start": 1170,
-          "end": 1290,
-          "playFree": false
-        },
-        {
-          "day": 3,
-          "label": "Lane swim - 50m short course",
-          "start": 1170,
-          "end": 1290,
           "playFree": false
         }
       ]
