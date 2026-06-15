@@ -1,5 +1,5 @@
 {
-  "scraped_at": "2026-06-14T07:25:01.434826+00:00",
+  "scraped_at": "2026-06-15T09:25:42.625527+00:00",
   "pools": [
     {
       "id": "brewer-pool-and-arena",
@@ -3591,6 +3591,27 @@
       "url": "https://ottawa.ca/en/recreation-and-parks/facilities/place-listing/kanata-leisure-centre-and-wave-pool",
       "sessions": [
         {
+          "day": 3,
+          "label": "Lane swim",
+          "start": 480,
+          "end": 660,
+          "playFree": false
+        },
+        {
+          "day": 3,
+          "label": "Public swim",
+          "start": 660,
+          "end": 780,
+          "playFree": false
+        },
+        {
+          "day": 3,
+          "label": "Wave swim",
+          "start": 780,
+          "end": 960,
+          "playFree": false
+        },
+        {
           "day": 1,
           "label": "Lane swim",
           "start": 480,
@@ -3966,6 +3987,20 @@
       "url": "https://ottawa.ca/en/recreation-and-parks/facilities/place-listing/richcraft-recreation-complex-kanata",
       "sessions": [
         {
+          "day": 3,
+          "label": "Lane swim *Reservations not required.",
+          "start": 690,
+          "end": 780,
+          "playFree": false
+        },
+        {
+          "day": 3,
+          "label": "Public swim *Reservations not required.",
+          "start": 780,
+          "end": 960,
+          "playFree": false
+        },
+        {
           "day": 1,
           "label": "Reduced lane swim *Reservations not required.",
           "start": 375,
@@ -4061,13 +4096,6 @@
           "label": "Lane swim *Reservations not required.",
           "start": 510,
           "end": 630,
-          "playFree": false
-        },
-        {
-          "day": 3,
-          "label": "Lane swim *Reservations not required.",
-          "start": 690,
-          "end": 780,
           "playFree": false
         },
         {
