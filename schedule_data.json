@@ -1,5 +1,5 @@
 {
-  "scraped_at": "2026-06-15T09:25:42.625527+00:00",
+  "scraped_at": "2026-06-16T08:48:32.222819+00:00",
   "pools": [
     {
       "id": "brewer-pool-and-arena",
@@ -2555,7 +2555,7 @@
           "day": 3,
           "label": "Lane Swim",
           "start": 720,
-          "end": 840,
+          "end": 780,
           "playFree": false
         },
         {
@@ -3240,6 +3240,167 @@
           "day": 0,
           "label": "Public swim - 25m pool",
           "start": 780,
+          "end": 900,
+          "playFree": false
+        },
+        {
+          "day": 1,
+          "label": "Lane swim - 25m pool",
+          "start": 420,
+          "end": 510,
+          "playFree": false
+        },
+        {
+          "day": 2,
+          "label": "Lane swim - 25m pool",
+          "start": 420,
+          "end": 510,
+          "playFree": false
+        },
+        {
+          "day": 3,
+          "label": "Lane swim - 25m pool",
+          "start": 420,
+          "end": 510,
+          "playFree": false
+        },
+        {
+          "day": 4,
+          "label": "Lane swim - 25m pool",
+          "start": 420,
+          "end": 510,
+          "playFree": false
+        },
+        {
+          "day": 5,
+          "label": "Lane swim - 25m pool",
+          "start": 420,
+          "end": 510,
+          "playFree": false
+        },
+        {
+          "day": 1,
+          "label": "Lane swim - 50m short course",
+          "start": 540,
+          "end": 930,
+          "playFree": false
+        },
+        {
+          "day": 1,
+          "label": "Lane swim - 50m short course",
+          "start": 1140,
+          "end": 1260,
+          "playFree": false
+        },
+        {
+          "day": 2,
+          "label": "Lane swim - 50m short course",
+          "start": 540,
+          "end": 930,
+          "playFree": false
+        },
+        {
+          "day": 2,
+          "label": "Lane swim - 50m short course",
+          "start": 1140,
+          "end": 1260,
+          "playFree": false
+        },
+        {
+          "day": 3,
+          "label": "Lane swim - 50m short course",
+          "start": 540,
+          "end": 930,
+          "playFree": false
+        },
+        {
+          "day": 3,
+          "label": "Lane swim - 50m short course",
+          "start": 1140,
+          "end": 1260,
+          "playFree": false
+        },
+        {
+          "day": 4,
+          "label": "Lane swim - 50m short course",
+          "start": 540,
+          "end": 930,
+          "playFree": false
+        },
+        {
+          "day": 4,
+          "label": "Lane swim - 50m short course",
+          "start": 1140,
+          "end": 1260,
+          "playFree": false
+        },
+        {
+          "day": 5,
+          "label": "Lane swim - 50m short course",
+          "start": 540,
+          "end": 930,
+          "playFree": false
+        },
+        {
+          "day": 6,
+          "label": "Lane swim - 50m short course",
+          "start": 600,
+          "end": 900,
+          "playFree": true
+        },
+        {
+          "day": 0,
+          "label": "Lane swim - 50m short course",
+          "start": 600,
+          "end": 900,
+          "playFree": false
+        },
+        {
+          "day": 1,
+          "label": "Public swim - 25m pool",
+          "start": 780,
+          "end": 930,
+          "playFree": false
+        },
+        {
+          "day": 2,
+          "label": "Public swim - 25m pool",
+          "start": 780,
+          "end": 930,
+          "playFree": false
+        },
+        {
+          "day": 3,
+          "label": "Public swim - 25m pool",
+          "start": 780,
+          "end": 930,
+          "playFree": false
+        },
+        {
+          "day": 4,
+          "label": "Public swim - 25m pool",
+          "start": 780,
+          "end": 930,
+          "playFree": false
+        },
+        {
+          "day": 5,
+          "label": "Public swim - 25m pool",
+          "start": 780,
+          "end": 930,
+          "playFree": false
+        },
+        {
+          "day": 6,
+          "label": "Public swim - 25m pool",
+          "start": 600,
+          "end": 900,
+          "playFree": true
+        },
+        {
+          "day": 0,
+          "label": "Public swim - 25m pool",
+          "start": 600,
           "end": 900,
           "playFree": false
         }
