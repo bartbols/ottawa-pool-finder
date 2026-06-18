@@ -1,5 +1,5 @@
 {
-  "scraped_at": "2026-06-17T08:30:18.848278+00:00",
+  "scraped_at": "2026-06-18T08:10:22.715210+00:00",
   "pools": [
     {
       "id": "brewer-pool-and-arena",
@@ -1184,6 +1184,244 @@
           "start": 810,
           "end": 960,
           "playFree": false
+        },
+        {
+          "day": 1,
+          "label": "Lane swim",
+          "start": 720,
+          "end": 840,
+          "playFree": false
+        },
+        {
+          "day": 2,
+          "label": "Lane swim",
+          "start": 360,
+          "end": 420,
+          "playFree": false
+        },
+        {
+          "day": 2,
+          "label": "Lane swim",
+          "start": 720,
+          "end": 840,
+          "playFree": false
+        },
+        {
+          "day": 3,
+          "label": "Lane swim",
+          "start": 720,
+          "end": 840,
+          "playFree": false
+        },
+        {
+          "day": 4,
+          "label": "Lane swim",
+          "start": 360,
+          "end": 420,
+          "playFree": false
+        },
+        {
+          "day": 4,
+          "label": "Lane swim",
+          "start": 720,
+          "end": 840,
+          "playFree": false
+        },
+        {
+          "day": 5,
+          "label": "Lane swim",
+          "start": 720,
+          "end": 840,
+          "playFree": false
+        },
+        {
+          "day": 6,
+          "label": "Lane swim",
+          "start": 840,
+          "end": 900,
+          "playFree": true
+        },
+        {
+          "day": 1,
+          "label": "Public swim - 25 metre pool only",
+          "start": 900,
+          "end": 1020,
+          "playFree": false
+        },
+        {
+          "day": 2,
+          "label": "Public swim - 25 metre pool only",
+          "start": 900,
+          "end": 1020,
+          "playFree": false
+        },
+        {
+          "day": 3,
+          "label": "Public swim - 25 metre pool only",
+          "start": 900,
+          "end": 1020,
+          "playFree": false
+        },
+        {
+          "day": 4,
+          "label": "Public swim - 25 metre pool only",
+          "start": 900,
+          "end": 1020,
+          "playFree": false
+        },
+        {
+          "day": 5,
+          "label": "Public swim - 25 metre pool only",
+          "start": 900,
+          "end": 1020,
+          "playFree": false
+        },
+        {
+          "day": 6,
+          "label": "Public swim - 25 metre pool only",
+          "start": 660,
+          "end": 720,
+          "playFree": true
+        },
+        {
+          "day": 1,
+          "label": "Public swim - therapeutic pool",
+          "start": 900,
+          "end": 1020,
+          "playFree": false
+        },
+        {
+          "day": 2,
+          "label": "Public swim - therapeutic pool",
+          "start": 900,
+          "end": 1020,
+          "playFree": false
+        },
+        {
+          "day": 3,
+          "label": "Public swim - therapeutic pool",
+          "start": 900,
+          "end": 1020,
+          "playFree": false
+        },
+        {
+          "day": 4,
+          "label": "Public swim - therapeutic pool",
+          "start": 900,
+          "end": 1020,
+          "playFree": false
+        },
+        {
+          "day": 5,
+          "label": "Public swim - therapeutic pool",
+          "start": 900,
+          "end": 1020,
+          "playFree": false
+        },
+        {
+          "day": 6,
+          "label": "Public swim - therapeutic pool",
+          "start": 660,
+          "end": 720,
+          "playFree": true
+        },
+        {
+          "day": 2,
+          "label": "Lane swim",
+          "start": 720,
+          "end": 780,
+          "playFree": false
+        },
+        {
+          "day": 2,
+          "label": "Lane swim",
+          "start": 1140,
+          "end": 1200,
+          "playFree": false
+        },
+        {
+          "day": 5,
+          "label": "Lane swim",
+          "start": 360,
+          "end": 420,
+          "playFree": false
+        },
+        {
+          "day": 5,
+          "label": "Lane swim",
+          "start": 720,
+          "end": 780,
+          "playFree": false
+        },
+        {
+          "day": 5,
+          "label": "Lane swim",
+          "start": 1140,
+          "end": 1200,
+          "playFree": false
+        },
+        {
+          "day": 0,
+          "label": "Lane swim",
+          "start": 660,
+          "end": 780,
+          "playFree": false
+        },
+        {
+          "day": 2,
+          "label": "Public swim - 25 metre pool only",
+          "start": 840,
+          "end": 1020,
+          "playFree": false
+        },
+        {
+          "day": 4,
+          "label": "Public swim - 25 metre pool only",
+          "start": 840,
+          "end": 1020,
+          "playFree": false
+        },
+        {
+          "day": 6,
+          "label": "Public swim - 25 metre pool only",
+          "start": 660,
+          "end": 840,
+          "playFree": true
+        },
+        {
+          "day": 2,
+          "label": "Public swim - therapeutic pool",
+          "start": 840,
+          "end": 1020,
+          "playFree": false
+        },
+        {
+          "day": 2,
+          "label": "Public swim - therapeutic pool",
+          "start": 1140,
+          "end": 1200,
+          "playFree": false
+        },
+        {
+          "day": 4,
+          "label": "Public swim - therapeutic pool",
+          "start": 840,
+          "end": 1020,
+          "playFree": false
+        },
+        {
+          "day": 4,
+          "label": "Public swim - therapeutic pool",
+          "start": 1140,
+          "end": 1200,
+          "playFree": false
+        },
+        {
+          "day": 6,
+          "label": "Public swim - therapeutic pool",
+          "start": 660,
+          "end": 840,
+          "playFree": true
         }
       ]
     },
