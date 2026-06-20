@@ -1,5 +1,5 @@
 {
-  "scraped_at": "2026-06-19T08:33:38.824696+00:00",
+  "scraped_at": "2026-06-20T07:02:27.027667+00:00",
   "pools": [
     {
       "id": "brewer-pool-and-arena",
@@ -2613,7 +2613,7 @@
         {
           "day": 0,
           "label": "Public swim",
-          "start": 720,
+          "start": 660,
           "end": 780,
           "playFree": false
         },
