@@ -1,5 +1,5 @@
 {
-  "scraped_at": "2026-06-21T08:02:31.143783+00:00",
+  "scraped_at": "2026-06-22T09:12:38.411934+00:00",
   "pools": [
     {
       "id": "brewer-pool-and-arena",
@@ -3497,6 +3497,27 @@
       "sessions": [
         {
           "day": 1,
+          "label": "Lane swim - 25m pool",
+          "start": 420,
+          "end": 510,
+          "playFree": false
+        },
+        {
+          "day": 1,
+          "label": "Lane swim - 50m short course",
+          "start": 540,
+          "end": 930,
+          "playFree": false
+        },
+        {
+          "day": 1,
+          "label": "Public swim - 25m pool",
+          "start": 780,
+          "end": 930,
+          "playFree": false
+        },
+        {
+          "day": 1,
           "label": "Lane swim - 25m pool",
           "start": 420,
           "end": 480,
@@ -3680,13 +3701,6 @@
         {
           "day": 1,
           "label": "Lane swim - 50m short course",
-          "start": 540,
-          "end": 930,
-          "playFree": false
-        },
-        {
-          "day": 1,
-          "label": "Lane swim - 50m short course",
           "start": 1140,
           "end": 1260,
           "playFree": false
@@ -3752,13 +3766,6 @@
           "label": "Lane swim - 50m short course",
           "start": 600,
           "end": 900,
-          "playFree": false
-        },
-        {
-          "day": 1,
-          "label": "Public swim - 25m pool",
-          "start": 780,
-          "end": 930,
           "playFree": false
         },
         {
@@ -4080,6 +4087,20 @@
       "wave": false,
       "url": "https://ottawa.ca/en/recreation-and-parks/facilities/place-listing/cardelrec-recreation-complex-goulbourn",
       "sessions": [
+        {
+          "day": 3,
+          "label": "Lane swim *Reservations required",
+          "start": 690,
+          "end": 750,
+          "playFree": false
+        },
+        {
+          "day": 3,
+          "label": "Public swim with slide",
+          "start": 750,
+          "end": 960,
+          "playFree": false
+        },
         {
           "day": 1,
           "label": "Lane swim *Reservations required.",
