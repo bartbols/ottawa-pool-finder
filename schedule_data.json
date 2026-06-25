@@ -1,5 +1,5 @@
 {
-  "scraped_at": "2026-06-24T06:51:11.496439+00:00",
+  "scraped_at": "2026-06-25T06:50:14.139375+00:00",
   "pools": [
     {
       "id": "brewer-pool-and-arena",
@@ -4735,6 +4735,125 @@
         },
         {
           "day": 0,
+          "label": "Wave swim",
+          "start": 780,
+          "end": 1020,
+          "playFree": false
+        },
+        {
+          "day": 1,
+          "label": "Lane swim",
+          "start": 420,
+          "end": 540,
+          "playFree": false
+        },
+        {
+          "day": 2,
+          "label": "Lane swim",
+          "start": 420,
+          "end": 540,
+          "playFree": false
+        },
+        {
+          "day": 3,
+          "label": "Lane swim",
+          "start": 420,
+          "end": 540,
+          "playFree": false
+        },
+        {
+          "day": 4,
+          "label": "Lane swim",
+          "start": 420,
+          "end": 540,
+          "playFree": false
+        },
+        {
+          "day": 5,
+          "label": "Lane swim",
+          "start": 420,
+          "end": 540,
+          "playFree": false
+        },
+        {
+          "day": 1,
+          "label": "Public swim",
+          "start": 720,
+          "end": 780,
+          "playFree": false
+        },
+        {
+          "day": 2,
+          "label": "Public swim",
+          "start": 720,
+          "end": 780,
+          "playFree": false
+        },
+        {
+          "day": 3,
+          "label": "Public swim",
+          "start": 720,
+          "end": 780,
+          "playFree": false
+        },
+        {
+          "day": 3,
+          "label": "Public swim",
+          "start": 1020,
+          "end": 1200,
+          "playFree": false
+        },
+        {
+          "day": 4,
+          "label": "Public swim",
+          "start": 720,
+          "end": 780,
+          "playFree": false
+        },
+        {
+          "day": 5,
+          "label": "Public swim",
+          "start": 720,
+          "end": 780,
+          "playFree": false
+        },
+        {
+          "day": 5,
+          "label": "Public swim",
+          "start": 1020,
+          "end": 1200,
+          "playFree": false
+        },
+        {
+          "day": 1,
+          "label": "Wave swim",
+          "start": 780,
+          "end": 960,
+          "playFree": false
+        },
+        {
+          "day": 2,
+          "label": "Wave swim",
+          "start": 780,
+          "end": 960,
+          "playFree": false
+        },
+        {
+          "day": 3,
+          "label": "Wave swim",
+          "start": 780,
+          "end": 1020,
+          "playFree": false
+        },
+        {
+          "day": 4,
+          "label": "Wave swim",
+          "start": 780,
+          "end": 960,
+          "playFree": false
+        },
+        {
+          "day": 5,
           "label": "Wave swim",
           "start": 780,
           "end": 1020,
