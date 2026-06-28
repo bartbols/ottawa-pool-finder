@@ -1,5 +1,5 @@
 {
-  "scraped_at": "2026-06-27T06:31:26.446575+00:00",
+  "scraped_at": "2026-06-28T07:04:12.209266+00:00",
   "pools": [
     {
       "id": "brewer-pool-and-arena",
@@ -4041,29 +4041,15 @@
         {
           "day": 1,
           "label": "Lane swim *Reservations required.",
-          "start": 675,
-          "end": 735,
+          "start": 690,
+          "end": 750,
           "playFree": false
         },
         {
           "day": 1,
           "label": "Lane swim *Reservations required.",
-          "start": 735,
-          "end": 795,
-          "playFree": false
-        },
-        {
-          "day": 1,
-          "label": "Lane swim *Reservations required.",
-          "start": 1245,
-          "end": 1305,
-          "playFree": false
-        },
-        {
-          "day": 2,
-          "label": "Lane swim *Reservations required.",
-          "start": 510,
-          "end": 570,
+          "start": 1200,
+          "end": 1260,
           "playFree": false
         },
         {
@@ -4076,15 +4062,8 @@
         {
           "day": 2,
           "label": "Lane swim *Reservations required.",
-          "start": 810,
-          "end": 870,
-          "playFree": false
-        },
-        {
-          "day": 2,
-          "label": "Lane swim *Reservations required.",
-          "start": 1245,
-          "end": 1305,
+          "start": 1200,
+          "end": 1260,
           "playFree": false
         },
         {
@@ -4097,36 +4076,15 @@
         {
           "day": 3,
           "label": "Lane swim *Reservations required.",
-          "start": 675,
-          "end": 735,
+          "start": 690,
+          "end": 750,
           "playFree": false
         },
         {
           "day": 3,
           "label": "Lane swim *Reservations required.",
-          "start": 735,
-          "end": 795,
-          "playFree": false
-        },
-        {
-          "day": 3,
-          "label": "Lane swim *Reservations required.",
-          "start": 1245,
-          "end": 1305,
-          "playFree": false
-        },
-        {
-          "day": 4,
-          "label": "Lane swim *Reservations required.",
-          "start": 510,
-          "end": 570,
-          "playFree": false
-        },
-        {
-          "day": 4,
-          "label": "Lane swim *Reservations required.",
-          "start": 630,
-          "end": 690,
+          "start": 1200,
+          "end": 1260,
           "playFree": false
         },
         {
@@ -4134,13 +4092,6 @@
           "label": "Lane swim *Reservations required.",
           "start": 690,
           "end": 750,
-          "playFree": false
-        },
-        {
-          "day": 4,
-          "label": "Lane swim *Reservations required.",
-          "start": 1245,
-          "end": 1305,
           "playFree": false
         },
         {
@@ -4148,118 +4099,6 @@
           "label": "Lane swim *Reservations required.",
           "start": 435,
           "end": 495,
-          "playFree": false
-        },
-        {
-          "day": 5,
-          "label": "Lane swim *Reservations required.",
-          "start": 735,
-          "end": 795,
-          "playFree": false
-        },
-        {
-          "day": 5,
-          "label": "Lane swim *Reservations required.",
-          "start": 1230,
-          "end": 1290,
-          "playFree": false
-        },
-        {
-          "day": 6,
-          "label": "Lane swim *Reservations required.",
-          "start": 750,
-          "end": 810,
-          "playFree": true
-        },
-        {
-          "day": 0,
-          "label": "Lane swim *Reservations required.",
-          "start": 750,
-          "end": 810,
-          "playFree": false
-        },
-        {
-          "day": 0,
-          "label": "Lane swim *Reservations required.",
-          "start": 1140,
-          "end": 1200,
-          "playFree": false
-        },
-        {
-          "day": 6,
-          "label": "Public swim with slide",
-          "start": 810,
-          "end": 960,
-          "playFree": true
-        },
-        {
-          "day": 0,
-          "label": "Public swim with slide",
-          "start": 810,
-          "end": 960,
-          "playFree": false
-        },
-        {
-          "day": 1,
-          "label": "Public swim with no slide",
-          "start": 795,
-          "end": 855,
-          "playFree": false
-        },
-        {
-          "day": 3,
-          "label": "Public swim with no slide",
-          "start": 795,
-          "end": 855,
-          "playFree": false
-        },
-        {
-          "day": 5,
-          "label": "Public swim with no slide",
-          "start": 795,
-          "end": 855,
-          "playFree": false
-        },
-        {
-          "day": 5,
-          "label": "Public swim with no slide",
-          "start": 1140,
-          "end": 1230,
-          "playFree": false
-        },
-        {
-          "day": 1,
-          "label": "Lane swim *Reservations required.",
-          "start": 690,
-          "end": 750,
-          "playFree": false
-        },
-        {
-          "day": 1,
-          "label": "Lane swim *Reservations required.",
-          "start": 1200,
-          "end": 1260,
-          "playFree": false
-        },
-        {
-          "day": 2,
-          "label": "Lane swim *Reservations required.",
-          "start": 1200,
-          "end": 1260,
-          "playFree": false
-        },
-        {
-          "day": 3,
-          "label": "Lane swim *Reservations required.",
-          "start": 690,
-          "end": 750,
-          "playFree": false
-        },
-        {
-          "day": 3,
-          "label": "Lane swim *Reservations required.",
-          "start": 1200,
-          "end": 1260,
           "playFree": false
         },
         {
