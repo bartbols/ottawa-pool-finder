@@ -1,5 +1,5 @@
 {
-  "scraped_at": "2026-07-01T07:14:09.507616+00:00",
+  "scraped_at": "2026-07-02T06:42:59.033171+00:00",
   "pools": [
     {
       "id": "brewer-pool-and-arena",
@@ -2848,20 +2848,6 @@
       "wave": false,
       "url": "https://ottawa.ca/en/recreation-and-parks/facilities/place-listing/cardelrec-recreation-complex-goulbourn",
       "sessions": [
-        {
-          "day": 3,
-          "label": "Lane swim *Reservations required",
-          "start": 690,
-          "end": 750,
-          "playFree": false
-        },
-        {
-          "day": 3,
-          "label": "Public swim with slide",
-          "start": 750,
-          "end": 960,
-          "playFree": false
-        },
         {
           "day": 1,
           "label": "Lane swim *Reservations required.",
