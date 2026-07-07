@@ -1,5 +1,5 @@
 {
-  "scraped_at": "2026-07-06T07:15:21.969171+00:00",
+  "scraped_at": "2026-07-07T06:49:09.088687+00:00",
   "pools": [
     {
       "id": "brewer-pool-and-arena",
@@ -640,8 +640,15 @@
         {
           "day": 1,
           "label": "Lane swim",
-          "start": 1410,
-          "end": 1530,
+          "start": 690,
+          "end": 810,
+          "playFree": false
+        },
+        {
+          "day": 1,
+          "label": "Lane swim",
+          "start": 1200,
+          "end": 1290,
           "playFree": false
         },
         {
@@ -1181,13 +1188,6 @@
           "playFree": false
         },
         {
-          "day": 3,
-          "label": "Lane swim",
-          "start": 1170,
-          "end": 1230,
-          "playFree": false
-        },
-        {
           "day": 4,
           "label": "Lane swim",
           "start": 450,
@@ -1303,7 +1303,7 @@
           "day": 3,
           "label": "Lane swim - shared pool",
           "start": 990,
-          "end": 1170,
+          "end": 1230,
           "playFree": false
         },
         {
@@ -1861,13 +1861,6 @@
           "label": "Lane Swim",
           "start": 720,
           "end": 780,
-          "playFree": false
-        },
-        {
-          "day": 5,
-          "label": "Lane Swim",
-          "start": 1170,
-          "end": 1230,
           "playFree": false
         },
         {
