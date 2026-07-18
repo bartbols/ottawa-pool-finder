@@ -1,5 +1,5 @@
 {
-  "scraped_at": "2026-07-17T05:44:23.933124+00:00",
+  "scraped_at": "2026-07-18T05:29:10.137857+00:00",
   "pools": [
     {
       "id": "brewer-pool-and-arena",
@@ -631,6 +631,48 @@
       "url": "https://ottawa.ca/en/recreation-and-parks/facilities/place-listing/plant-recreation-centre",
       "sessions": [
         {
+          "day": 6,
+          "label": "Lane swim",
+          "start": 720,
+          "end": 810,
+          "playFree": true
+        },
+        {
+          "day": 0,
+          "label": "Lane swim",
+          "start": 720,
+          "end": 810,
+          "playFree": false
+        },
+        {
+          "day": 6,
+          "label": "Lane swim - reduced capacity",
+          "start": 660,
+          "end": 720,
+          "playFree": true
+        },
+        {
+          "day": 0,
+          "label": "Lane swim - reduced capacity",
+          "start": 660,
+          "end": 720,
+          "playFree": false
+        },
+        {
+          "day": 6,
+          "label": "Public swim",
+          "start": 810,
+          "end": 960,
+          "playFree": true
+        },
+        {
+          "day": 0,
+          "label": "Public swim",
+          "start": 810,
+          "end": 960,
+          "playFree": false
+        },
+        {
           "day": 1,
           "label": "Lane swim",
           "start": 420,
@@ -738,23 +780,9 @@
         {
           "day": 6,
           "label": "Lane swim",
-          "start": 720,
-          "end": 810,
-          "playFree": true
-        },
-        {
-          "day": 6,
-          "label": "Lane swim",
           "start": 960,
           "end": 1050,
           "playFree": true
-        },
-        {
-          "day": 0,
-          "label": "Lane swim",
-          "start": 720,
-          "end": 810,
-          "playFree": false
         },
         {
           "day": 0,
@@ -866,20 +894,6 @@
           "label": "Public swim",
           "start": 1080,
           "end": 1200,
-          "playFree": false
-        },
-        {
-          "day": 6,
-          "label": "Public swim",
-          "start": 810,
-          "end": 960,
-          "playFree": true
-        },
-        {
-          "day": 0,
-          "label": "Public swim",
-          "start": 810,
-          "end": 960,
           "playFree": false
         },
         {
@@ -1491,6 +1505,48 @@
       "url": "https://ottawa.ca/en/recreation-and-parks/facilities/place-listing/ray-friel-recreation-complex",
       "sessions": [
         {
+          "day": 6,
+          "label": "Lane swim",
+          "start": 540,
+          "end": 660,
+          "playFree": true
+        },
+        {
+          "day": 0,
+          "label": "Lane swim",
+          "start": 540,
+          "end": 660,
+          "playFree": true
+        },
+        {
+          "day": 6,
+          "label": "Public swim",
+          "start": 660,
+          "end": 780,
+          "playFree": true
+        },
+        {
+          "day": 0,
+          "label": "Public swim",
+          "start": 660,
+          "end": 780,
+          "playFree": true
+        },
+        {
+          "day": 6,
+          "label": "Wave swim",
+          "start": 780,
+          "end": 1020,
+          "playFree": false
+        },
+        {
+          "day": 0,
+          "label": "Wave swim",
+          "start": 780,
+          "end": 1020,
+          "playFree": false
+        },
+        {
           "day": 1,
           "label": "Lane swim",
           "start": 360,
@@ -1603,13 +1659,6 @@
           "playFree": true
         },
         {
-          "day": 0,
-          "label": "Lane swim",
-          "start": 540,
-          "end": 660,
-          "playFree": false
-        },
-        {
           "day": 1,
           "label": "Public swim",
           "start": 1110,
@@ -1621,20 +1670,6 @@
           "label": "Public swim",
           "start": 1110,
           "end": 1200,
-          "playFree": false
-        },
-        {
-          "day": 6,
-          "label": "Public swim",
-          "start": 660,
-          "end": 780,
-          "playFree": true
-        },
-        {
-          "day": 0,
-          "label": "Public swim",
-          "start": 660,
-          "end": 780,
           "playFree": false
         },
         {
@@ -1677,20 +1712,6 @@
           "label": "Wave swim",
           "start": 1080,
           "end": 1200,
-          "playFree": false
-        },
-        {
-          "day": 6,
-          "label": "Wave swim",
-          "start": 780,
-          "end": 1020,
-          "playFree": false
-        },
-        {
-          "day": 0,
-          "label": "Wave swim",
-          "start": 780,
-          "end": 1020,
           "playFree": false
         }
       ]
@@ -2377,6 +2398,27 @@
       "sessions": [
         {
           "day": 1,
+          "label": "Lane swim",
+          "start": 420,
+          "end": 510,
+          "playFree": false
+        },
+        {
+          "day": 1,
+          "label": "Lane swim",
+          "start": 540,
+          "end": 930,
+          "playFree": false
+        },
+        {
+          "day": 1,
+          "label": "Public swim",
+          "start": 780,
+          "end": 930,
+          "playFree": false
+        },
+        {
+          "day": 1,
           "label": "Lane swim - 25m pool",
           "start": 420,
           "end": 510,
@@ -2814,10 +2856,17 @@
       "url": "https://ottawa.ca/en/recreation-and-parks/facilities/place-listing/cardelrec-recreation-complex-goulbourn",
       "sessions": [
         {
-          "day": 1,
+          "day": 6,
           "label": "Lane swim *Reservations required.",
-          "start": 435,
-          "end": 495,
+          "start": 930,
+          "end": 990,
+          "playFree": true
+        },
+        {
+          "day": 0,
+          "label": "Lane swim *Reservations required.",
+          "start": 690,
+          "end": 750,
           "playFree": false
         },
         {
@@ -2825,6 +2874,34 @@
           "label": "Lane swim *Reservations required.",
           "start": 690,
           "end": 750,
+          "playFree": false
+        },
+        {
+          "day": 6,
+          "label": "Public swim with slide",
+          "start": 750,
+          "end": 930,
+          "playFree": true
+        },
+        {
+          "day": 0,
+          "label": "Public swim with slide",
+          "start": 750,
+          "end": 930,
+          "playFree": false
+        },
+        {
+          "day": 1,
+          "label": "Public swim with slide",
+          "start": 750,
+          "end": 960,
+          "playFree": false
+        },
+        {
+          "day": 1,
+          "label": "Lane swim *Reservations required.",
+          "start": 435,
+          "end": 495,
           "playFree": false
         },
         {
@@ -2895,20 +2972,6 @@
           "label": "Lane swim *Reservations required.",
           "start": 1200,
           "end": 1260,
-          "playFree": false
-        },
-        {
-          "day": 6,
-          "label": "Lane swim *Reservations required.",
-          "start": 930,
-          "end": 990,
-          "playFree": true
-        },
-        {
-          "day": 0,
-          "label": "Lane swim *Reservations required.",
-          "start": 690,
-          "end": 750,
           "playFree": false
         },
         {
@@ -2965,20 +3028,6 @@
           "label": "Public swim with slide",
           "start": 1110,
           "end": 1200,
-          "playFree": false
-        },
-        {
-          "day": 6,
-          "label": "Public swim with slide",
-          "start": 750,
-          "end": 930,
-          "playFree": true
-        },
-        {
-          "day": 0,
-          "label": "Public swim with slide",
-          "start": 750,
-          "end": 930,
           "playFree": false
         }
       ]
@@ -3182,6 +3231,48 @@
       "url": "https://ottawa.ca/en/recreation-and-parks/facilities/place-listing/minto-recreation-complex-barrhaven",
       "sessions": [
         {
+          "day": 6,
+          "label": "Lane swim",
+          "start": 720,
+          "end": 870,
+          "playFree": false
+        },
+        {
+          "day": 0,
+          "label": "Lane swim",
+          "start": 480,
+          "end": 660,
+          "playFree": false
+        },
+        {
+          "day": 1,
+          "label": "Lane swim",
+          "start": 480,
+          "end": 660,
+          "playFree": false
+        },
+        {
+          "day": 6,
+          "label": "Public swim",
+          "start": 870,
+          "end": 1080,
+          "playFree": false
+        },
+        {
+          "day": 0,
+          "label": "Public swim",
+          "start": 660,
+          "end": 900,
+          "playFree": false
+        },
+        {
+          "day": 1,
+          "label": "Public swim",
+          "start": 660,
+          "end": 900,
+          "playFree": false
+        },
+        {
           "day": 1,
           "label": "Lane swim",
           "start": 375,
@@ -3249,20 +3340,6 @@
           "label": "Lane swim",
           "start": 990,
           "end": 1110,
-          "playFree": false
-        },
-        {
-          "day": 6,
-          "label": "Lane swim",
-          "start": 720,
-          "end": 870,
-          "playFree": false
-        },
-        {
-          "day": 0,
-          "label": "Lane swim",
-          "start": 480,
-          "end": 660,
           "playFree": false
         },
         {
@@ -3399,13 +3476,6 @@
           "playFree": false
         },
         {
-          "day": 6,
-          "label": "Public Swim",
-          "start": 870,
-          "end": 1080,
-          "playFree": true
-        },
-        {
           "day": 0,
           "label": "Public Swim",
           "start": 660,
@@ -3421,6 +3491,48 @@
       "wave": false,
       "url": "https://ottawa.ca/en/recreation-and-parks/facilities/place-listing/pinecrest-recreation-complex",
       "sessions": [
+        {
+          "day": 6,
+          "label": "Public Swim *Reservations not required.",
+          "start": 630,
+          "end": 720,
+          "playFree": true
+        },
+        {
+          "day": 6,
+          "label": "Public Swim *Reservations not required.",
+          "start": 780,
+          "end": 870,
+          "playFree": true
+        },
+        {
+          "day": 0,
+          "label": "Public Swim *Reservations not required.",
+          "start": 630,
+          "end": 720,
+          "playFree": false
+        },
+        {
+          "day": 0,
+          "label": "Public Swim *Reservations not required.",
+          "start": 780,
+          "end": 870,
+          "playFree": false
+        },
+        {
+          "day": 6,
+          "label": "Lane Swim",
+          "start": 720,
+          "end": 780,
+          "playFree": false
+        },
+        {
+          "day": 0,
+          "label": "Lane Swim",
+          "start": 720,
+          "end": 780,
+          "playFree": false
+        },
         {
           "day": 1,
           "label": "Public Swim *Reservations not required.",
@@ -3454,34 +3566,6 @@
           "label": "Public Swim *Reservations not required.",
           "start": 780,
           "end": 840,
-          "playFree": false
-        },
-        {
-          "day": 6,
-          "label": "Public Swim *Reservations not required.",
-          "start": 630,
-          "end": 720,
-          "playFree": true
-        },
-        {
-          "day": 6,
-          "label": "Public Swim *Reservations not required.",
-          "start": 780,
-          "end": 870,
-          "playFree": true
-        },
-        {
-          "day": 0,
-          "label": "Public Swim *Reservations not required.",
-          "start": 630,
-          "end": 720,
-          "playFree": false
-        },
-        {
-          "day": 0,
-          "label": "Public Swim *Reservations not required.",
-          "start": 780,
-          "end": 870,
           "playFree": false
         },
         {
@@ -3630,20 +3714,6 @@
           "start": 480,
           "end": 540,
           "playFree": true
-        },
-        {
-          "day": 6,
-          "label": "Lane Swim",
-          "start": 720,
-          "end": 780,
-          "playFree": true
-        },
-        {
-          "day": 0,
-          "label": "Lane Swim",
-          "start": 720,
-          "end": 780,
-          "playFree": false
         }
       ]
     },
@@ -3654,6 +3724,48 @@
       "wave": false,
       "url": "https://ottawa.ca/en/recreation-and-parks/facilities/place-listing/richcraft-recreation-complex-kanata",
       "sessions": [
+        {
+          "day": 6,
+          "label": "Lane swim *Reservations not required.",
+          "start": 690,
+          "end": 780,
+          "playFree": false
+        },
+        {
+          "day": 0,
+          "label": "Lane swim *Reservations not required.",
+          "start": 690,
+          "end": 780,
+          "playFree": false
+        },
+        {
+          "day": 1,
+          "label": "Lane swim *Reservations not required.",
+          "start": 690,
+          "end": 780,
+          "playFree": false
+        },
+        {
+          "day": 6,
+          "label": "Public swim *Reservations not required.",
+          "start": 780,
+          "end": 960,
+          "playFree": false
+        },
+        {
+          "day": 0,
+          "label": "Public swim *Reservations not required.",
+          "start": 780,
+          "end": 960,
+          "playFree": false
+        },
+        {
+          "day": 1,
+          "label": "Public swim *Reservations not required.",
+          "start": 780,
+          "end": 960,
+          "playFree": false
+        },
         {
           "day": 1,
           "label": "Reduced lane swim *Reservations not required.",
