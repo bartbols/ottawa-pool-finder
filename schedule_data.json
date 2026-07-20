@@ -1,5 +1,5 @@
 {
-  "scraped_at": "2026-07-19T05:56:21.648004+00:00",
+  "scraped_at": "2026-07-20T06:20:01.983464+00:00",
   "pools": [
     {
       "id": "brewer-pool-and-arena",
@@ -440,6 +440,62 @@
       "url": "https://ottawa.ca/en/recreation-and-parks/facilities/place-listing/lowertown-community-centre-and-pool",
       "sessions": [
         {
+          "day": 6,
+          "label": "Lane swim",
+          "start": 570,
+          "end": 720,
+          "playFree": false
+        },
+        {
+          "day": 6,
+          "label": "Lane swim",
+          "start": 900,
+          "end": 990,
+          "playFree": false
+        },
+        {
+          "day": 0,
+          "label": "Lane swim",
+          "start": 570,
+          "end": 720,
+          "playFree": false
+        },
+        {
+          "day": 0,
+          "label": "Lane swim",
+          "start": 900,
+          "end": 990,
+          "playFree": false
+        },
+        {
+          "day": 1,
+          "label": "Lane swim",
+          "start": 540,
+          "end": 690,
+          "playFree": false
+        },
+        {
+          "day": 6,
+          "label": "Public swim",
+          "start": 720,
+          "end": 900,
+          "playFree": true
+        },
+        {
+          "day": 0,
+          "label": "Public swim",
+          "start": 720,
+          "end": 900,
+          "playFree": false
+        },
+        {
+          "day": 1,
+          "label": "Public swim",
+          "start": 750,
+          "end": 960,
+          "playFree": false
+        },
+        {
           "day": 1,
           "label": "Lane swim",
           "start": 390,
@@ -535,20 +591,6 @@
           "label": "Lane swim",
           "start": 1140,
           "end": 1320,
-          "playFree": false
-        },
-        {
-          "day": 6,
-          "label": "Lane swim",
-          "start": 900,
-          "end": 990,
-          "playFree": true
-        },
-        {
-          "day": 0,
-          "label": "Lane swim",
-          "start": 900,
-          "end": 990,
           "playFree": false
         },
         {
@@ -605,20 +647,6 @@
           "label": "Public swim",
           "start": 960,
           "end": 1140,
-          "playFree": false
-        },
-        {
-          "day": 6,
-          "label": "Public swim",
-          "start": 720,
-          "end": 900,
-          "playFree": true
-        },
-        {
-          "day": 0,
-          "label": "Public swim",
-          "start": 720,
-          "end": 900,
           "playFree": false
         }
       ]
@@ -1146,6 +1174,62 @@
       "url": "https://ottawa.ca/en/recreation-and-parks/facilities/place-listing/francois-dupuis-recreation-centre",
       "sessions": [
         {
+          "day": 0,
+          "label": "Lane swim",
+          "start": 510,
+          "end": 570,
+          "playFree": false
+        },
+        {
+          "day": 0,
+          "label": "Lane swim",
+          "start": 630,
+          "end": 780,
+          "playFree": false
+        },
+        {
+          "day": 0,
+          "label": "Lane swim",
+          "start": 900,
+          "end": 960,
+          "playFree": false
+        },
+        {
+          "day": 1,
+          "label": "Lane swim",
+          "start": 540,
+          "end": 720,
+          "playFree": false
+        },
+        {
+          "day": 0,
+          "label": "Lane swim - shared pool",
+          "start": 570,
+          "end": 630,
+          "playFree": false
+        },
+        {
+          "day": 0,
+          "label": "Public swim - therapeutic pool",
+          "start": 570,
+          "end": 900,
+          "playFree": false
+        },
+        {
+          "day": 1,
+          "label": "Public swim - therapeutic pool",
+          "start": 540,
+          "end": 720,
+          "playFree": false
+        },
+        {
+          "day": 0,
+          "label": "Public swim - 25m pool",
+          "start": 780,
+          "end": 900,
+          "playFree": false
+        },
+        {
           "day": 1,
           "label": "Lane swim",
           "start": 450,
@@ -1262,13 +1346,6 @@
           "label": "Lane swim",
           "start": 720,
           "end": 780,
-          "playFree": false
-        },
-        {
-          "day": 0,
-          "label": "Lane swim",
-          "start": 900,
-          "end": 960,
           "playFree": false
         },
         {
@@ -1907,6 +1984,27 @@
       "wave": false,
       "url": "https://ottawa.ca/en/recreation-and-parks/facilities/place-listing/st-laurent-complex",
       "sessions": [
+        {
+          "day": 1,
+          "label": "Lane Swim",
+          "start": 540,
+          "end": 660,
+          "playFree": false
+        },
+        {
+          "day": 1,
+          "label": "Lane Swim",
+          "start": 930,
+          "end": 990,
+          "playFree": false
+        },
+        {
+          "day": 1,
+          "label": "Public swim *Reservations not required",
+          "start": 660,
+          "end": 930,
+          "playFree": false
+        },
         {
           "day": 1,
           "label": "Lane Swim",
@@ -3042,6 +3140,27 @@
         {
           "day": 1,
           "label": "Lane swim",
+          "start": 480,
+          "end": 660,
+          "playFree": false
+        },
+        {
+          "day": 1,
+          "label": "Public swim",
+          "start": 660,
+          "end": 780,
+          "playFree": false
+        },
+        {
+          "day": 1,
+          "label": "Wave swim",
+          "start": 780,
+          "end": 960,
+          "playFree": false
+        },
+        {
+          "day": 1,
+          "label": "Lane swim",
           "start": 420,
           "end": 540,
           "playFree": false
@@ -3170,13 +3289,6 @@
           "label": "Public swim",
           "start": 720,
           "end": 780,
-          "playFree": false
-        },
-        {
-          "day": 1,
-          "label": "Wave swim",
-          "start": 780,
-          "end": 960,
           "playFree": false
         },
         {
