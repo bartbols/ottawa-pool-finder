@@ -1,5 +1,5 @@
 {
-  "scraped_at": "2026-07-20T06:20:01.983464+00:00",
+  "scraped_at": "2026-07-21T05:53:32.350942+00:00",
   "pools": [
     {
       "id": "brewer-pool-and-arena",
@@ -1111,6 +1111,13 @@
         {
           "day": 1,
           "label": "Public swim - therapeutic pool",
+          "start": 780,
+          "end": 840,
+          "playFree": false
+        },
+        {
+          "day": 1,
+          "label": "Public swim - therapeutic pool",
           "start": 900,
           "end": 1020,
           "playFree": false
@@ -1148,6 +1155,13 @@
           "label": "Public swim - therapeutic pool",
           "start": 1140,
           "end": 1200,
+          "playFree": false
+        },
+        {
+          "day": 5,
+          "label": "Public swim - therapeutic pool",
+          "start": 780,
+          "end": 840,
           "playFree": false
         },
         {
