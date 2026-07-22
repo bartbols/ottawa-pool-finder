@@ -1,5 +1,5 @@
 {
-  "scraped_at": "2026-07-21T05:53:32.350942+00:00",
+  "scraped_at": "2026-07-22T05:52:38.148141+00:00",
   "pools": [
     {
       "id": "brewer-pool-and-arena",
@@ -9,6 +9,34 @@
       "url": "https://ottawa.ca/en/recreation-and-parks/facilities/place-listing/brewer-pool-and-arena",
       "sessions": [
         {
+          "day": 6,
+          "label": "Lane swim",
+          "start": 690,
+          "end": 780,
+          "playFree": true
+        },
+        {
+          "day": 0,
+          "label": "Lane swim",
+          "start": 690,
+          "end": 780,
+          "playFree": false
+        },
+        {
+          "day": 6,
+          "label": "Public Swim",
+          "start": 780,
+          "end": 900,
+          "playFree": true
+        },
+        {
+          "day": 0,
+          "label": "Public Swim",
+          "start": 780,
+          "end": 900,
+          "playFree": false
+        },
+        {
           "day": 1,
           "label": "Lane swim",
           "start": 450,
@@ -144,23 +172,9 @@
         {
           "day": 6,
           "label": "Lane swim",
-          "start": 690,
-          "end": 780,
-          "playFree": true
-        },
-        {
-          "day": 6,
-          "label": "Lane swim",
           "start": 900,
           "end": 960,
           "playFree": true
-        },
-        {
-          "day": 0,
-          "label": "Lane swim",
-          "start": 690,
-          "end": 780,
-          "playFree": false
         },
         {
           "day": 0,
@@ -199,20 +213,6 @@
         },
         {
           "day": 5,
-          "label": "Public swim",
-          "start": 780,
-          "end": 900,
-          "playFree": false
-        },
-        {
-          "day": 6,
-          "label": "Public swim",
-          "start": 780,
-          "end": 900,
-          "playFree": true
-        },
-        {
-          "day": 0,
           "label": "Public swim",
           "start": 780,
           "end": 900,
@@ -1607,7 +1607,7 @@
           "label": "Lane swim",
           "start": 540,
           "end": 660,
-          "playFree": true
+          "playFree": false
         },
         {
           "day": 6,
@@ -1621,7 +1621,7 @@
           "label": "Public swim",
           "start": 660,
           "end": 780,
-          "playFree": true
+          "playFree": false
         },
         {
           "day": 6,
