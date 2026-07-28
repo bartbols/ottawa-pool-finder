@@ -1,5 +1,5 @@
 {
-  "scraped_at": "2026-07-27T06:32:46.977986+00:00",
+  "scraped_at": "2026-07-28T05:48:58.084299+00:00",
   "pools": [
     {
       "id": "brewer-pool-and-arena",
@@ -3005,15 +3005,15 @@
         {
           "day": 6,
           "label": "Lane swim *Reservations required.",
-          "start": 930,
-          "end": 990,
+          "start": 720,
+          "end": 780,
           "playFree": true
         },
         {
           "day": 0,
           "label": "Lane swim *Reservations required.",
-          "start": 690,
-          "end": 750,
+          "start": 720,
+          "end": 780,
           "playFree": false
         },
         {
@@ -3026,15 +3026,15 @@
         {
           "day": 6,
           "label": "Public swim with slide",
-          "start": 750,
-          "end": 930,
+          "start": 780,
+          "end": 960,
           "playFree": true
         },
         {
           "day": 0,
           "label": "Public swim with slide",
-          "start": 750,
-          "end": 930,
+          "start": 780,
+          "end": 960,
           "playFree": false
         },
         {
@@ -3119,6 +3119,20 @@
           "label": "Lane swim *Reservations required.",
           "start": 1200,
           "end": 1260,
+          "playFree": false
+        },
+        {
+          "day": 6,
+          "label": "Lane swim *Reservations required.",
+          "start": 930,
+          "end": 990,
+          "playFree": true
+        },
+        {
+          "day": 0,
+          "label": "Lane swim *Reservations required.",
+          "start": 690,
+          "end": 750,
           "playFree": false
         },
         {
@@ -3175,6 +3189,20 @@
           "label": "Public swim with slide",
           "start": 1110,
           "end": 1200,
+          "playFree": false
+        },
+        {
+          "day": 6,
+          "label": "Public swim with slide",
+          "start": 750,
+          "end": 930,
+          "playFree": true
+        },
+        {
+          "day": 0,
+          "label": "Public swim with slide",
+          "start": 750,
+          "end": 930,
           "playFree": false
         }
       ]
