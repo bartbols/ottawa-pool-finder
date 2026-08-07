@@ -1,5 +1,5 @@
 {
-  "scraped_at": "2026-08-06T05:51:09.864041+00:00",
+  "scraped_at": "2026-08-07T04:56:17.660626+00:00",
   "pools": [
     {
       "id": "brewer-pool-and-arena",
@@ -32,7 +32,7 @@
         {
           "day": 1,
           "label": "Lane swim",
-          "start": 1140,
+          "start": 1200,
           "end": 1260,
           "playFree": false
         },
@@ -88,7 +88,7 @@
         {
           "day": 3,
           "label": "Lane swim",
-          "start": 1140,
+          "start": 1200,
           "end": 1260,
           "playFree": false
         },
@@ -2067,6 +2067,160 @@
           "start": 780,
           "end": 930,
           "playFree": false
+        },
+        {
+          "day": 1,
+          "label": "Lane Swim",
+          "start": 420,
+          "end": 600,
+          "playFree": false
+        },
+        {
+          "day": 1,
+          "label": "Lane Swim",
+          "start": 720,
+          "end": 840,
+          "playFree": false
+        },
+        {
+          "day": 1,
+          "label": "Lane Swim",
+          "start": 1230,
+          "end": 1290,
+          "playFree": false
+        },
+        {
+          "day": 2,
+          "label": "Lane Swim",
+          "start": 660,
+          "end": 780,
+          "playFree": false
+        },
+        {
+          "day": 2,
+          "label": "Lane Swim",
+          "start": 1230,
+          "end": 1290,
+          "playFree": false
+        },
+        {
+          "day": 3,
+          "label": "Lane Swim",
+          "start": 420,
+          "end": 540,
+          "playFree": false
+        },
+        {
+          "day": 3,
+          "label": "Lane Swim",
+          "start": 660,
+          "end": 810,
+          "playFree": false
+        },
+        {
+          "day": 3,
+          "label": "Lane Swim",
+          "start": 1260,
+          "end": 1320,
+          "playFree": false
+        },
+        {
+          "day": 4,
+          "label": "Lane Swim",
+          "start": 480,
+          "end": 600,
+          "playFree": false
+        },
+        {
+          "day": 4,
+          "label": "Lane Swim",
+          "start": 660,
+          "end": 810,
+          "playFree": false
+        },
+        {
+          "day": 4,
+          "label": "Lane Swim",
+          "start": 1230,
+          "end": 1290,
+          "playFree": false
+        },
+        {
+          "day": 5,
+          "label": "Lane Swim",
+          "start": 420,
+          "end": 555,
+          "playFree": false
+        },
+        {
+          "day": 5,
+          "label": "Lane Swim",
+          "start": 675,
+          "end": 780,
+          "playFree": false
+        },
+        {
+          "day": 5,
+          "label": "Lane Swim",
+          "start": 1230,
+          "end": 1290,
+          "playFree": false
+        },
+        {
+          "day": 6,
+          "label": "Lane Swim",
+          "start": 480,
+          "end": 540,
+          "playFree": true
+        },
+        {
+          "day": 6,
+          "label": "Lane Swim",
+          "start": 1140,
+          "end": 1200,
+          "playFree": true
+        },
+        {
+          "day": 0,
+          "label": "Lane Swim",
+          "start": 480,
+          "end": 540,
+          "playFree": false
+        },
+        {
+          "day": 0,
+          "label": "Lane Swim",
+          "start": 780,
+          "end": 840,
+          "playFree": false
+        },
+        {
+          "day": 0,
+          "label": "Lane Swim",
+          "start": 1140,
+          "end": 1200,
+          "playFree": false
+        },
+        {
+          "day": 5,
+          "label": "Public swim *Reservations not required",
+          "start": 1140,
+          "end": 1230,
+          "playFree": false
+        },
+        {
+          "day": 6,
+          "label": "Public swim *Reservations not required",
+          "start": 780,
+          "end": 960,
+          "playFree": true
+        },
+        {
+          "day": 0,
+          "label": "Public swim *Reservations not required",
+          "start": 1020,
+          "end": 1140,
+          "playFree": false
         }
       ]
     },
@@ -3907,6 +4061,70 @@
           "label": "Family skating",
           "start": 900,
           "end": 950,
+          "playFree": true
+        }
+      ]
+    },
+    {
+      "id": "tony-graham-recreation-complex-kanata",
+      "name": "Tony Graham Recreation Complex",
+      "address": "",
+      "url": "https://ottawa.ca/en/recreation-and-parks/facilities/place-listing/tony-graham-recreation-complex-kanata",
+      "sessions": [
+        {
+          "day": 1,
+          "label": "Public skating",
+          "start": 780,
+          "end": 830,
+          "playFree": false
+        },
+        {
+          "day": 2,
+          "label": "Public skating",
+          "start": 780,
+          "end": 830,
+          "playFree": false
+        },
+        {
+          "day": 3,
+          "label": "Public skating",
+          "start": 780,
+          "end": 830,
+          "playFree": false
+        },
+        {
+          "day": 4,
+          "label": "Public skating",
+          "start": 795,
+          "end": 845,
+          "playFree": false
+        },
+        {
+          "day": 5,
+          "label": "Public skating",
+          "start": 795,
+          "end": 845,
+          "playFree": false
+        },
+        {
+          "day": 5,
+          "label": "Public skating",
+          "start": 1140,
+          "end": 1190,
+          "playFree": false
+        },
+        {
+          "day": 0,
+          "label": "Public skating",
+          "start": 720,
+          "end": 770,
+          "playFree": true
+        },
+        {
+          "day": 0,
+          "label": "Public skating",
+          "start": 780,
+          "end": 830,
           "playFree": true
         }
       ]
